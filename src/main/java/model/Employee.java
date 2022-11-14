@@ -73,7 +73,7 @@ public class Employee {
     @Column(name = "accommodation")
     private Accommodation accommodation;
     @Column(name = "cars")
-    private List<Car> cars;
+    private List<Vehicle> cars;
     @Column(name = "contract_file")
     private File contractFile;
     @Column(name = "salary_per_hour")

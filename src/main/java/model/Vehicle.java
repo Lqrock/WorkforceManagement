@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @Table(name = "vehicles")
-public class Car {
+public class Vehicle {
     // @NotNull = null not allowed but "" is allowed.
     // @NotEmpty = null not allowed and "" also not allowed but spaces are counted characters so " " is allowed
     // @NotBlank (for strings) = null not allowed and trimmed length has to be greater than 0 ( no spaces )
