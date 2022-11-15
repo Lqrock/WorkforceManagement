@@ -21,7 +21,7 @@ public class Vehicle {
 
     @NotEmpty
     @Column(name = "vehicle_identification_number")
-    private String vehicleIdentificationNumber;
+    private Long vehicleIdentificationNumber;
 
     @NotEmpty
     @Column(name = "insurance_type")
@@ -50,7 +50,7 @@ public class Vehicle {
 
     @NotEmpty
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Employee> driversName;
+    private List<Employee> driversName; // read notepad
 
     private List images;
 

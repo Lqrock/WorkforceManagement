@@ -1,4 +1,3 @@
-
 CREATE TABLE project (
 	name VARCHAR(255) NOT NULL,
 	project_code INT NOT NULL,
@@ -8,5 +7,7 @@ CREATE TABLE project (
 	starting_date DATE NOT NULL,
 	finishing_date DATE,
 	maximum_employees_number INT,
-	PRIMARY KEY (project_code)
+	employee_id INT,
+	PRIMARY KEY (project_code),
+	CONSTRAINT FK_employee_id FOREIGN KEY (employee_id) REFERENCES employee(identity_number)
 );

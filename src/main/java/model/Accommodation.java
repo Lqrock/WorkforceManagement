@@ -62,11 +62,11 @@ public class Accommodation {
 
     @NotEmpty
     @Column(name = "rooms")
-    private List<String> rooms;
+    private List<String> rooms; // --ask--
 
     @NotEmpty
     @Column(name = "bedrooms_per_floor")
-    private HashMap<String, Integer> bedroomsPerFloor;
+    private HashMap<String, Integer> bedroomsPerFloor; // --ask--
 
     @Column(name = "has_internet")
     private boolean hasInternet;
@@ -75,23 +75,23 @@ public class Accommodation {
     private boolean hasParking;
 
     @Column(name = "furniture_and_appliance")
-    private List<String> furnitureAndAppliance;
+    private List<String> furnitureAndAppliance; // --ask--
 
     @Column(name = "rent")
     private float rent; // could also be string or double
 
     @Column(name = "utilities")
-    private List<String> utilities;
+    private List<String> utilities; // --ask--
 
     @Column(name = "deposit")
     private float deposit; // could also be string or double
 
     @Column(name = "contract_file")
-    private File contractFile;
+    private File contractFile; // --ask--
 
     @Column(name = "rental_period")
-    private List<LocalDate> rentalPeriod; //ask
+    private List<LocalDate> rentalPeriod; // --ask--
 
     @Column(name = "notice_period")
-    private List<LocalDate> noticePeriod; //ask
+    private List<LocalDate> noticePeriod; // --ask--
 }

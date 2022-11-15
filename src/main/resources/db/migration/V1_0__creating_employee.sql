@@ -1,7 +1,7 @@
 CREATE TABLE employee (
 	first_name VARCHAR(255) NOT NULL,
 	last_name VARCHAR(255) NOT NULL,
-	identity_number VARCHAR(125) NOT NULL,
+	identity_number INT NOT NULL,
 	nationality VARCHAR(255) NOT NULL,
 	citizenship_country VARCHAR(255) NOT NULL,
 	date_of_birth DATE NOT NULL,

@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.File;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "employee")

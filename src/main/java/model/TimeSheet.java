@@ -8,8 +8,8 @@ import java.time.LocalTime;
 @Table(name = "time_sheet")
 public class TimeSheet {
 
-    @Column(name = "type")
-    private String type; // could also be enum of (active, day off, not working)
+    @Column(name = "job_type")
+    private String job_type; // could also be enum of (active, day off, not working) - had to change it to job type from type cuz of database type
 
     @Column(name = "starting_time")
     private Time startingTime;
@@ -22,7 +22,4 @@ public class TimeSheet {
 
     @Column(name = "project_name")
     private String projectsName;
-
-    @Column(name = "job_position")
-    private String jobPosition;
 }
