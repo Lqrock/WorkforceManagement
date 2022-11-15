@@ -1,8 +1,9 @@
 package model;
 
-public enum SpeakingLanguages {
+public enum Language {
     ENGLISH,
     GERMAN,
     RUSSIAN,
-    FRENCH
+    UKRAINIAN,
+    LITHUANIAN
 }
