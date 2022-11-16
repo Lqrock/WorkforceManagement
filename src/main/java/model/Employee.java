@@ -84,13 +84,13 @@ public class Employee {
     private LocalDate finishingDate;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Project> projects;
+    private List<Project> projects; // -- ask --
 
-    @Column(name = "accommodation")
+    @JoinColumn(name = "accommodation_id")
     private Accommodation accommodation;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Vehicle> vehicles;
+    private List<Vehicle> vehicles; // -- ask --
 
     @Column(name = "contract_file")
     private File contractFile;

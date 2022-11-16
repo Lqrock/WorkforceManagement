@@ -45,7 +45,7 @@ public class Accommodation {
     private String address;
 
     @NotEmpty
-    @Column(name = "postal_code")
+    @Column(name = "postal_code") // PK
     private Long postalCode;
 
     @NotEmpty
@@ -53,8 +53,8 @@ public class Accommodation {
     private int houseNumber;
 
     @NotEmpty
-    @Column(name = "floor_count")
-    private int floorCount; // or number of floors. --ask--
+    @Column(name = "number_of_floors")
+    private int numberOfFloors; // or floor count. --ask--
 
     @NotEmpty
     @Column(name = "floors")

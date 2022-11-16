@@ -6,10 +6,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 
 @Data
 @Table(name = "vehicle")
 public class Vehicle {
+
+
+    Random random = new Random();
 
     @NotEmpty
     @Column(name = "car_model")
@@ -22,6 +26,10 @@ public class Vehicle {
     @NotEmpty
     @Column(name = "vehicle_identification_number")
     private Long vehicleIdentificationNumber;
+
+    @NotEmpty
+    @Column(name = "vehicle_tire_type")
+    private TireType tireType;
 
     @NotEmpty
     @Column(name = "insurance_type")
@@ -52,6 +60,7 @@ public class Vehicle {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Employee> driversName; // read notepad
 
+    @Column(name = "image")
     private List images;
 
     @Column(name = "fuel_injector_filter_change_required")
