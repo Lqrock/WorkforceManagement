@@ -3,7 +3,6 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Table;
 import java.sql.Time;
-import java.time.LocalTime;
 
 @Table(name = "time_sheet")
 public class TimeSheet {

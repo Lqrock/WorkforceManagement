@@ -6,14 +6,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Random;
 
 @Data
 @Table(name = "vehicle")
 public class Vehicle {
-
-
-    Random random = new Random();
 
     @NotEmpty
     @Column(name = "car_model")
