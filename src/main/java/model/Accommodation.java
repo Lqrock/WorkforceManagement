@@ -1,7 +1,6 @@
 package model;
 
 import lombok.Data;
-
 import javax.persistence.Column;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -10,8 +9,8 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 
-@Table(name = "accommodation")
 @Data
+@Table(name = "accommodation")
 public class Accommodation {
     @NotEmpty
     @Column(name = "owners_name")

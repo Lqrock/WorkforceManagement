@@ -1,7 +1,6 @@
 package model;
 
 import lombok.Data;
-
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
@@ -9,8 +8,8 @@ import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
 
-@Table(name = "project")
 @Data
+@Table(name = "project")
 public class Project {
 
     @NotEmpty

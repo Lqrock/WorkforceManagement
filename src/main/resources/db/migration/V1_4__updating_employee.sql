@@ -1,4 +1,6 @@
 
+-- adding the vehicle foreign key column
+
 ALTER TABLE employee
     ADD vehicle_id int,
 	ADD CONSTRAINT FK_vehicle_id

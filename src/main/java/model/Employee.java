@@ -8,8 +8,8 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 
-@Table(name = "employee")
 @Data
+@Table(name = "employee")
 public class Employee {
 
     @NotEmpty
