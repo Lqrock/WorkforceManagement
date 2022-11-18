@@ -1,6 +1,3 @@
-
--- adding the accommodation foreign key column
-
 ALTER TABLE employee
     ADD accommodation_id int,
     add CONSTRAINT FK_accommodation_id
