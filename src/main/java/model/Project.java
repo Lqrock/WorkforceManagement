@@ -18,7 +18,7 @@ public class Project {
 
     @NotEmpty
     @Column(name = "project_code")
-    private int code;
+    private int code; // could also be called projectCode since code is vague - current PK
 
     @NotEmpty
     @Column(name = "address")
@@ -26,10 +26,10 @@ public class Project {
 
     @NotEmpty
     @Column(name = "phone_number")
-    private String phoneNumber;
+    private String phoneNumber; // singular phone number or a list?
 
     @Column(name = "emails")
-    private List<String> emails; // TODO needs fixing
+    private List<String> emails; // TODO needs fixing - currently a single string in DB
 
     @NotEmpty
     @Column(name = "starting_date")
@@ -44,5 +44,5 @@ public class Project {
     private List<String> jobPositions; // TODO
 
     @JoinColumn(name = "employee_id")
-    private Employee employee;
+    private Employee employee; // added this for the list of workers that every project has
 }

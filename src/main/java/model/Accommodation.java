@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "accommodation")
 public class Accommodation {
     @NotEmpty
-    @Column(name = "owners_name")
+    @Column(name = "owners_name") //owners_name or owner_name?
     private String ownersName;
 
     @NotEmpty
@@ -22,13 +22,13 @@ public class Accommodation {
 
     @NotEmpty
     @Column(name = "owners_email")
-    private String email;;
+    private String email;
 
     @NotEmpty
     @Column(name = "owners_type")
-    private String ownersType; // what does type refers to? gender?
+    private String ownersType; // what does type refers to?
 
-    @Column(name = "owners_bank_account")
+    @Column(name = "owners_bank_account") // what is the default value?null?
     private Long ownersBankAccount;
 
     @NotEmpty
@@ -44,12 +44,12 @@ public class Accommodation {
     private String address;
 
     @NotEmpty
-    @Column(name = "postal_code") // PK
+    @Column(name = "postal_code") // this is the current PK
     private Long postalCode;
 
     @NotEmpty
     @Column(name = "house_number")
-    private int houseNumber;
+    private int houseNumber; // does it also include letters? or only numbers
 
     @NotEmpty
     @Column(name = "number_of_floors")
@@ -57,15 +57,15 @@ public class Accommodation {
 
     @NotEmpty
     @Column(name = "floors")
-    private List<String> floors; // --ask--
+    private List<String> floors; // --ask-- // also this could be a string, and another List<String> floors can exist which retrieve different accommodation's floor count //NID
 
     @NotEmpty
     @Column(name = "rooms")
-    private List<String> rooms; // --ask--
+    private List<String> rooms; // --ask-- // same as above //NID
 
     @NotEmpty
     @Column(name = "bedrooms_per_floor")
-    private HashMap<String, Integer> bedroomsPerFloor; // --ask--
+    private HashMap<String, Integer> bedroomsPerFloor; // --ask-- // if values are fixed, such as 2 per floor, 4 per floor, it could be a normal String //NID
 
     @Column(name = "has_internet")
     private boolean hasInternet;
@@ -74,23 +74,23 @@ public class Accommodation {
     private boolean hasParking;
 
     @Column(name = "furniture_and_appliance")
-    private List<String> furnitureAndAppliance; // --ask--
+    private List<String> furnitureAndAppliance; // --ask-- // will need another table for this. //NID
 
     @Column(name = "rent")
     private float rent; // could also be string or double
 
     @Column(name = "utilities")
-    private List<String> utilities; // --ask--
+    private List<String> utilities; // --ask-- // can be a string or will need another table for this //NID
 
     @Column(name = "deposit")
     private float deposit; // could also be string or double
 
     @Column(name = "contract_file")
-    private File contractFile; // --ask--
+    private File contractFile; // --ask-- //NID
 
     @Column(name = "rental_period")
-    private List<LocalDate> rentalPeriod; // --ask--
+    private List<LocalDate> rentalPeriod; // --ask-- does period refer to a List? or a simple date //NID
 
     @Column(name = "notice_period")
-    private List<LocalDate> noticePeriod; // --ask--
+    private List<LocalDate> noticePeriod; // --ask-- //NID
 }

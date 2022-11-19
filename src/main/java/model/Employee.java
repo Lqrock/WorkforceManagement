@@ -18,27 +18,27 @@ public class Employee {
 
     @NotEmpty
     @Column(name = "last_name")
-    private String lastName;
+    private String lastName; // this was not in the notes. added it anyway
 
     @NotEmpty
     @Column(name = "identity_number")
-    private String identityNumber;
+    private int identityNumber; // it was identity code in notes. this is also the PK
 
     @NotEmpty
-    @Column(name = "gender")
+    @Column(name = "employee_gender")
     private Gender gender;
 
     @NotEmpty
-    @Column(name = "marital_status")
+    @Column(name = "employee_marital_status")
     private MaritalStatus maritalStatus;
 
     @NotEmpty
     @Column(name = "nationality")
-    private String nationality;
+    private String nationality; // could also be an Enum list of countries to avoid false entries 1
 
     @NotEmpty
     @Column(name = "citizenship_country")
-    private String citizenshipCountry;
+    private String citizenshipCountry; // could be an enum list to avoid false entries 2
 
     @NotEmpty
     @Column(name = "date_of_birth")
@@ -46,7 +46,7 @@ public class Employee {
 
     @NotEmpty
     @Column(name = "place_of_birth")
-    private String placeOfBirth;
+    private String placeOfBirth; // could be an enum list to avoid false entries 3
 
     @NotEmpty
     @Column(name = "address")
@@ -73,7 +73,10 @@ public class Employee {
     private boolean hasDriversLicense;
 
     @NotEmpty
-    private List<Language> spokenLanguages; // TODO
+    private List<Language> spokenLanguages; // TODO should be a list of values from Enum Language
+
+    @Column(name = "employee_job_position")
+    private JobPosition jobPosition;
 
     @NotEmpty
     @Column(name = "starting_date")
@@ -84,23 +87,23 @@ public class Employee {
     private LocalDate finishingDate;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Project> projects; // -- ask --
+    private List<Project> projects; // retrieved from repository by getProjectByEmployeeId and use the employee identification number
 
     @JoinColumn(name = "accommodation_id")
     private Accommodation accommodation;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Vehicle> vehicles; // -- ask --
+    private List<Vehicle> vehicles; // -- ask --// was not in the notes // NID
 
     @Column(name = "contract_file")
     private File contractFile;
 
     @Column(name = "salary_per_hour")
-    private double salaryPerHour;
+    private double salaryPerHour; // can also be Float
 
     @NotEmpty
     @Column(name = "contract_type")
-    private String contractType; // could also be enum
+    private String contractType; // could also be enum // also what is "Gil or Disaco or Zarasu"?
 
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
