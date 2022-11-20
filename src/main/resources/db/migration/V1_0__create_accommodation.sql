@@ -1,0 +1,20 @@
+CREATE TABLE accommodation (
+    id INT NOT NULL,
+	owners_name VARCHAR(255) NOT NULL,
+	owners_phone_number VARCHAR(255) NOT NULL,
+	owners_email VARCHAR(255) NOT NULL,
+	owners_bank_account BIGINT,
+	ownership_type VARCHAR NOT NULL,
+	province VARCHAR NOT NULL,
+	city VARCHAR NOT NULL,
+	address TEXT NOT NULL,
+	postal_code BIGINT NOT NULL,
+	house_number INT NOT NULL,
+	has_internet BOOLEAN,
+	has_parking BOOLEAN,
+	rent FLOAT,
+	deposit FLOAT,
+	rental_period INT,
+	notice_period INT,
+	PRIMARY KEY (id)
+);

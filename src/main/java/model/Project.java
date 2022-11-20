@@ -29,7 +29,7 @@ public class Project {
 
     @NotEmpty
     @OneToMany(fetch = FetchType.LAZY)
-    private List<PhoneNumber> phoneNumber;
+    private List<PhoneNumber> phoneNumber; // TODO create table
 
     @NotEmpty
     @OneToMany(fetch = FetchType.LAZY)

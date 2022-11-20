@@ -34,7 +34,7 @@ public class Employee {
     private Gender gender;
 
     @NotEmpty
-    @Column(name = "employee_marital_status")
+    @Column(name = "marital_status")
     private MaritalStatus maritalStatus;
 
     @NotEmpty
@@ -80,7 +80,7 @@ public class Employee {
     @NotEmpty
     private List<Language> spokenLanguages; //TODO create table and add to DATABASE AAAH
 
-    @Column(name = "employee_job_position")
+    @Column(name = "job_position")
     private JobPosition jobPosition;
 
     @NotEmpty
