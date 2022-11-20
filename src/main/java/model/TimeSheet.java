@@ -1,14 +1,21 @@
 package model;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import java.sql.Time;
 
 @Table(name = "time_sheet")
 public class TimeSheet {
 
+    @Id
+    @NotEmpty
+    @Column(name = "id")
+    private Long id;
+
     @Column(name = "job_type")
-    private String job_type; // could also be enum of (active, day off, not working) - had to change it to job type from type cuz of database type
+    private String job_type;
 
     @Column(name = "starting_time")
     private Time startingTime;
@@ -22,5 +29,6 @@ public class TimeSheet {
     @Column(name = "project_name")
     private String projectsName;
 
-    //TODO add jobposition
+    @Column(name = "job_position")
+    private JobPosition jobPosition;
 }

@@ -12,20 +12,25 @@ import java.util.List;
 @Table(name = "employee")
 public class Employee {
 
+    @Id
+    @NotEmpty
+    @Column(name = "id")
+    private Long id;
+
     @NotEmpty
     @Column(name = "first_name")
     private String firstName;
 
     @NotEmpty
     @Column(name = "last_name")
-    private String lastName; // this was not in the notes. added it anyway
+    private String lastName;
 
     @NotEmpty
     @Column(name = "identity_number")
-    private int identityNumber; // it was identity code in notes. this is also the PK
+    private int identityNumber;
 
     @NotEmpty
-    @Column(name = "employee_gender")
+    @Column(name = "gender")
     private Gender gender;
 
     @NotEmpty
@@ -34,11 +39,11 @@ public class Employee {
 
     @NotEmpty
     @Column(name = "nationality")
-    private String nationality; // could also be an Enum list of countries to avoid false entries 1
+    private String nationality;
 
     @NotEmpty
     @Column(name = "citizenship_country")
-    private String citizenshipCountry; // could be an enum list to avoid false entries 2
+    private String citizenshipCountry;
 
     @NotEmpty
     @Column(name = "date_of_birth")
@@ -46,7 +51,7 @@ public class Employee {
 
     @NotEmpty
     @Column(name = "place_of_birth")
-    private String placeOfBirth; // could be an enum list to avoid false entries 3
+    private String placeOfBirth;
 
     @NotEmpty
     @Column(name = "address")
@@ -73,7 +78,7 @@ public class Employee {
     private boolean hasDriversLicense;
 
     @NotEmpty
-    private List<Language> spokenLanguages; // TODO should be a list of values from Enum Language
+    private List<Language> spokenLanguages; //TODO create table and add to DATABASE AAAH
 
     @Column(name = "employee_job_position")
     private JobPosition jobPosition;
@@ -93,17 +98,17 @@ public class Employee {
     private Accommodation accommodation;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Vehicle> vehicles; // -- ask --// was not in the notes // NID
+    private List<Vehicle> vehicles; // TODO I HAVE NO IDEA
 
     @Column(name = "contract_file")
     private File contractFile;
 
     @Column(name = "salary_per_hour")
-    private double salaryPerHour; // can also be Float
+    private double salaryPerHour;
 
     @NotEmpty
     @Column(name = "contract_type")
-    private String contractType; // could also be enum // also what is "Gil or Disaco or Zarasu"?
+    private String contractType;
 
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;

@@ -10,9 +10,8 @@ public class Room {
     @JoinColumn(name = "floor_id")
     private int floorId;
 
-
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Furniture> furnitures; // TODO nid
+    private List<Furniture> furnitures; // TODO Create table
 
     private int beds;
 }

@@ -9,9 +9,15 @@ import java.util.List;
 @Data
 @Table(name = "accommodation")
 public class Accommodation {
+
+    @Id
+    @NotEmpty
+    @Column(name = "id")
+    private Long id;
+
     @NotEmpty
     @Column(name = "owners_name")
-    private String ownersName; //TODO change to owner_name
+    private String ownersName;
 
     @NotEmpty
     @Column(name = "owners_phone_number")
@@ -22,8 +28,8 @@ public class Accommodation {
     private String email;
 
     @NotEmpty
-    @Column(name = "owners_type")
-    private String ownersType; // TODO enum, (legal, natural)
+    @Column(name = "ownership_type")
+    private OwnershipType ownershipType;
 
     @Column(name = "owners_bank_account")
     private Long ownersBankAccount;
@@ -41,20 +47,16 @@ public class Accommodation {
     private String address;
 
     @NotEmpty
-    @Column(name = "postal_code") // this is the current PK
+    @Column(name = "postal_code")
     private Long postalCode;
 
     @NotEmpty
     @Column(name = "house_number")
-    private int houseNumber; // does it also include letters? or only numbers
-
-    @NotEmpty
-    @Column(name = "number_of_floors")
-    private int numberOfFloors; // TODO delete from db
+    private int houseNumber;
 
     @NotEmpty
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Floor> floors; //TODO nid
+    private List<Floor> floors; //TODO ADD TO DATABASE
 
     @Column(name = "has_internet")
     private boolean hasInternet;
@@ -63,7 +65,7 @@ public class Accommodation {
     private boolean hasParking;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Utility> utilities; //TODO NID
+    private List<Utility> utilities; //TODO ADD TO DATABASE
 
     @Column(name = "rent")
     private float rent;
@@ -72,11 +74,11 @@ public class Accommodation {
     private float deposit;
 
     @Column(name = "contract_file")
-    private File contractFile; //NID
+    private File contractFile; // TODO LEARN HOW TO FUCKING DO IT
 
     @Column(name = "rental_period")
-    private int rentalPeriod; // TODO change in db
+    private int rentalPeriod;
 
     @Column(name = "notice_period")
-    private int noticePeriod;// NID
+    private int noticePeriod;
 }

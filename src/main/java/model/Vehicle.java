@@ -1,6 +1,5 @@
 package model;
 
-import lombok.Cleanup;
 import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -10,6 +9,11 @@ import java.util.List;
 @Data
 @Table(name = "vehicle")
 public class Vehicle {
+
+    @Id
+    @NotEmpty
+    @Column(name = "id")
+    private Long id;
 
     @NotEmpty
     @Column(name = "model")
@@ -25,28 +29,28 @@ public class Vehicle {
 
     @NotEmpty
     @Column(name = "vin")
-    private Long vin; // TODO change in db - vehicle identification number
+    private Long vin;
 
     @NotEmpty
     @Column(name = "mileage")
     private int mileage;
 
     @NotEmpty
-    @Column(name = "vehicle_tire_type") // TODO change enums to string in db
+    @Column(name = "tire_type")
     private TireType tireType;
 
     @NotEmpty
     @Column(name = "insurance_type")
     private String insuranceType;
 
-    @Column(name = "vehicle_dkv_number")
+    @Column(name = "dkv_number")
     private DkvNumber dkvNumber;
 
     @NotEmpty
     @Column(name = "gps_number")
     private String gpsNumber;
 
-    @Column(name = "owners_name") // TODO change from not null in db
+    @Column(name = "owners_name")
     private VehicleOwner ownersName;
 
     @NotEmpty
@@ -59,8 +63,8 @@ public class Vehicle {
     @Column(name = "oil_change_indicator")
     private int oilChangeIndicator;
 
-    @Column(name = "fuel_injector_change_indicator") // TODO this was not in the notes, idk why i added it so can be removed
-    private int fuelInjectorChangeIndicator; // kilometers left before changing the fuel injector filter
+    @Column(name = "fuel_injector_change_indicator")
+    private int fuelInjectorChangeIndicator;
 
     @Column(name = "timing_belt_change_indicator")
     private int timingBeltChangeIndicator; // kilometers left before changing the timing belt
@@ -73,7 +77,7 @@ public class Vehicle {
     private List<Employee> driversName;
 
     @Column(name = "image")
-    private List images; // this could be a list of Strings that contains links to images that will later be displayed in the frontend //NID
+    private List images; // TODO LEARN THIS
 
     @Column(name = "fuel_injector_filter_change_required")
     private boolean fuelInjectorFilterChangeRequired;
