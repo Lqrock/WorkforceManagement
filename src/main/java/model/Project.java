@@ -1,9 +1,8 @@
 package model;
 
 import lombok.Data;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,19 +16,20 @@ public class Project {
     private String name;
 
     @NotEmpty
-    @Column(name = "project_code")
-    private int code; // could also be called projectCode since code is vague - current PK
+    @Column(name = "code")
+    private String code; // TODO change column name in db
 
     @NotEmpty
     @Column(name = "address")
     private String address;
 
     @NotEmpty
-    @Column(name = "phone_number")
-    private String phoneNumber; // singular phone number or a list?
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<PhoneNumber> phoneNumber; // singular phone number or a list?
 
-    @Column(name = "emails")
-    private List<String> emails; // TODO needs fixing - currently a single string in DB
+    @NotEmpty
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Email> emails; // TODO fix in db
 
     @NotEmpty
     @Column(name = "starting_date")
@@ -44,5 +44,5 @@ public class Project {
     private List<String> jobPositions; // TODO
 
     @JoinColumn(name = "employee_id")
-    private Employee employee; // added this for the list of workers that every project has
+    private Employee employee;
 }

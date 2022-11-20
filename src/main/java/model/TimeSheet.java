@@ -21,4 +21,6 @@ public class TimeSheet {
 
     @Column(name = "project_name")
     private String projectsName;
+
+    //TODO add jobposition
 }

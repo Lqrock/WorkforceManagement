@@ -1,5 +1,6 @@
 package model;
 
+import lombok.Cleanup;
 import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -11,23 +12,27 @@ import java.util.List;
 public class Vehicle {
 
     @NotEmpty
-    @Column(name = "car_model")
-    private String carModel; // or just model? --ask--
+    @Column(name = "model")
+    private String model;
+
+    @NotEmpty
+    @Column(name = "brand")
+    private String brand;
 
     @NotEmpty
     @Column(name = "plate_number")
-    private String plateNumber; // should this be PK?
+    private String plateNumber;
 
     @NotEmpty
-    @Column(name = "vehicle_identification_number")
-    private Long vehicleIdentificationNumber; // should this be called VIN or the full name? current PK
+    @Column(name = "vin")
+    private Long vin; // TODO change in db - vehicle identification number
 
     @NotEmpty
     @Column(name = "mileage")
-    private int mileage; // does KM in the notes refers to how many KMs a car travelled? 
+    private int mileage;
 
     @NotEmpty
-    @Column(name = "vehicle_tire_type") // changed the Database name from tire_type to vehicle_tire_type because it had the same name as the Enum tire_type
+    @Column(name = "vehicle_tire_type") // TODO change enums to string in db
     private TireType tireType;
 
     @NotEmpty
@@ -35,14 +40,14 @@ public class Vehicle {
     private String insuranceType;
 
     @Column(name = "vehicle_dkv_number")
-    private DkvNumber dkvNumber; // should it be an integer or a string?
-    @NotEmpty
-    @Column(name = "gps_number")
-    private String gpsNumber; // should it be an integer or a string?
+    private DkvNumber dkvNumber;
 
     @NotEmpty
-    @Column(name = "owners_name") //owners_name or owner_name? also what does "Gil or Disaco or Zarasu" means
-    private String ownersName;
+    @Column(name = "gps_number")
+    private String gpsNumber;
+
+    @Column(name = "owners_name") // TODO change from not null in db
+    private VehicleOwner ownersName;
 
     @NotEmpty
     @Column(name = "tuf_expiration_date")
@@ -52,7 +57,7 @@ public class Vehicle {
     private LocalDate insuranceExpirationDate;
 
     @Column(name = "oil_change_indicator")
-    private int oilChangeIndicator; // kilometers left before changing the engine oil - could be mandatory
+    private int oilChangeIndicator;
 
     @Column(name = "fuel_injector_change_indicator") // TODO this was not in the notes, idk why i added it so can be removed
     private int fuelInjectorChangeIndicator; // kilometers left before changing the fuel injector filter
@@ -60,27 +65,30 @@ public class Vehicle {
     @Column(name = "timing_belt_change_indicator")
     private int timingBeltChangeIndicator; // kilometers left before changing the timing belt
 
+    @Column(name = "adBlue_change_indicator")
+    private int adBlueChangeIndicator;
+
     @NotEmpty
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Employee> driversName; // this could be retrieved from database by a findAllEmployeesWithDriversLicense method from the repository class //NID
+    private List<Employee> driversName;
 
     @Column(name = "image")
     private List images; // this could be a list of Strings that contains links to images that will later be displayed in the frontend //NID
 
-    @Column(name = "fuel_injector_filter_change_required") // it was fuel filter in the notes, are they the same?
-    private boolean fuelInjectorFilterChangeRequired; // false means it needs to change. true means it is ok
+    @Column(name = "fuel_injector_filter_change_required")
+    private boolean fuelInjectorFilterChangeRequired;
 
     @Column(name = "anti_frost_change_required_change_required")
-    private boolean antiFrostChangeRequired; // false value means it does not have anti Frost. true means it does
+    private boolean antiFrostChangeRequired;
 
     @Column(name = "air_filter_change_required")
-    private boolean airFilterChangeRequired; // false value means a new air filter is required. true means it does not need a new air filter
+    private boolean airFilterChangeRequired;
 
     @Column(name = "inside_air_filter_change_required")
-    private boolean insideAirFilterChangeRequired; // false means a new inside Air filter is required. true means it does not
+    private boolean insideAirFilterChangeRequired;
 
     @Column(name = "brake_fluid_change_required")
-    private boolean brakeFluidChangeRequired; // false means it needs changing. true means it does not
+    private boolean brakeFluidChangeRequired;
 
     @JoinColumn(name = "project_id")
     private Project project;

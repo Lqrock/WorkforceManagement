@@ -87,7 +87,7 @@ public class Employee {
     private LocalDate finishingDate;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Project> projects; // retrieved from repository by getProjectByEmployeeId and use the employee identification number
+    private List<Project> projects;
 
     @JoinColumn(name = "accommodation_id")
     private Accommodation accommodation;
