@@ -16,8 +16,13 @@ public class JobPosition {
     private int id;
 
     @Column(name = "job_position")
-    private String jobPosition;
+    private JobPositionEnum jobPosition;
 
     @JoinColumn(name = "project_id")
     private int projectId;
+}
+
+enum JobPositionEnum{
+    WORKER,
+    CLEANER
 }

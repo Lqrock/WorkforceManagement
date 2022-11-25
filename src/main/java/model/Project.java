@@ -13,7 +13,7 @@ public class Project {
     @Id
     @NotEmpty
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @NotEmpty
     @Column(name = "name")

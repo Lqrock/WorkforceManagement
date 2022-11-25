@@ -16,8 +16,15 @@ public class Language {
     private int id;
 
     @Column(name = "language")
-    private String language;
+    private languageEnum language;
 
     @JoinColumn(name = "employee_id")
     private int employeeIdd;
+}
+enum languageEnum{
+    ENGLISH,
+    RUSSIAN,
+    GERMAN,
+    FRENCH,
+    LITHUANIAN
 }

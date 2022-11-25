@@ -15,7 +15,7 @@ public class Employee {
     @Id
     @NotEmpty
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @NotEmpty
     @Column(name = "first_name")

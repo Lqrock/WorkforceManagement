@@ -12,7 +12,7 @@ public class TimeSheet {
     @Id
     @NotEmpty
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "job_type")
     private String job_type;

@@ -1,6 +1,8 @@
 package model;
 
 import lombok.Data;
+import repository.AccommodationRepository;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.File;
@@ -13,7 +15,7 @@ public class Accommodation {
     @Id
     @NotEmpty
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @NotEmpty
     @Column(name = "owners_name")
