@@ -1,11 +1,20 @@
 package model;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Data
+@Table(name = "room")
 public class Room {
+
+    @Id
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "beds")
+    private int beds;
 
     @JoinColumn(name = "floor_id")
     private int floorId;
@@ -13,5 +22,4 @@ public class Room {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Furniture> furnitures; // TODO Create table
 
-    private int beds;
 }

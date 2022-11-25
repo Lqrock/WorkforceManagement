@@ -29,11 +29,11 @@ public class Project {
 
     @NotEmpty
     @OneToMany(fetch = FetchType.LAZY)
-    private List<PhoneNumber> phoneNumber; // TODO create table
+    private List<PhoneNumbers> phoneNumber;
 
     @NotEmpty
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Email> emails; // TODO - Create table
+    private List<Email> emails;
 
     @NotEmpty
     @Column(name = "starting_date")
@@ -45,7 +45,8 @@ public class Project {
     @Column(name = "maximum_employees_number")
     private int maximumEmployeesNumber;
 
-    private List<String> jobPositions; // TODO - Create table
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<String> jobPositions;
 
     @JoinColumn(name = "employee_id")
     private Employee employee;

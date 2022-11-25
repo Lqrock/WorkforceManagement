@@ -67,7 +67,7 @@ public class Vehicle {
     private int fuelInjectorChangeIndicator;
 
     @Column(name = "timing_belt_change_indicator")
-    private int timingBeltChangeIndicator; // kilometers left before changing the timing belt
+    private int timingBeltChangeIndicator;
 
     @Column(name = "adBlue_change_indicator")
     private int adBlueChangeIndicator;
@@ -96,6 +96,9 @@ public class Vehicle {
 
     @JoinColumn(name = "project_id")
     private Project project;
+
+    @JoinColumn(name = "employee_id")
+    private int employee_id;
 }
 
 

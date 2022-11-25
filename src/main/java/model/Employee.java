@@ -78,9 +78,10 @@ public class Employee {
     private boolean hasDriversLicense;
 
     @NotEmpty
-    private List<Language> spokenLanguages; //TODO create table and add to DATABASE AAAH
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Language> spokenLanguages;
 
-    @Column(name = "job_position")
+    @JoinColumn(name = "job_position_id")
     private JobPosition jobPosition;
 
     @NotEmpty
@@ -98,7 +99,7 @@ public class Employee {
     private Accommodation accommodation;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Vehicle> vehicles; // TODO I HAVE NO IDEA
+    private List<Vehicle> vehicles;
 
     @Column(name = "contract_file")
     private File contractFile;

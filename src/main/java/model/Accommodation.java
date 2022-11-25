@@ -56,7 +56,7 @@ public class Accommodation {
 
     @NotEmpty
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Floor> floors; //TODO ADD TO DATABASE
+    private List<Floor> floors;
 
     @Column(name = "has_internet")
     private boolean hasInternet;
@@ -65,7 +65,7 @@ public class Accommodation {
     private boolean hasParking;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Utility> utilities; //TODO ADD TO DATABASE
+    private List<Utility> utilities;
 
     @Column(name = "rent")
     private float rent;
@@ -74,7 +74,7 @@ public class Accommodation {
     private float deposit;
 
     @Column(name = "contract_file")
-    private File contractFile; // TODO LEARN HOW TO FUCKING DO IT
+    private File contractFile;
 
     @Column(name = "rental_period")
     private int rentalPeriod;

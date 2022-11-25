@@ -8,15 +8,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Data
-@Table(name = "job_position")
-public class JobPosition {
-
+@Table(name = "phone_numbers")
+public class PhoneNumbers {
     @Id
     @Column(name = "id")
     private int id;
 
-    @Column(name = "job_position")
-    private String jobPosition;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     @JoinColumn(name = "project_id")
     private int projectId;
