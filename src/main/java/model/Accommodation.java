@@ -1,6 +1,7 @@
 package model;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import repository.AccommodationRepository;
 
 import javax.persistence.*;

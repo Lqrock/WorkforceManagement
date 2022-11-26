@@ -22,7 +22,7 @@ public class JobPosition {
     private int projectId;
 }
 
-enum JobPositionEnum{
+enum JobPositionEnum{ // TODO new file
     WORKER,
     CLEANER
 }

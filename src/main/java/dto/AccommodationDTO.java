@@ -1,9 +1,9 @@
-package DTO;
+package dto;
 
 import lombok.Data;
 import model.Floor;
 import model.OwnershipType;
-import model.Utility;
+
 import java.io.File;
 import java.util.List;
 
@@ -32,13 +32,13 @@ public class AccommodationDTO {
 
     private int houseNumber;
 
-    private List<Floor> floors;
+    private List<Floor> floors; // TODO dto for floor
 
     private boolean hasInternet;
 
     private boolean hasParking;
 
-    private List<Utility> utilities;
+    private List<String> utilities;
 
     private float rent;
 

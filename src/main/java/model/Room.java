@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Data
-@Table(name = "room")
+@Table(name = "room") // TODO dto for room
 public class Room {
 
     @Id
@@ -20,6 +20,6 @@ public class Room {
     private int floorId;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Furniture> furnitures; // TODO Create table
+    private List<Furniture> furniture;
 
 }

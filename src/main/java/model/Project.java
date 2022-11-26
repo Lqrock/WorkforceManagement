@@ -11,7 +11,6 @@ import java.util.List;
 public class Project {
 
     @Id
-    @NotEmpty
     @Column(name = "id")
     private int id;
 
@@ -46,7 +45,7 @@ public class Project {
     private int maximumEmployeesNumber;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<String> jobPositions;
+    private List<JobPosition> jobPositions;
 
     @JoinColumn(name = "employee_id")
     private Employee employee;
