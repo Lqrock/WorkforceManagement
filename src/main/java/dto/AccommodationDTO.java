@@ -32,7 +32,7 @@ public class AccommodationDTO {
 
     private int houseNumber;
 
-    private List<Floor> floors; // TODO dto for floor
+    private List<FloorDTO> floors;
 
     private boolean hasInternet;
 

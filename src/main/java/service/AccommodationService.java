@@ -3,6 +3,7 @@ package service;
 import dto.AccommodationDTO;
 import exception.BusinessException;
 import model.Accommodation;
+import model.Floor;
 import model.Utility;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -32,30 +33,57 @@ public class AccommodationService implements AccommodationServiceInterface{
 
     @Override
     public AccommodationDTO updateAccommodation(AccommodationDTO accommodationDTO) throws BusinessException {
-
+        logger.info("Starting update function for accommodation " + accommodationDTO.getId());
         Optional<Accommodation> existingAccommodationOpt = accommodationRepository.findById(accommodationDTO.getId());
         throwExceptionIfAccommodationNotFound(existingAccommodationOpt, accommodationDTO.getId());
         Accommodation existingAccommodation = existingAccommodationOpt.get();
 
-        List<Utility> utilities = accommodationDTO.getUtilities().stream().map(a -> modelMapper.map(a, Utility.class)).toList();
-        utilities.forEach(utility -> utility.setAccommodationId(existingAccommodation.getId()));
-        existingAccommodation.setUtilities(utilities);
+        existingAccommodation.setOwnersName(accommodationDTO.getOwnersName());
+        existingAccommodation.setOwnersPhoneNumber(accommodationDTO.getOwnersPhoneNumber());
+        existingAccommodation.setEmail(accommodationDTO.getEmail());
+        existingAccommodation.setOwnershipType(accommodationDTO.getOwnershipType());
+        existingAccommodation.setProvince(accommodationDTO.getProvince());
+        existingAccommodation.setCity(accommodationDTO.getCity());
+        existingAccommodation.setAddress(accommodationDTO.getAddress());
+        existingAccommodation.setPostalCode(accommodationDTO.getPostalCode());
+        existingAccommodation.setHouseNumber(accommodationDTO.getHouseNumber());
+        existingAccommodation.setHasInternet(accommodationDTO.isHasInternet());
+        existingAccommodation.setHasParking(accommodationDTO.isHasParking());
+        existingAccommodation.setRent(accommodationDTO.getRent());
+        existingAccommodation.setDeposit(accommodationDTO.getDeposit());
+        existingAccommodation.setContractFile(accommodationDTO.getContractFile());
+        existingAccommodation.setRentalPeriod(accommodationDTO.getRentalPeriod());
+        existingAccommodation.setNoticePeriod(accommodationDTO.getNoticePeriod());
 
-        existingAccommodationOpt.ifPresent(accommodation -> accommodationRepository.save(accommodation));
+        List<Floor> floors = accommodationDTO.getFloors().stream().map(a -> modelMapper.map(a, Floor.class)).toList();
+        List<Utility> utilities = accommodationDTO.getUtilities().stream().map(a -> modelMapper.map(a, Utility.class)).toList();
+        floors.forEach(floor -> floor.setAccommodationId(existingAccommodation.getId()));
+        utilities.forEach(utility -> utility.setAccommodationId(existingAccommodation.getId()));
+        existingAccommodation.setFloors(floors);
+        existingAccommodation.setUtilities(utilities);
+        accommodationRepository.save(existingAccommodation);
+//      existingAccommodationOpt.ifPresent(accommodation -> accommodationRepository.save(accommodation)); // already checked for AccommodationNotFound
+        logger.info("Accommodation updated");
         return modelMapper.map(existingAccommodationOpt, AccommodationDTO.class);
     }
 
     public void deleteAccommodation(int accommodationId) throws BusinessException {
+        logger.info("Deleting accommodation");
         Optional<Accommodation> accommodation = accommodationRepository.findById(accommodationId);
         throwExceptionIfAccommodationNotFound(accommodation, accommodationId);
         accommodationRepository.deleteById(accommodationId);
+        logger.info("Accommodation deleted");
     }
 
     public AccommodationDTO getAccommodationDTO(int accommodationId) throws BusinessException {
-        return modelMapper.map(getAccommodation(accommodationId), AccommodationDTO.class);
+        logger.info("Retrieving accommodationDTO");
+        Optional<Accommodation> accommodation = accommodationRepository.findById(accommodationId);
+        throwExceptionIfAccommodationNotFound(accommodation, accommodationId);
+        return modelMapper.map(accommodation, AccommodationDTO.class);
     }
 
     public Optional<Accommodation> getAccommodation(int accommodationId) throws BusinessException {
+        logger.info("Retrieving accommodation");
         Optional<Accommodation> accommodation = accommodationRepository.findById(accommodationId);
         throwExceptionIfAccommodationNotFound(accommodation, accommodationId);
         return accommodation;
