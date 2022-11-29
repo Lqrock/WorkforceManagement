@@ -27,7 +27,7 @@ public class ProjectDTO {
 
     private int maximumEmployeesNumber;
 
-    private List<String> jobPositions;
+    private List<JobPositionDTO> jobPositionDTOS;
 
     private EmployeeDTO employeeDTO;
 }
