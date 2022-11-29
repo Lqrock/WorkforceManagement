@@ -1,11 +1,14 @@
 package model;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import java.sql.Time;
 
+@Data
 @Table(name = "time_sheet")
 public class TimeSheet {
 
@@ -15,7 +18,7 @@ public class TimeSheet {
     private int id;
 
     @Column(name = "job_type")
-    private String job_type;
+    private String jobType;
 
     @Column(name = "starting_time")
     private Time startingTime;

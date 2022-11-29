@@ -95,7 +95,7 @@ public class Vehicle {
     private boolean brakeFluidChangeRequired;
 
     @JoinColumn(name = "project_id")
-    private Project project;
+    private int project;
 
     @JoinColumn(name = "employee_id")
     private int employee_id;

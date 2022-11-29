@@ -1,10 +1,12 @@
 package dto;
 
+import lombok.Data;
 import model.*;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 
+@Data
 public class EmployeeDTO {
 
     private int id;
@@ -39,7 +41,7 @@ public class EmployeeDTO {
 
     private boolean hasDriversLicense;
 
-    private List<Language> spokenLanguages;
+    private List<LanguageEnum> spokenLanguages; //
 
     private JobPosition jobPosition;
 
@@ -47,11 +49,11 @@ public class EmployeeDTO {
 
     private LocalDate finishingDate;
 
-    private List<Project> projects;
+    private List<ProjectDTO> projectDTOS;
 
-    private Accommodation accommodation;
+    private AccommodationDTO accommodationDTO;
 
-    private List<Vehicle> vehicles;
+    private List<VehicleDTO> vehicleDTOS;
 
     private File contractFile;
 
@@ -59,5 +61,5 @@ public class EmployeeDTO {
 
     private String contractType;
 
-    private Vehicle vehicle;
+    private VehicleDTO vehicleDTO;
 }

@@ -33,7 +33,8 @@ public class AccommodationService implements AccommodationServiceInterface{
 
     @Override
     public AccommodationDTO updateAccommodation(AccommodationDTO accommodationDTO) throws BusinessException {
-        logger.info("Starting update function for accommodation " + accommodationDTO.getId());
+
+        logger.info("Updating accommodation " + accommodationDTO.getId());
         Optional<Accommodation> existingAccommodationOpt = accommodationRepository.findById(accommodationDTO.getId());
         throwExceptionIfAccommodationNotFound(existingAccommodationOpt, accommodationDTO.getId());
         Accommodation existingAccommodation = existingAccommodationOpt.get();
@@ -64,9 +65,10 @@ public class AccommodationService implements AccommodationServiceInterface{
         accommodationRepository.save(existingAccommodation);
 //      existingAccommodationOpt.ifPresent(accommodation -> accommodationRepository.save(accommodation)); // already checked for AccommodationNotFound
         logger.info("Accommodation updated");
-        return modelMapper.map(existingAccommodationOpt, AccommodationDTO.class);
+        return modelMapper.map(existingAccommodation, AccommodationDTO.class);
     }
 
+    @Override
     public void deleteAccommodation(int accommodationId) throws BusinessException {
         logger.info("Deleting accommodation");
         Optional<Accommodation> accommodation = accommodationRepository.findById(accommodationId);
@@ -75,6 +77,7 @@ public class AccommodationService implements AccommodationServiceInterface{
         logger.info("Accommodation deleted");
     }
 
+    @Override
     public AccommodationDTO getAccommodationDTO(int accommodationId) throws BusinessException {
         logger.info("Retrieving accommodationDTO");
         Optional<Accommodation> accommodation = accommodationRepository.findById(accommodationId);
@@ -82,12 +85,14 @@ public class AccommodationService implements AccommodationServiceInterface{
         return modelMapper.map(accommodation, AccommodationDTO.class);
     }
 
+    @Override
     public Optional<Accommodation> getAccommodation(int accommodationId) throws BusinessException {
         logger.info("Retrieving accommodation");
         Optional<Accommodation> accommodation = accommodationRepository.findById(accommodationId);
         throwExceptionIfAccommodationNotFound(accommodation, accommodationId);
         return accommodation;
     }
+
 
     private void throwExceptionIfAccommodationNotFound(Optional<Accommodation> accommodation, int accommodationId) throws BusinessException {
         if(accommodation.isEmpty()){
