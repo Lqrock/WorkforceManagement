@@ -13,7 +13,7 @@ public class Vehicle {
     @Id
     @NotEmpty
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @NotEmpty
     @Column(name = "model")
@@ -76,8 +76,8 @@ public class Vehicle {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Employee> driversName;
 
-    @Column(name = "image")
-    private List images; // TODO LEARN THIS
+//    @Column(name = "image")
+//    private List images; // TODO LEARN THIS
 
     @Column(name = "fuel_injector_filter_change_required")
     private boolean fuelInjectorFilterChangeRequired;
@@ -95,10 +95,10 @@ public class Vehicle {
     private boolean brakeFluidChangeRequired;
 
     @JoinColumn(name = "project_id")
-    private int project;
+    private int projectId;
 
     @JoinColumn(name = "employee_id")
-    private int employee_id;
+    private int employeeId;
 }
 
 
