@@ -1,17 +1,19 @@
 package service;
 
-import dto.EmployeeDTO;
 import exception.BusinessException;
 import model.*;
+import org.springframework.stereotype.Service;
+import repository.EmployeeRepository;
+import dto.EmployeeDTO;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import repository.EmployeeRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class EmployeeService implements EmployeeServiceInterface{
 
     @Autowired
@@ -73,7 +75,7 @@ public class EmployeeService implements EmployeeServiceInterface{
 
         List<Vehicle> vehicles = employeeDTO.getVehicleDTOS().stream()
                 .map(a -> modelMapper.map(a, Vehicle.class)).toList();
-        vehicles.forEach(vehicle -> vehicle.setEmployee_id(existingEmployee.getId()));
+        vehicles.forEach(vehicle -> vehicle.setEmployeeId(existingEmployee.getId()));
         existingEmployee.setVehicles(vehicles);
 
         employeeRepository.save(existingEmployee);

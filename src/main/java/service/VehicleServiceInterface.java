@@ -1,7 +1,7 @@
 package service;
 
-import dto.VehicleDTO;
 import exception.BusinessException;
+import dto.VehicleDTO;
 import model.Vehicle;
 
 import java.util.Optional;

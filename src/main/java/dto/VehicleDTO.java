@@ -1,10 +1,9 @@
 package dto;
 
-import lombok.Data;
 import model.DkvNumber;
-import model.Employee;
 import model.TireType;
 import model.VehicleOwner;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.List;

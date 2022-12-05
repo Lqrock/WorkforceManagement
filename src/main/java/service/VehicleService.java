@@ -1,18 +1,20 @@
 package service;
 
-import dto.VehicleDTO;
 import exception.BusinessException;
+import org.springframework.stereotype.Service;
+import repository.VehicleRepository;
+import dto.VehicleDTO;
 import model.Employee;
 import model.Vehicle;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import repository.VehicleRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class VehicleService implements VehicleServiceInterface{
 
     @Autowired

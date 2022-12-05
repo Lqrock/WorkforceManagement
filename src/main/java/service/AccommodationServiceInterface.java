@@ -1,7 +1,7 @@
 package service;
 
-import dto.AccommodationDTO;
 import exception.BusinessException;
+import dto.AccommodationDTO;
 import model.Accommodation;
 
 import java.util.Optional;

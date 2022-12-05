@@ -1,7 +1,11 @@
 package dto;
 
+import model.Gender;
+import model.JobPosition;
+import model.LanguageEnum;
+import model.MaritalStatus;
 import lombok.Data;
-import model.*;
+
 import java.io.File;
 import java.time.LocalDate;
 import java.util.List;

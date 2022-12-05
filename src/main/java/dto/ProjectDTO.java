@@ -1,7 +1,6 @@
 package dto;
 
 import lombok.Data;
-import model.Employee;
 
 import java.time.LocalDate;
 import java.util.List;

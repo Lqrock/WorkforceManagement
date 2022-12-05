@@ -45,4 +45,9 @@ public class TimeSheetController {
         timeSheetService.getTimeSheetDTO(timeSheetId);
         return new ResponseEntity(HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/hi")
+    public void work(){
+        System.out.println("Hi\n\n\nHi\n\n\nHi");
+    }
 }

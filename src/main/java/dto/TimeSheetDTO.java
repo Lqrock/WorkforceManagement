@@ -1,7 +1,7 @@
 package dto;
 
 import lombok.Data;
-import model.JobPosition;
+
 import java.sql.Time;
 
 @Data

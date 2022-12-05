@@ -1,7 +1,10 @@
 package service;
 
-import dto.AccommodationDTO;
 import exception.BusinessException;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import repository.AccommodationRepository;
+import dto.AccommodationDTO;
 import model.Accommodation;
 import model.Floor;
 import model.Utility;
@@ -9,12 +12,11 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import repository.AccommodationRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Component
 public class AccommodationService implements AccommodationServiceInterface{
 
     @Autowired

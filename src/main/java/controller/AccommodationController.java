@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import service.AccommodationService;
 
 @Controller
-@RequestMapping("/accommodation")
+@RequestMapping("/accommodationa")
 public class AccommodationController {
 
     @Autowired
     AccommodationService accommodationService;
+
+
 
     @PostMapping("/create")
     public ResponseEntity createAccommodation(@RequestBody AccommodationDTO accommodationDTO){

@@ -1,8 +1,7 @@
 package dto;
 
-import lombok.Data;
-import model.Floor;
 import model.OwnershipType;
+import lombok.Data;
 
 import java.io.File;
 import java.util.List;
