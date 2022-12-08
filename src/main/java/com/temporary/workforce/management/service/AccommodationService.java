@@ -40,7 +40,15 @@ public class AccommodationService implements AccommodationServiceInterface{
         Optional<Accommodation> existingAccommodationOpt = accommodationRepository.findById(accommodationDTO.getId());
         throwExceptionIfAccommodationNotFound(existingAccommodationOpt, accommodationDTO.getId());
         Accommodation existingAccommodation = existingAccommodationOpt.get();
+        existingAccommodation = modelMapper.map(accommodationDTO, Accommodation.class);
+        accommodationRepository.save(existingAccommodation);
+//      existingAccommodationOpt.ifPresent(accommodation -> accommodationRepository.save(accommodation)); // already checked for AccommodationNotFound
+        logger.info("Accommodation updated");
+        return modelMapper.map(existingAccommodation, AccommodationDTO.class);
 
+
+
+        /*
         existingAccommodation.setOwnersName(accommodationDTO.getOwnersName());
         existingAccommodation.setOwnersPhoneNumber(accommodationDTO.getOwnersPhoneNumber());
         existingAccommodation.setEmail(accommodationDTO.getEmail());
@@ -63,10 +71,7 @@ public class AccommodationService implements AccommodationServiceInterface{
         utilities.forEach(utility -> utility.setAccommodationId(existingAccommodation.getId()));
         existingAccommodation.setFloors(floors);
         existingAccommodation.setUtilities(utilities);
-        accommodationRepository.save(existingAccommodation);
-//      existingAccommodationOpt.ifPresent(accommodation -> accommodationRepository.save(accommodation)); // already checked for AccommodationNotFound
-        logger.info("Accommodation updated");
-        return modelMapper.map(existingAccommodation, AccommodationDTO.class);
+        */
     }
 
     @Override

@@ -18,9 +18,9 @@ public class Room {
     private int beds;
 
     @JoinColumn(name = "floor_id")
-    private int floorId;
+    private int floor_id;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Furniture> furniture;
+//    @OneToMany(fetch = FetchType.LAZY)
+//    private List<Furniture> furniture;
 
 }

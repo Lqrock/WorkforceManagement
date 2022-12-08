@@ -17,5 +17,5 @@ public class Utility {
     private String name;
 
     @JoinColumn(name = "accommodation_id")
-    private int accommodationId;
+    private int accommodation_id;
 }

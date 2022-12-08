@@ -41,7 +41,7 @@ public class AccommodationController {
                 "\nRetrieved", HttpStatus.OK);
     }
 
-    @GetMapping("/getDTO")
+    @GetMapping("/getdto")
     public ResponseEntity getAccommodationDTO(@RequestParam int accommodationId) throws BusinessException{
         accommodationService.getAccommodationDTO(accommodationId);
         return new ResponseEntity(accommodationService.getAccommodationDTO(accommodationId) +

@@ -37,7 +37,7 @@ public class AccommodationDTO {
 
     private boolean hasParking;
 
-    private List<String> utilities;
+    private List<UtilityDTO> utilities;
 
     private float rent;
 

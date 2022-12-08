@@ -5,7 +5,6 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.io.File;
 import java.util.List;
 
 @Data
@@ -57,7 +56,7 @@ public class Accommodation {
     private int houseNumber;
 
     //@NotEmpty
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "accommodation_id", fetch = FetchType.LAZY)
     private List<Floor> floors;
 
     @Column(name = "has_internet")
@@ -66,7 +65,7 @@ public class Accommodation {
     @Column(name = "has_parking")
     private boolean hasParking;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "accommodation_id", fetch = FetchType.LAZY)
     private List<Utility> utilities;
 
     @Column(name = "rent")

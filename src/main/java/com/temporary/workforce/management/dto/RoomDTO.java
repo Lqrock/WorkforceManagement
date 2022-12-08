@@ -10,7 +10,9 @@ public class RoomDTO {
 
     private int beds;
 
-    private int floorId;
+    private int count;
 
-    private List<String> furniture;
+    private int floor;
+
+//    private List<String> furniture;
 }

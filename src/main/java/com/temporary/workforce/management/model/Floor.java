@@ -14,9 +14,12 @@ public class Floor {
     @Column(name = "id")
     private int id;
 
-    @JoinColumn(name = "accommodation_id")
-    private int accommodationId;
+    @Column(name = "count")
+    private int count;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "accommodation_id")
+    private int accommodation_id;
+
+    @OneToMany(mappedBy = "floor_id", fetch = FetchType.LAZY)
     private List<Room> rooms;
 }
