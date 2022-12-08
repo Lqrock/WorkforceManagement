@@ -54,7 +54,6 @@ public class AccommodationService implements AccommodationServiceInterface{
         existingAccommodation.setHasParking(accommodationDTO.isHasParking());
         existingAccommodation.setRent(accommodationDTO.getRent());
         existingAccommodation.setDeposit(accommodationDTO.getDeposit());
-        existingAccommodation.setContractFile(accommodationDTO.getContractFile());
         existingAccommodation.setRentalPeriod(accommodationDTO.getRentalPeriod());
         existingAccommodation.setNoticePeriod(accommodationDTO.getNoticePeriod());
 

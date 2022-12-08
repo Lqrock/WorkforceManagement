@@ -43,7 +43,7 @@ public class AccommodationDTO {
 
     private float deposit;
 
-    private File contractFile;
+//    private File contractFile; TODO learn
 
     private int rentalPeriod;
 

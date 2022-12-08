@@ -2,10 +2,7 @@ package com.temporary.workforce.management.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.sql.Time;
 
@@ -15,7 +12,6 @@ import java.sql.Time;
 public class TimeSheet {
 
     @Id
-    @NotEmpty
     @Column(name = "id")
     private int id;
 
@@ -34,6 +30,7 @@ public class TimeSheet {
     @Column(name = "project_name")
     private String projectsName;
 
-    @Column(name = "job_position")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "job_position_id")
     private JobPosition jobPosition;
 }

@@ -56,7 +56,7 @@ public class ProjectService implements ProjectServiceInterface{
         existingProject.setEmails(emails);
 
         List<JobPosition> jobPositions = projectDTO.getJobPositionDTOS().stream().map(a -> modelMapper.map(a, JobPosition.class)).toList();
-        jobPositions.forEach(jobPosition -> jobPosition.setProjectId(existingProject.getId()));
+        jobPositions.forEach(jobPosition -> jobPosition.setProjectId(existingProject));
         existingProject.setJobPositions(jobPositions);
 
         projectRepository.save(existingProject);

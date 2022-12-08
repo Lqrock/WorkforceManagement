@@ -82,9 +82,6 @@ public class Employee {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Language> spokenLanguages;
 
-    @JoinColumn(name = "job_position_id")
-    private JobPosition jobPosition;
-
     @NotEmpty
     @Column(name = "starting_date")
     private LocalDate startingDate;
@@ -95,9 +92,6 @@ public class Employee {
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Project> projects;
-
-    @JoinColumn(name = "accommodation_id")
-    private Accommodation accommodation;
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Vehicle> vehicles;
@@ -112,6 +106,15 @@ public class Employee {
     @Column(name = "contract_type")
     private String contractType;
 
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "job_position_id")
+    private JobPosition jobPosition;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "accommodation_id")
+    private Accommodation accommodation;
 }

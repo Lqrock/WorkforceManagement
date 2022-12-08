@@ -75,7 +75,7 @@ public class EmployeeService implements EmployeeServiceInterface{
 
         List<Vehicle> vehicles = employeeDTO.getVehicleDTOS().stream()
                 .map(a -> modelMapper.map(a, Vehicle.class)).toList();
-        vehicles.forEach(vehicle -> vehicle.setEmployeeId(existingEmployee.getId()));
+        vehicles.forEach(vehicle -> vehicle.setEmployee(existingEmployee.getId()));
         existingEmployee.setVehicles(vehicles);
 
         employeeRepository.save(existingEmployee);

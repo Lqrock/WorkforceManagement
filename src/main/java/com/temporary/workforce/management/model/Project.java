@@ -48,6 +48,7 @@ public class Project {
     @OneToMany(fetch = FetchType.LAZY)
     private List<JobPosition> jobPositions;
 
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
 }

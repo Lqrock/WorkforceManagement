@@ -19,31 +19,33 @@ public class AccommodationController {
     @PostMapping("/create")
     public ResponseEntity createAccommodation(@RequestBody AccommodationDTO accommodationDTO){
         accommodationService.createAccommodation(accommodationDTO);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity("\nCreated", HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity updateAccommodation(@RequestBody AccommodationDTO accommodationDTO) throws BusinessException {
         accommodationService.updateAccommodation(accommodationDTO);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity("\nUpdated", HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")
     public ResponseEntity deleteAccommodation(@RequestParam int accommodationId) throws BusinessException{
         accommodationService.deleteAccommodation(accommodationId);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity("\nDeleted", HttpStatus.OK);
     }
 
     @GetMapping("/get")
     public ResponseEntity getAccommodation(@RequestParam int accommodationId) throws BusinessException{
         accommodationService.getAccommodation(accommodationId);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(accommodationService.getAccommodation(accommodationId) +
+                "\nRetrieved", HttpStatus.OK);
     }
 
     @GetMapping("/getDTO")
     public ResponseEntity getAccommodationDTO(@RequestParam int accommodationId) throws BusinessException{
         accommodationService.getAccommodationDTO(accommodationId);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(accommodationService.getAccommodationDTO(accommodationId) +
+                "\nRetrieved", HttpStatus.OK);
     }
 
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.File;
 import java.util.List;
 
@@ -13,7 +14,6 @@ import java.util.List;
 public class Accommodation {
 
     @Id
-    @NotEmpty
     @Column(name = "id")
     private int id;
 
@@ -29,7 +29,7 @@ public class Accommodation {
     @Column(name = "owners_email")
     private String email;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "ownership_type")
     private OwnershipType ownershipType;
 
@@ -48,15 +48,15 @@ public class Accommodation {
     @Column(name = "address")
     private String address;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "postal_code")
     private Long postalCode;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "house_number")
     private int houseNumber;
 
-    @NotEmpty
+    //@NotEmpty
     @OneToMany(fetch = FetchType.LAZY)
     private List<Floor> floors;
 
@@ -75,8 +75,8 @@ public class Accommodation {
     @Column(name = "deposit")
     private float deposit;
 
-    @Column(name = "contract_file")
-    private File contractFile;
+//    @Column(name = "contract_file")
+//    private File contractFile; TODO
 
     @Column(name = "rental_period")
     private int rentalPeriod;

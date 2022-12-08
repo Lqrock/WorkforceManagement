@@ -16,8 +16,9 @@ public class JobPosition {
     @Column(name = "job_position")
     private JobPositionEnum jobPosition;
 
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
-    private int projectId;
+    private Project projectId;
 }
 
 
