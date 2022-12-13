@@ -9,5 +9,5 @@ public class UtilityDTO {
 
     private String name;
 
-    private int accommodation_id;
+    private int accommodationId;
 }

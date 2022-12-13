@@ -11,15 +11,14 @@ import java.util.List;
 public class Floor {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "count")
-    private int count;
-
+    @ManyToOne(optional = false)
     @JoinColumn(name = "accommodation_id")
-    private int accommodation_id;
+    private Accommodation accommodation;
 
-    @OneToMany(mappedBy = "floor_id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "floor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Room> rooms;
 }

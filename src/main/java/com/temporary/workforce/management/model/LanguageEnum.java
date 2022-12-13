@@ -4,6 +4,6 @@ public enum LanguageEnum {
     ENGLISH,
     RUSSIAN,
     GERMAN,
-    FRENCH,
-    LITHUANIAN
+    FRENCH
+
 }

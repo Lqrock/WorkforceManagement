@@ -12,6 +12,7 @@ import java.sql.Time;
 public class TimeSheet {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -28,9 +29,13 @@ public class TimeSheet {
     private int pauseTime;
 
     @Column(name = "project_name")
-    private String projectsName;
+    private String projectName;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "job_position_id")
     private JobPosition jobPosition;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 }

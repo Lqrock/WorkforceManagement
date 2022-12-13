@@ -17,35 +17,26 @@ public class AccommodationController {
     AccommodationService accommodationService;
 
     @PostMapping("/create")
-    public ResponseEntity createAccommodation(@RequestBody AccommodationDTO accommodationDTO){
+    public ResponseEntity<AccommodationDTO> createAccommodation(@RequestBody AccommodationDTO accommodationDTO){
         accommodationService.createAccommodation(accommodationDTO);
-        return new ResponseEntity("\nCreated", HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity updateAccommodation(@RequestBody AccommodationDTO accommodationDTO) throws BusinessException {
+    public ResponseEntity<AccommodationDTO> updateAccommodation(@RequestBody AccommodationDTO accommodationDTO) throws BusinessException {
         accommodationService.updateAccommodation(accommodationDTO);
-        return new ResponseEntity("\nUpdated", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteAccommodation(@RequestParam int accommodationId) throws BusinessException{
+    @DeleteMapping("/delete/{accommodationId}")
+    public ResponseEntity<AccommodationDTO> deleteAccommodation(@PathVariable int accommodationId) throws BusinessException{
         accommodationService.deleteAccommodation(accommodationId);
-        return new ResponseEntity("\nDeleted", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/get")
-    public ResponseEntity getAccommodation(@RequestParam int accommodationId) throws BusinessException{
-        accommodationService.getAccommodation(accommodationId);
-        return new ResponseEntity(accommodationService.getAccommodation(accommodationId) +
-                "\nRetrieved", HttpStatus.OK);
-    }
-
-    @GetMapping("/getdto")
-    public ResponseEntity getAccommodationDTO(@RequestParam int accommodationId) throws BusinessException{
-        accommodationService.getAccommodationDTO(accommodationId);
-        return new ResponseEntity(accommodationService.getAccommodationDTO(accommodationId) +
-                "\nRetrieved", HttpStatus.OK);
+    @GetMapping("/get/{accommodationId}")
+    public ResponseEntity<AccommodationDTO> getAccommodationDTO(@PathVariable int accommodationId) throws BusinessException{
+        return new ResponseEntity<>(accommodationService.getAccommodationDTO(accommodationId), HttpStatus.OK);
     }
 
 }

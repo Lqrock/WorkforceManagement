@@ -19,5 +19,5 @@ public class TimeSheetDTO {
 
     private String projectsName;
 
-    private JobPositionDTO jobPositionDTO;
+    private JobPositionDTO jobPosition;
 }

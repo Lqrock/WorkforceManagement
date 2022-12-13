@@ -2,6 +2,7 @@ package com.temporary.workforce.management.service;
 
 import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.model.*;
+import com.temporary.workforce.management.repository.JobPositionRepository;
 import org.springframework.stereotype.Service;
 import com.temporary.workforce.management.repository.EmployeeRepository;
 import com.temporary.workforce.management.dto.EmployeeDTO;
@@ -19,6 +20,9 @@ public class EmployeeService implements EmployeeServiceInterface{
     @Autowired
     EmployeeRepository employeeRepository;
 
+    @Autowired
+    JobPositionRepository jobPositionRepository;
+
     ModelMapper modelMapper = new ModelMapper();
 
     Logger logger = LoggerFactory.getLogger(EmployeeService.class);
@@ -27,6 +31,13 @@ public class EmployeeService implements EmployeeServiceInterface{
     public void createEmployee(EmployeeDTO employeeDTO) {
         logger.info("Starting employee creation");
         Employee employee = modelMapper.map(employeeDTO, Employee.class);
+        if(employeeDTO.getJobPositionId() != null){
+            Optional<JobPosition> jobPosition = jobPositionRepository.findById(employeeDTO.getJobPositionId());
+            jobPosition.ifPresent(employee::setJobPosition);
+        }
+        if(!employeeDTO.getSpokenLanguages().isEmpty()){
+            employee.getSpokenLanguages().forEach(language -> {language.setEmployee(employee); });
+        }
         employeeRepository.save(employee);
         logger.info("Employee created successfully");
     }
@@ -54,18 +65,18 @@ public class EmployeeService implements EmployeeServiceInterface{
         existingEmployee.setBankName(employeeDTO.getBankName());
         existingEmployee.setBankAccountNumber(employeeDTO.getBankAccountNumber());
         existingEmployee.setHasDriversLicense(employeeDTO.isHasDriversLicense());
-        existingEmployee.setJobPosition(employeeDTO.getJobPosition());
+
         existingEmployee.setStartingDate(employeeDTO.getStartingDate());
         existingEmployee.setFinishingDate(employeeDTO.getFinishingDate());
         existingEmployee.setAccommodation(modelMapper.map(employeeDTO.getAccommodationDTO(), Accommodation.class));
-        existingEmployee.setContractFile(employeeDTO.getContractFile());
+//        existingEmployee.setContractFile(employeeDTO.getContractFile());
         existingEmployee.setSalaryPerHour(employeeDTO.getSalaryPerHour());
         existingEmployee.setContractType(employeeDTO.getContractType());
         existingEmployee.setVehicle(modelMapper.map(employeeDTO.getVehicleDTO(), Vehicle.class));
 
         List<Language> languages = employeeDTO.getSpokenLanguages().stream()
                 .map(a -> modelMapper.map(a, Language.class)).toList();
-        languages.forEach(language -> language.setEmployeeIdd(existingEmployee.getId()));
+        languages.forEach(language -> language.setEmployee(existingEmployee));
         existingEmployee.setSpokenLanguages(languages);
 
         List<Project> projects = employeeDTO.getProjectDTOS().stream()

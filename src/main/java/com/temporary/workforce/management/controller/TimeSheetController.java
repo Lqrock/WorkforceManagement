@@ -20,32 +20,24 @@ public class TimeSheetController {
     TimeSheetService timeSheetService;
 
     @RequestMapping("/create")
-    public ResponseEntity createTimeSheet(@RequestBody TimeSheetDTO timeSheetDTO) throws BusinessException {
+    public ResponseEntity<TimeSheetDTO> createTimeSheet(@RequestBody TimeSheetDTO timeSheetDTO) {
         timeSheetService.createTimeSheet(timeSheetDTO);
-        return new ResponseEntity(timeSheetDTO + "\nCreated", HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @RequestMapping("/update")
-    public ResponseEntity updateTimeSheet(@RequestBody TimeSheetDTO timeSheetDTO) throws BusinessException {
-        timeSheetService.updateTimeSheet(timeSheetDTO);
-        return new ResponseEntity(timeSheetDTO + "\nUpdated", HttpStatus.OK);
+    public ResponseEntity<TimeSheetDTO> updateTimeSheet(@RequestBody TimeSheetDTO timeSheetDTO) throws BusinessException {
+        return new ResponseEntity<>(timeSheetService.updateTimeSheet(timeSheetDTO), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteTimeSheet(@RequestParam int timeSheetId) throws BusinessException{
+    @DeleteMapping("/delete/{timeSheetId}")
+    public ResponseEntity<TimeSheetDTO> deleteTimeSheet(@PathVariable int timeSheetId) throws BusinessException{
         timeSheetService.deleteTimeSheet(timeSheetId);
-        return new ResponseEntity("\nDeleted", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/get")
-    public ResponseEntity getTimeSheet(@RequestParam int timeSheetId) throws BusinessException{
-        timeSheetService.getTimeSheet(timeSheetId);
-        return new ResponseEntity(timeSheetService.getTimeSheet(timeSheetId) + "\nRetrieved", HttpStatus.OK);
-    }
-
-    @GetMapping("/getdto")
-    public ResponseEntity getTimeSheetDTO(@RequestParam int timeSheetId) throws BusinessException{
-        timeSheetService.getTimeSheetDTO(timeSheetId);
-        return new ResponseEntity(timeSheetService.getTimeSheetDTO(timeSheetId) + "\nRetrieved", HttpStatus.OK);
+    @GetMapping("/get/{timeSheetId}")
+    public ResponseEntity<TimeSheetDTO> getTimeSheet(@PathVariable int timeSheetId) throws BusinessException{
+        return new ResponseEntity<>(timeSheetService.getTimeSheetDTO(timeSheetId), HttpStatus.OK);
     }
 }

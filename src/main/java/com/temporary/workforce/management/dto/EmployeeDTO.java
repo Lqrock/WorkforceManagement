@@ -1,9 +1,6 @@
 package com.temporary.workforce.management.dto;
 
-import com.temporary.workforce.management.model.Gender;
-import com.temporary.workforce.management.model.JobPosition;
-import com.temporary.workforce.management.model.LanguageEnum;
-import com.temporary.workforce.management.model.MaritalStatus;
+import com.temporary.workforce.management.model.*;
 import lombok.Data;
 
 import java.io.File;
@@ -45,9 +42,7 @@ public class EmployeeDTO {
 
     private boolean hasDriversLicense;
 
-    private List<LanguageEnum> spokenLanguages; //
-
-    private JobPosition jobPosition;
+    private Integer jobPositionId;
 
     private LocalDate startingDate;
 
@@ -59,11 +54,13 @@ public class EmployeeDTO {
 
     private List<VehicleDTO> vehicleDTOS;
 
-    private File contractFile;
+//    private File contractFile;
 
     private double salaryPerHour;
 
     private String contractType;
 
     private VehicleDTO vehicleDTO;
+
+    private List<LanguageDTO> spokenLanguages; //
 }

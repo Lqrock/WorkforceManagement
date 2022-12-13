@@ -10,12 +10,15 @@ import javax.persistence.*;
 public class Language {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "language")
-    private LanguageEnum language;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "spoken_language")
+    private LanguageEnum spokenLanguage;
 
+    @ManyToOne(optional = false)
     @JoinColumn(name = "employee_id")
-    private int employeeIdd;
+    private Employee employee;
 }

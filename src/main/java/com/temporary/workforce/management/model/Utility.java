@@ -10,12 +10,14 @@ import javax.persistence.*;
 public class Utility {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
     @Column(name = "name")
     private String name;
 
+    @ManyToOne(optional = false)
     @JoinColumn(name = "accommodation_id")
-    private int accommodation_id;
+    private Accommodation accommodation;
 }

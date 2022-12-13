@@ -1,5 +1,6 @@
 package com.temporary.workforce.management.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.temporary.workforce.management.model.OwnershipType;
 import lombok.Data;
 

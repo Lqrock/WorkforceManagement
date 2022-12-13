@@ -8,9 +8,7 @@ public class FloorDTO {
 
     private int id;
 
-    private int accommodation_id;
-
-    private int count;
+    private int accommodationId;
 
     private List<RoomDTO> rooms;
 

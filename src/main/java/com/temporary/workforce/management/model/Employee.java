@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 public class Employee {
 
     @Id
-    @NotEmpty
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -26,15 +27,15 @@ public class Employee {
     @Column(name = "last_name")
     private String lastName;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "identity_number")
     private int identityNumber;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "gender")
     private Gender gender;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "marital_status")
     private MaritalStatus maritalStatus;
 
@@ -46,7 +47,7 @@ public class Employee {
     @Column(name = "citizenship_country")
     private String citizenshipCountry;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
@@ -70,23 +71,19 @@ public class Employee {
     @Column(name = "bank_name")
     private String bankName;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "bank_account_number")
     private Long bankAccountNumber;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "has_drivers_license")
     private boolean hasDriversLicense;
 
-    @NotEmpty
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Language> spokenLanguages;
-
-    @NotEmpty
+    @NotNull
     @Column(name = "starting_date")
     private LocalDate startingDate;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "finishing_date")
     private LocalDate finishingDate;
 
@@ -96,8 +93,8 @@ public class Employee {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Vehicle> vehicles;
 
-    @Column(name = "contract_file")
-    private File contractFile;
+//    @Column(name = "contract_file")
+//    private File contractFile;
 
     @Column(name = "salary_per_hour")
     private double salaryPerHour;
@@ -117,4 +114,11 @@ public class Employee {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accommodation_id")
     private Accommodation accommodation;
+
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<TimeSheet> timeSheetList;
+
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Language> spokenLanguages;
+
 }

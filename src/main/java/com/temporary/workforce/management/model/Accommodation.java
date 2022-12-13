@@ -13,6 +13,7 @@ import java.util.List;
 public class Accommodation {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -56,7 +57,7 @@ public class Accommodation {
     private int houseNumber;
 
     //@NotEmpty
-    @OneToMany(mappedBy = "accommodation_id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Floor> floors;
 
     @Column(name = "has_internet")
@@ -65,7 +66,7 @@ public class Accommodation {
     @Column(name = "has_parking")
     private boolean hasParking;
 
-    @OneToMany(mappedBy = "accommodation_id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Utility> utilities;
 
     @Column(name = "rent")

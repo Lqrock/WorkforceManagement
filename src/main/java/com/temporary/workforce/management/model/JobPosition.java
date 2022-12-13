@@ -3,6 +3,7 @@ package com.temporary.workforce.management.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -10,15 +11,15 @@ import javax.persistence.*;
 public class JobPosition {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "job_position")
-    private JobPositionEnum jobPosition;
+    @Column(name = "title")
+    private String title;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
-    private Project projectId;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "jobPositions")
+    private List<Project> projects;
 }
 
 
