@@ -1,5 +1,6 @@
 package com.temporary.workforce.management.dto;
 
+import com.temporary.workforce.management.model.Employee;
 import lombok.Data;
 
 import java.sql.Time;
@@ -20,4 +21,6 @@ public class TimeSheetDTO {
     private String projectsName;
 
     private JobPositionDTO jobPosition;
+
+    private EmployeeDTO employee;
 }
