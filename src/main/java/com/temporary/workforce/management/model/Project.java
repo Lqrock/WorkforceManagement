@@ -1,6 +1,7 @@
 package com.temporary.workforce.management.model;
 
 import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
@@ -45,16 +46,13 @@ public class Project {
     @Column(name = "maximum_employees_number")
     private int maximumEmployeesNumber;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade =CascadeType.PERSIST)
-    @JoinTable(name = "project_job_position",
-            joinColumns = { @JoinColumn(name = "project_id") },
-            inverseJoinColumns = { @JoinColumn(name = "job_position_id") })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "project_job_position", joinColumns = {@JoinColumn(name = "project_id")}, inverseJoinColumns = {@JoinColumn(name = "job_position_id")})
     private List<JobPosition> jobPositions;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
-
 
 
 }

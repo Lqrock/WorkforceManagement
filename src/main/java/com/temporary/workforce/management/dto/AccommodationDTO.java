@@ -1,6 +1,6 @@
 package com.temporary.workforce.management.dto;
 
-import com.temporary.workforce.management.model.OwnershipTypeEnum;
+import com.temporary.workforce.management.model.OwnershipType;
 import lombok.Data;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class AccommodationDTO {
 
     private String email;
 
-    private OwnershipTypeEnum ownershipType;
+    private OwnershipType ownershipType;
 
     private Long ownersBankAccount;
 

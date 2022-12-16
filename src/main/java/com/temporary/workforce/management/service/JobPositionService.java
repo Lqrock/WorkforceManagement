@@ -2,7 +2,6 @@ package com.temporary.workforce.management.service;
 
 import com.temporary.workforce.management.dto.JobPositionDTO;
 import com.temporary.workforce.management.exception.BusinessException;
-import com.temporary.workforce.management.model.Accommodation;
 import com.temporary.workforce.management.model.JobPosition;
 import com.temporary.workforce.management.repository.JobPositionRepository;
 import org.modelmapper.ModelMapper;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class JobPositionService implements JobPositionServiceInterface{
+public class JobPositionService implements JobPositionServiceInterface {
 
     @Autowired
     private JobPositionRepository jobPositionRepository;
@@ -67,7 +66,7 @@ public class JobPositionService implements JobPositionServiceInterface{
         return modelMapper.map(jobPosition, JobPositionDTO.class);
     }
 
-    private void throwExceptionIfJobPositionNotFound(Optional<JobPosition> jobPosition, int jobPositionId) throws BusinessException{
+    private void throwExceptionIfJobPositionNotFound(Optional<JobPosition> jobPosition, int jobPositionId) throws BusinessException {
         if (jobPosition.isEmpty()) {
             throw new BusinessException("Accommodation with ID " + jobPositionId + " not found.");
         }

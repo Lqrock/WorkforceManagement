@@ -1,9 +1,7 @@
 package com.temporary.workforce.management.controller;
 
-import com.temporary.workforce.management.dto.AccommodationDTO;
 import com.temporary.workforce.management.dto.JobPositionDTO;
 import com.temporary.workforce.management.exception.BusinessException;
-import com.temporary.workforce.management.service.AccommodationService;
 import com.temporary.workforce.management.service.JobPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +17,7 @@ public class JobPositionController {
     JobPositionService jobPositionService;
 
     @PostMapping("/create")
-    public ResponseEntity<JobPositionDTO> createJobPosition(@RequestBody JobPositionDTO jobPositionDTO){
+    public ResponseEntity<JobPositionDTO> createJobPosition(@RequestBody JobPositionDTO jobPositionDTO) {
         jobPositionService.createJobPosition(jobPositionDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -31,13 +29,13 @@ public class JobPositionController {
     }
 
     @DeleteMapping("/delete/{jobPositionId}")
-    public ResponseEntity<JobPositionDTO> deleteJobPosition(@PathVariable int jobPositionId) throws BusinessException{
+    public ResponseEntity<JobPositionDTO> deleteJobPosition(@PathVariable int jobPositionId) throws BusinessException {
         jobPositionService.deleteJobPosition(jobPositionId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/get/{jobPositionId}")
-    public ResponseEntity<JobPositionDTO> getJobPosition(@PathVariable int jobPositionId) throws BusinessException{
+    public ResponseEntity<JobPositionDTO> getJobPosition(@PathVariable int jobPositionId) throws BusinessException {
         return new ResponseEntity<>(jobPositionService.getJobPositionDTO(jobPositionId), HttpStatus.OK);
     }
 }

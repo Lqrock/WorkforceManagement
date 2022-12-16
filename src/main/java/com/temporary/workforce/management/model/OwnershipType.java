@@ -1,6 +1,6 @@
 package com.temporary.workforce.management.model;
 
-public enum OwnershipTypeEnum {
+public enum OwnershipType {
     LEGAL,
     NATURAL
 }

@@ -2,12 +2,12 @@ package com.temporary.workforce.management.controller;
 
 import com.temporary.workforce.management.dto.AccommodationDTO;
 import com.temporary.workforce.management.exception.BusinessException;
+import com.temporary.workforce.management.service.AccommodationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import com.temporary.workforce.management.service.AccommodationService;
 
 @Controller
 @RequestMapping("/accommodation")
@@ -17,7 +17,7 @@ public class AccommodationController {
     AccommodationService accommodationService;
 
     @PostMapping("/create")
-    public ResponseEntity<AccommodationDTO> createAccommodation(@RequestBody AccommodationDTO accommodationDTO){
+    public ResponseEntity<AccommodationDTO> createAccommodation(@RequestBody AccommodationDTO accommodationDTO) {
         accommodationService.createAccommodation(accommodationDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -29,13 +29,13 @@ public class AccommodationController {
     }
 
     @DeleteMapping("/delete/{accommodationId}")
-    public ResponseEntity<AccommodationDTO> deleteAccommodation(@PathVariable int accommodationId) throws BusinessException{
+    public ResponseEntity<AccommodationDTO> deleteAccommodation(@PathVariable int accommodationId) throws BusinessException {
         accommodationService.deleteAccommodation(accommodationId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/get/{accommodationId}")
-    public ResponseEntity<AccommodationDTO> getAccommodationDTO(@PathVariable int accommodationId) throws BusinessException{
+    public ResponseEntity<AccommodationDTO> getAccommodationDTO(@PathVariable int accommodationId) throws BusinessException {
         return new ResponseEntity<>(accommodationService.getAccommodationDTO(accommodationId), HttpStatus.OK);
     }
 

@@ -1,6 +1,5 @@
 package com.temporary.workforce.management.dto;
 
-import com.temporary.workforce.management.model.Employee;
 import lombok.Data;
 
 import java.sql.Time;

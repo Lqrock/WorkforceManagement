@@ -1,10 +1,9 @@
 package com.temporary.workforce.management.service;
 
-import com.temporary.workforce.management.exception.BusinessException;
-import com.temporary.workforce.management.repository.TimeSheetRepository;
 import com.temporary.workforce.management.dto.TimeSheetDTO;
-import com.temporary.workforce.management.model.JobPosition;
+import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.model.TimeSheet;
+import com.temporary.workforce.management.repository.TimeSheetRepository;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class TimeSheetService implements TimeSheetServiceInterface{
+public class TimeSheetService implements TimeSheetServiceInterface {
 
     @Autowired
     TimeSheetRepository timeSheetRepository;
@@ -22,7 +21,6 @@ public class TimeSheetService implements TimeSheetServiceInterface{
     Logger logger = LoggerFactory.getLogger(TimeSheetService.class);
 
     ModelMapper modelMapper = new ModelMapper();
-
 
     @Override
     public void createTimeSheet(TimeSheetDTO timeSheetDTO) {
@@ -80,7 +78,7 @@ public class TimeSheetService implements TimeSheetServiceInterface{
     }
 
     void throwExceptionIfTimeSheetNotFound(Optional<TimeSheet> timeSheet, int timeSheetId) throws BusinessException {
-        if(timeSheet.isEmpty()){
+        if (timeSheet.isEmpty()) {
             throw new BusinessException("Time sheet with id " + timeSheetId + " not found");
         }
     }

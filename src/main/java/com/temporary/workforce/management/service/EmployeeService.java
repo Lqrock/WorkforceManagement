@@ -1,21 +1,21 @@
 package com.temporary.workforce.management.service;
 
+import com.temporary.workforce.management.dto.EmployeeDTO;
 import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.model.*;
-import com.temporary.workforce.management.repository.JobPositionRepository;
-import org.springframework.stereotype.Service;
 import com.temporary.workforce.management.repository.EmployeeRepository;
-import com.temporary.workforce.management.dto.EmployeeDTO;
+import com.temporary.workforce.management.repository.JobPositionRepository;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeService implements EmployeeServiceInterface{
+public class EmployeeService implements EmployeeServiceInterface {
 
     @Autowired
     EmployeeRepository employeeRepository;
@@ -31,12 +31,14 @@ public class EmployeeService implements EmployeeServiceInterface{
     public void createEmployee(EmployeeDTO employeeDTO) {
         logger.info("Starting employee creation");
         Employee employee = modelMapper.map(employeeDTO, Employee.class);
-        if(employeeDTO.getJobPositionId() != null){
+        if (employeeDTO.getJobPositionId() != null) {
             Optional<JobPosition> jobPosition = jobPositionRepository.findById(employeeDTO.getJobPositionId());
             jobPosition.ifPresent(employee::setJobPosition);
         }
-        if(!employeeDTO.getSpokenLanguages().isEmpty()){
-            employee.getSpokenLanguages().forEach(language -> {language.setEmployee(employee); });
+        if (!employeeDTO.getSpokenLanguages().isEmpty()) {
+            employee.getSpokenLanguages().forEach(language -> {
+                language.setEmployee(employee);
+            });
         }
         employeeRepository.save(employee);
         logger.info("Employee created successfully");
@@ -119,8 +121,8 @@ public class EmployeeService implements EmployeeServiceInterface{
         return employee;
     }
 
-    public void throwExceptionIfEmployeeNotFound(Optional<Employee> employee, int employeeId) throws BusinessException{
-        if(employee.isEmpty()){
+    public void throwExceptionIfEmployeeNotFound(Optional<Employee> employee, int employeeId) throws BusinessException {
+        if (employee.isEmpty()) {
             throw new BusinessException("Employee with ID " + employeeId + " not found");
         }
     }

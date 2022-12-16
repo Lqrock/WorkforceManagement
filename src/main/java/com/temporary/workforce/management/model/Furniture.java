@@ -21,9 +21,6 @@ public class Furniture {
 
     @JoinColumn(name = "room_id")
     private int roomId;
-
-
-
 }
 
 

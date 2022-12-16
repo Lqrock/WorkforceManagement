@@ -3,18 +3,18 @@ package com.temporary.workforce.management.service;
 import com.temporary.workforce.management.dto.ProjectDTO;
 import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.model.*;
+import com.temporary.workforce.management.repository.ProjectRepository;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.temporary.workforce.management.repository.ProjectRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProjectService implements ProjectServiceInterface{
+public class ProjectService implements ProjectServiceInterface {
 
     @Autowired
     ProjectRepository projectRepository;
@@ -89,12 +89,11 @@ public class ProjectService implements ProjectServiceInterface{
         return project;
     }
 
-    void throwExceptionIfProjectNotFound(Optional<Project> project, int projectId) throws BusinessException{
-        if(project.isEmpty()){
+    void throwExceptionIfProjectNotFound(Optional<Project> project, int projectId) throws BusinessException {
+        if (project.isEmpty()) {
             throw new BusinessException("Project with id " + projectId + " not found");
         }
     }
-
 
 
 }

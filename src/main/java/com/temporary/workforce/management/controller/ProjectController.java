@@ -1,8 +1,8 @@
 package com.temporary.workforce.management.controller;
 
 import com.temporary.workforce.management.dto.ProjectDTO;
-import com.temporary.workforce.management.service.ProjectService;
 import com.temporary.workforce.management.exception.BusinessException;
+import com.temporary.workforce.management.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class ProjectController {
     ProjectService projectService;
 
     @PostMapping("/create")
-    public ResponseEntity createProject(@RequestBody ProjectDTO projectDto){
+    public ResponseEntity createProject(@RequestBody ProjectDTO projectDto) {
         projectService.createProject(projectDto);
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -29,13 +29,13 @@ public class ProjectController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity deleteProject(@RequestParam int projectId) throws BusinessException{
+    public ResponseEntity deleteProject(@RequestParam int projectId) throws BusinessException {
         projectService.deleteProject(projectId);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping("/get")
-    public ResponseEntity getProject(@RequestParam int projectId) throws BusinessException{
+    public ResponseEntity getProject(@RequestParam int projectId) throws BusinessException {
         projectService.getProject(projectId);
         return new ResponseEntity(HttpStatus.OK);
     }

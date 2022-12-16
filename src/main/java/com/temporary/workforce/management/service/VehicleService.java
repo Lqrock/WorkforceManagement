@@ -1,21 +1,21 @@
 package com.temporary.workforce.management.service;
 
-import com.temporary.workforce.management.exception.BusinessException;
-import org.springframework.stereotype.Service;
-import com.temporary.workforce.management.repository.VehicleRepository;
 import com.temporary.workforce.management.dto.VehicleDTO;
+import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.model.Employee;
 import com.temporary.workforce.management.model.Vehicle;
+import com.temporary.workforce.management.repository.VehicleRepository;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class VehicleService implements VehicleServiceInterface{
+public class VehicleService implements VehicleServiceInterface {
 
     @Autowired
     VehicleRepository vehicleRepository;
@@ -99,8 +99,8 @@ public class VehicleService implements VehicleServiceInterface{
         return modelMapper.map(vehicle, VehicleDTO.class);
     }
 
-    void throwExceptionIfVehicleNotFound(Optional<Vehicle> vehicle, int vehicleId) throws BusinessException{
-        if(vehicle.isEmpty()){
+    void throwExceptionIfVehicleNotFound(Optional<Vehicle> vehicle, int vehicleId) throws BusinessException {
+        if (vehicle.isEmpty()) {
             throw new BusinessException("Vehicle with ID " + vehicleId + " not found");
         }
     }

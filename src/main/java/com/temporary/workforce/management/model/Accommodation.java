@@ -75,7 +75,7 @@ public class Accommodation {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "ownership_type")
-    private OwnershipTypeEnum ownershipType;
+    private OwnershipType ownershipType;
 
     @NotNull
     @OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
