@@ -5,5 +5,4 @@ public enum LanguageEnum {
     RUSSIAN,
     GERMAN,
     FRENCH
-
 }

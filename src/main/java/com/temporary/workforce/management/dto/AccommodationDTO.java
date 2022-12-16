@@ -1,10 +1,8 @@
 package com.temporary.workforce.management.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.temporary.workforce.management.model.OwnershipType;
+import com.temporary.workforce.management.model.OwnershipTypeEnum;
 import lombok.Data;
 
-import java.io.File;
 import java.util.List;
 
 @Data
@@ -18,7 +16,7 @@ public class AccommodationDTO {
 
     private String email;
 
-    private OwnershipType ownershipType;
+    private OwnershipTypeEnum ownershipType;
 
     private Long ownersBankAccount;
 
