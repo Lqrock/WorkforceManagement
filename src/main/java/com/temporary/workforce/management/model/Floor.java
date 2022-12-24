@@ -21,4 +21,7 @@ public class Floor {
 
     @OneToMany(mappedBy = "floor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Room> rooms;
+
 }
+
+

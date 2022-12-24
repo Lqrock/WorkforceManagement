@@ -17,7 +17,7 @@ public class TimeSheetDTO {
 
     private int pauseTime;
 
-    private String projectsName;
+    private String projectName;
 
     private JobPositionDTO jobPosition;
 

@@ -1,6 +1,7 @@
 package com.temporary.workforce.management.dto;
 
 import com.temporary.workforce.management.model.DkvNumber;
+import com.temporary.workforce.management.model.Employee;
 import com.temporary.workforce.management.model.TireType;
 import com.temporary.workforce.management.model.VehicleOwner;
 import lombok.Data;
@@ -61,7 +62,7 @@ public class VehicleDTO {
 
     private int project;
 
-    private int employeeId;
+    private Employee employee;
 
 
 }

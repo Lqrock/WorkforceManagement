@@ -70,25 +70,25 @@ public class EmployeeService implements EmployeeServiceInterface {
 
         existingEmployee.setStartingDate(employeeDTO.getStartingDate());
         existingEmployee.setFinishingDate(employeeDTO.getFinishingDate());
-        existingEmployee.setAccommodation(modelMapper.map(employeeDTO.getAccommodationDTO(), Accommodation.class));
+        existingEmployee.setAccommodation(modelMapper.map(employeeDTO.getAccommodation(), Accommodation.class));
 //        existingEmployee.setContractFile(employeeDTO.getContractFile());
         existingEmployee.setSalaryPerHour(employeeDTO.getSalaryPerHour());
         existingEmployee.setContractType(employeeDTO.getContractType());
-        existingEmployee.setVehicle(modelMapper.map(employeeDTO.getVehicleDTO(), Vehicle.class));
+        existingEmployee.setVehicle(modelMapper.map(employeeDTO.getVehicle(), Vehicle.class));
 
         List<Language> languages = employeeDTO.getSpokenLanguages().stream()
                 .map(a -> modelMapper.map(a, Language.class)).toList();
         languages.forEach(language -> language.setEmployee(existingEmployee));
         existingEmployee.setSpokenLanguages(languages);
 
-        List<Project> projects = employeeDTO.getProjectDTOS().stream()
+        List<Project> projects = employeeDTO.getProjects().stream()
                 .map(a -> modelMapper.map(a, Project.class)).toList();
         projects.forEach(project -> project.setEmployee(existingEmployee)); // this could be int instead of employee
         existingEmployee.setProjects(projects);
 
-        List<Vehicle> vehicles = employeeDTO.getVehicleDTOS().stream()
+        List<Vehicle> vehicles = employeeDTO.getVehicles().stream()
                 .map(a -> modelMapper.map(a, Vehicle.class)).toList();
-        vehicles.forEach(vehicle -> vehicle.setEmployee(existingEmployee.getId()));
+        vehicles.forEach(vehicle -> vehicle.setEmployee(existingEmployee));
         existingEmployee.setVehicles(vehicles);
 
         employeeRepository.save(existingEmployee);

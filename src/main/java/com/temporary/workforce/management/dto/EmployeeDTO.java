@@ -48,11 +48,11 @@ public class EmployeeDTO {
 
     private LocalDate finishingDate;
 
-    private List<ProjectDTO> projectDTOS;
+    private List<ProjectDTO> projects;
 
-    private AccommodationDTO accommodationDTO;
+    private AccommodationDTO accommodation;
 
-    private List<VehicleDTO> vehicleDTOS;
+    private List<VehicleDTO> vehicles;
 
 //    private File contractFile;
 
@@ -60,7 +60,7 @@ public class EmployeeDTO {
 
     private String contractType;
 
-    private VehicleDTO vehicleDTO;
+    private VehicleDTO vehicle;
 
     private List<LanguageDTO> spokenLanguages; //
 }

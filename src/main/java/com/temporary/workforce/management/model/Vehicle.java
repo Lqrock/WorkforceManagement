@@ -99,8 +99,9 @@ public class Vehicle {
     @JoinColumn(name = "project_id")
     private int project;
 
+    @ManyToOne(optional = false)
     @JoinColumn(name = "employee_id")
-    private int employee;
+    private Employee employee;
 
 }
 

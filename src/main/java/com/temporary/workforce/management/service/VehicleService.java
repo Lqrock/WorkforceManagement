@@ -62,7 +62,7 @@ public class VehicleService implements VehicleServiceInterface {
         existingVehicle.setInsideAirFilterChangeRequired(vehicleDTO.isInsideAirFilterChangeRequired());
         existingVehicle.setBrakeFluidChangeRequired(vehicleDTO.isBrakeFluidChangeRequired());
         existingVehicle.setProject(vehicleDTO.getProject());
-        existingVehicle.setEmployee(vehicleDTO.getEmployeeId());
+        existingVehicle.setEmployee(vehicleDTO.getEmployee());
 
         List<Employee> driversNames = vehicleDTO.getDriversNameDTO().stream()
                 .map(a -> modelMapper.map(a, Employee.class)).toList();

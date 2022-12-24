@@ -50,7 +50,7 @@ public class Project {
     @JoinTable(name = "project_job_position", joinColumns = {@JoinColumn(name = "project_id")}, inverseJoinColumns = {@JoinColumn(name = "job_position_id")})
     private List<JobPosition> jobPositions;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "employee_id")
     private Employee employee;
 

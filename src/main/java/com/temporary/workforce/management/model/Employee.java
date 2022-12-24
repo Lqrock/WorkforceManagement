@@ -87,10 +87,10 @@ public class Employee {
     @Column(name = "finishing_date")
     private LocalDate finishingDate;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Project> projects;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Vehicle> vehicles;
 
 //    @Column(name = "contract_file")
