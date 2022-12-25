@@ -16,7 +16,7 @@ public class PhoneNumber {
     @Column(name = "number")
     private String phoneNumber;
 
-    @ManyToOne(optional = true)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "project_id")
     private Project project;
 }

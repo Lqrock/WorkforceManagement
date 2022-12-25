@@ -2,6 +2,8 @@ package com.temporary.workforce.management.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class JobPositionDTO {
 
@@ -9,5 +11,5 @@ public class JobPositionDTO {
 
     private String title;
 
-    private int projectId;
+    private List<ProjectDTO> projects;
 }

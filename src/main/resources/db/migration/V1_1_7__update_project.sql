@@ -1,0 +1,2 @@
+ALTER TABLE project
+    ALTER COLUMN code TYPE VARCHAR;

@@ -26,10 +26,19 @@ public class ProjectService implements ProjectServiceInterface {
 
     @Override
     public void createProject(ProjectDTO projectDTO) {
-        logger.info("Creating project " + projectDTO.getId());
+        logger.info("Creating project {}", projectDTO.getId());
         Project project = modelMapper.map(projectDTO, Project.class);
+        if(!project.getPhoneNumbers().isEmpty()){
+            List<PhoneNumber> phoneNumbers = project.getPhoneNumbers();
+            phoneNumbers.forEach(phoneNumber -> phoneNumber.setProject(project));
+            project.setPhoneNumbers(phoneNumbers);
+        }
+        if(!project.getEmails().isEmpty()){
+            List<Email> emails = project.getEmails();
+            emails.forEach(email -> email.setProject(project));
+            project.setEmails(emails);
+        }
         projectRepository.save(project);
-        logger.info("Project created successfully");
     }
 
     @Override
@@ -45,17 +54,17 @@ public class ProjectService implements ProjectServiceInterface {
         existingProject.setStartingDate(projectDTO.getStartingDate());
         existingProject.setFinishingDate(projectDTO.getFinishingDate());
         existingProject.setMaximumEmployeesNumber(projectDTO.getMaximumEmployeesNumber());
-        existingProject.setEmployee(modelMapper.map(projectDTO.getEmployeeDTO(), Employee.class));
+        existingProject.setEmployee(modelMapper.map(projectDTO.getEmployee(), Employee.class));
 
         List<PhoneNumber> phoneNumbers = projectDTO.getPhoneNumbers().stream().map(a -> modelMapper.map(a, PhoneNumber.class)).toList();
         phoneNumbers.forEach(phoneNumber -> phoneNumber.setProject(existingProject));
         existingProject.setPhoneNumbers(phoneNumbers);
 
         List<Email> emails = projectDTO.getEmails().stream().map(a -> modelMapper.map(a, Email.class)).toList();
-        emails.forEach(email -> email.setProjectId(existingProject.getId()));
+        emails.forEach(email -> email.setProject(existingProject));
         existingProject.setEmails(emails);
 
-        List<JobPosition> jobPositions = projectDTO.getJobPositionDTOS().stream().map(a -> modelMapper.map(a, JobPosition.class)).toList();
+        List<JobPosition> jobPositions = projectDTO.getJobPositions().stream().map(a -> modelMapper.map(a, JobPosition.class)).toList();
 //        jobPositions.forEach(jobPosition -> jobPosition.setProjectId(existingProject));
         existingProject.setJobPositions(jobPositions);
 

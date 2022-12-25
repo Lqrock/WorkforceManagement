@@ -13,6 +13,7 @@ import java.util.List;
 public class Project {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -28,20 +29,19 @@ public class Project {
     @Column(name = "address")
     private String address;
 
-    @NotEmpty
-    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<PhoneNumber> phoneNumbers;
-
-    @NotEmpty
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Email> emails;
-
-    @NotEmpty
     @Column(name = "starting_date")
     private LocalDate startingDate;
 
     @Column(name = "finishing_date")
     private LocalDate finishingDate;
+
+    @NotEmpty
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PhoneNumber> phoneNumbers;
+
+    @NotEmpty
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Email> emails;
 
     @Column(name = "maximum_employees_number")
     private int maximumEmployeesNumber;

@@ -16,17 +16,17 @@ public class ProjectDTO {
 
     private String address;
 
-    private List<PhoneNumberDTO> phoneNumbers;
-
-    private List<String> emails;
-
     private LocalDate startingDate;
 
     private LocalDate finishingDate;
 
+    private List<PhoneNumberDTO> phoneNumbers;
+
+    private List<EmailDTO> emails;
+
     private int maximumEmployeesNumber;
 
-    private List<JobPositionDTO> jobPositionDTOS;
+    private List<JobPositionDTO> jobPositions;
 
-    private EmployeeDTO employeeDTO;
+    private EmployeeDTO employee;
 }
