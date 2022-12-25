@@ -47,9 +47,9 @@ public class ProjectService implements ProjectServiceInterface {
         existingProject.setMaximumEmployeesNumber(projectDTO.getMaximumEmployeesNumber());
         existingProject.setEmployee(modelMapper.map(projectDTO.getEmployeeDTO(), Employee.class));
 
-        List<PhoneNumbers> phoneNumbers = projectDTO.getPhoneNumber().stream().map(a -> modelMapper.map(a, PhoneNumbers.class)).toList();
-        phoneNumbers.forEach(phoneNumber -> phoneNumber.setProjectId(existingProject.getId()));
-        existingProject.setPhoneNumber(phoneNumbers);
+        List<PhoneNumber> phoneNumbers = projectDTO.getPhoneNumbers().stream().map(a -> modelMapper.map(a, PhoneNumber.class)).toList();
+        phoneNumbers.forEach(phoneNumber -> phoneNumber.setProject(existingProject));
+        existingProject.setPhoneNumbers(phoneNumbers);
 
         List<Email> emails = projectDTO.getEmails().stream().map(a -> modelMapper.map(a, Email.class)).toList();
         emails.forEach(email -> email.setProjectId(existingProject.getId()));

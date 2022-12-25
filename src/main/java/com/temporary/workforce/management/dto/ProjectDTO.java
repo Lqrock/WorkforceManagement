@@ -16,7 +16,7 @@ public class ProjectDTO {
 
     private String address;
 
-    private List<String> phoneNumber;
+    private List<PhoneNumberDTO> phoneNumbers;
 
     private List<String> emails;
 

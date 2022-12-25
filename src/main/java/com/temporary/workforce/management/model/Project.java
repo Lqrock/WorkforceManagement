@@ -29,8 +29,8 @@ public class Project {
     private String address;
 
     @NotEmpty
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<PhoneNumbers> phoneNumber;
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PhoneNumber> phoneNumbers;
 
     @NotEmpty
     @OneToMany(fetch = FetchType.LAZY)
