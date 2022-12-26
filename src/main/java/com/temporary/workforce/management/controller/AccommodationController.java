@@ -35,8 +35,7 @@ public class AccommodationController {
     }
 
     @GetMapping("/get/{accommodationId}")
-    public ResponseEntity<AccommodationDTO> getAccommodationDTO(@PathVariable int accommodationId) throws BusinessException {
+    public ResponseEntity<AccommodationDTO> getAccommodation(@PathVariable int accommodationId) throws BusinessException {
         return new ResponseEntity<>(accommodationService.getAccommodationDTO(accommodationId), HttpStatus.OK);
     }
-
 }

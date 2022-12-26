@@ -17,33 +17,25 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @PostMapping("/create")
-    public ResponseEntity createEmployee(@RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO employeeDTO) {
         employeeService.createEmployee(employeeDTO);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity updateEmployee(@RequestBody EmployeeDTO employeeDTO) throws BusinessException {
+    public ResponseEntity<EmployeeDTO> updateEmployee(@RequestBody EmployeeDTO employeeDTO) throws BusinessException {
         employeeService.updateEmployee(employeeDTO);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteEmployee(@RequestParam int employeeId) throws BusinessException {
+    @DeleteMapping("/delete/{employeeId}")
+    public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable int employeeId) throws BusinessException {
         employeeService.deleteEmployee(employeeId);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/get")
-    public ResponseEntity getEmployee(@RequestParam int employeeId) throws BusinessException {
-        employeeService.getEmployee(employeeId);
-        return new ResponseEntity(HttpStatus.OK);
+    @GetMapping("/get/{employeeId}")
+    public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable int employeeId) throws BusinessException {
+        return new ResponseEntity<>(employeeService.getEmployeeDTO(employeeId), HttpStatus.OK);
     }
-
-    @GetMapping("/getDTO")
-    public ResponseEntity getEmployeeDTO(@RequestParam int employeeId) throws BusinessException {
-        employeeService.getEmployeeDTO(employeeId);
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
 }

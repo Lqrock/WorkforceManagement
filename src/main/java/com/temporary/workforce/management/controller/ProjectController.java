@@ -17,34 +17,25 @@ public class ProjectController {
     ProjectService projectService;
 
     @PostMapping("/create")
-    public ResponseEntity createProject(@RequestBody ProjectDTO projectDto) {
+    public ResponseEntity<ProjectDTO> createProject(@RequestBody ProjectDTO projectDto) {
         projectService.createProject(projectDto);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/update")
-    public ResponseEntity updateProject(@RequestBody ProjectDTO projectDTO) throws BusinessException {
+    public ResponseEntity<ProjectDTO> updateProject(@RequestBody ProjectDTO projectDTO) throws BusinessException {
         projectService.updateProject(projectDTO);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteProject(@RequestParam int projectId) throws BusinessException {
+    @DeleteMapping("/delete/{projectId}")
+    public ResponseEntity<ProjectDTO> deleteProject(@PathVariable int projectId) throws BusinessException {
         projectService.deleteProject(projectId);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/get")
-    public ResponseEntity getProject(@RequestParam int projectId) throws BusinessException {
-        projectService.getProject(projectId);
-        return new ResponseEntity(HttpStatus.OK);
+    @GetMapping("/get/{projectId}")
+    public ResponseEntity<ProjectDTO> getProject(@PathVariable int projectId) throws BusinessException {
+        return new ResponseEntity<>(projectService.getProjectDTO(projectId), HttpStatus.OK);
     }
-
-    @GetMapping("/getDTO")
-    public ResponseEntity getProjectDTO(@RequestParam int projectId) throws BusinessException {
-        projectService.getProjectDTO(projectId);
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
-
 }

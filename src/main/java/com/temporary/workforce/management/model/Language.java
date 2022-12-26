@@ -18,7 +18,7 @@ public class Language {
     @Column(name = "spoken_language")
     private LanguageEnum spokenLanguage;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
 }

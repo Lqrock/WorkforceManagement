@@ -48,9 +48,9 @@ public class EmployeeDTO {
 
     private LocalDate finishingDate;
 
-    private List<ProjectDTO> projects;
+    private List<ProjectDTO> projects; //
 
-    private AccommodationDTO accommodation;
+    private AccommodationDTO accommodation; //
 
     private List<VehicleDTO> vehicles;
 

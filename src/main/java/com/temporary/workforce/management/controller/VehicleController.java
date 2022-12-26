@@ -28,21 +28,14 @@ public class VehicleController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteVehicle(@RequestParam int vehicleId) throws BusinessException {
+    @DeleteMapping("/delete/{vehicleId}")
+    public ResponseEntity deleteVehicle(@PathVariable int vehicleId) throws BusinessException {
         vehicleService.deleteVehicle(vehicleId);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping("/get")
-    public ResponseEntity getVehicle(@RequestParam int vehicleId) throws BusinessException {
-        vehicleService.getVehicle(vehicleId);
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
-    @GetMapping("/getDTO")
-    public ResponseEntity getVehicleDTO(@RequestParam int vehicleId) throws BusinessException {
-        vehicleService.getVehicleDTO(vehicleId);
-        return new ResponseEntity(HttpStatus.OK);
+    @GetMapping("/get/{vehicleId}")
+    public ResponseEntity getVehicle(@PathVariable int vehicleId) throws BusinessException {
+        return new ResponseEntity(vehicleService.getVehicleDTO(vehicleId), HttpStatus.OK);
     }
 }

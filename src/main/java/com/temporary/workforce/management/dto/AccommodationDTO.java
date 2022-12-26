@@ -1,14 +1,24 @@
 package com.temporary.workforce.management.dto;
 
+import com.temporary.workforce.management.model.Employee;
 import com.temporary.workforce.management.model.OwnershipType;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Setter
+@Getter
 public class AccommodationDTO {
 
     private int id;
+
+    private int houseNumber;
+
+    private int rentalPeriod;
+
+    private int noticePeriod;
 
     private String ownersName;
 
@@ -28,8 +38,6 @@ public class AccommodationDTO {
 
     private Long postalCode;
 
-    private int houseNumber;
-
     private List<FloorDTO> floors;
 
     private boolean hasInternet;
@@ -42,9 +50,8 @@ public class AccommodationDTO {
 
     private float deposit;
 
+    private EmployeeDTO employee;
+
 //    private File contractFile; TODO learn
 
-    private int rentalPeriod;
-
-    private int noticePeriod;
 }

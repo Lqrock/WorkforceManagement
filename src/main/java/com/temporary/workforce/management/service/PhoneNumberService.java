@@ -20,7 +20,7 @@ public class PhoneNumberService implements PhoneNumberServiceInterface {
 
     ModelMapper modelMapper = new ModelMapper();
 
-    Logger logger = LoggerFactory.getLogger(PhoneNumber.class);
+    Logger logger = LoggerFactory.getLogger(PhoneNumberService.class);
 
     @Override
     public void createPhoneNumber(PhoneNumberDTO phoneNumberDTO) {

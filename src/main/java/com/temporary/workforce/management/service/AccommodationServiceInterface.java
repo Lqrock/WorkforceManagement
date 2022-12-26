@@ -16,7 +16,7 @@ public interface AccommodationServiceInterface {
 
     void deleteAccommodation(int accommodationId) throws BusinessException;
 
-    Optional<Accommodation> getAccommodation(int accommodationId) throws BusinessException;
-
     AccommodationDTO getAccommodationDTO(int accommodationId) throws BusinessException;
+
+    Optional<Accommodation> getAccommodation(int accommodationId) throws BusinessException;
 }
