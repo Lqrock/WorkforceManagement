@@ -35,10 +35,12 @@ public class Employee {
     private int identityNumber;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "marital_status")
     private MaritalStatus maritalStatus;
 

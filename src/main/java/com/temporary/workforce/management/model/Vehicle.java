@@ -1,6 +1,7 @@
 package com.temporary.workforce.management.model;
 
 import lombok.Data;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -13,7 +14,7 @@ import java.util.List;
 public class Vehicle {
 
     @Id
-    @NotEmpty
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -29,15 +30,13 @@ public class Vehicle {
     @Column(name = "plate_number")
     private String plateNumber;
 
-    @NotEmpty
     @Column(name = "vin")
     private Long vin;
 
-    @NotEmpty
     @Column(name = "mileage")
     private int mileage;
 
-    @NotEmpty
+    @Enumerated(EnumType.STRING)
     @Column(name = "tire_type")
     private TireType tireType;
 
@@ -45,6 +44,7 @@ public class Vehicle {
     @Column(name = "insurance_type")
     private String insuranceType;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "dkv_number")
     private DkvNumber dkvNumber;
 
@@ -52,10 +52,10 @@ public class Vehicle {
     @Column(name = "gps_number")
     private String gpsNumber;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "owners_name")
     private VehicleOwner ownersName;
 
-    @NotEmpty
     @Column(name = "tuf_expiration_date")
     private LocalDate tufExpirationDate;
 
@@ -74,9 +74,8 @@ public class Vehicle {
     @Column(name = "adBlue_change_indicator")
     private int adBlueChangeIndicator;
 
-    @NotEmpty
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Employee> driversName;
+    @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Employee> driversNameList;
 
 //    @Column(name = "image")
 //    private List images; // TODO LEARN THIS
@@ -96,10 +95,11 @@ public class Vehicle {
     @Column(name = "brake_fluid_change_required")
     private boolean brakeFluidChangeRequired;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
-    private int project;
+    private Project projectId;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
 

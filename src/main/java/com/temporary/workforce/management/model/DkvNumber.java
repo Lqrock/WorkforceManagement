@@ -1,5 +1,6 @@
 package com.temporary.workforce.management.model;
 
 public enum DkvNumber {
-    ONE
+    ONE,
+    A512351003DD
 }

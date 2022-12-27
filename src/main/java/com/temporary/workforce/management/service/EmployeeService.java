@@ -31,10 +31,10 @@ public class EmployeeService implements EmployeeServiceInterface {
     public void createEmployee(EmployeeDTO employeeDTO) {
         logger.info("Starting employee creation");
         Employee employee = modelMapper.map(employeeDTO, Employee.class);
-        if (employeeDTO.getJobPositionId() != null) {
-            Optional<JobPosition> jobPosition = jobPositionRepository.findById(employeeDTO.getJobPositionId());
-            jobPosition.ifPresent(employee::setJobPosition);
-        }
+//        if (employeeDTO.getJobPositionId() != null) {
+//            Optional<JobPosition> jobPosition = jobPositionRepository.findById(employeeDTO.getJobPositionId());
+//            jobPosition.ifPresent(employee::setJobPosition);
+//        }
         if (!employeeDTO.getSpokenLanguages().isEmpty()) {
             employee.getSpokenLanguages().forEach(language -> language.setEmployee(employee));
         }
@@ -48,6 +48,15 @@ public class EmployeeService implements EmployeeServiceInterface {
             employee.getProjects().forEach(project -> project.getPhoneNumbers().forEach(phoneNumber -> phoneNumber.setProject(project)));
             employee.getProjects().forEach(project -> project.getEmails().forEach(email -> email.setProject(project)));
         }
+        if (employee.getVehicle() != null){
+            employee.getVehicle().setEmployee(employee);
+            if (employee.getVehicle().getProjectId() != null){
+                employee.getVehicle().getProjectId().setEmployee(employee);
+            }
+        }
+
+
+
         employeeRepository.save(employee);
     }
 

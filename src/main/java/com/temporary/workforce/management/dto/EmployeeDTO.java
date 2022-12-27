@@ -1,6 +1,7 @@
 package com.temporary.workforce.management.dto;
 
 import com.temporary.workforce.management.model.Gender;
+import com.temporary.workforce.management.model.JobPosition;
 import com.temporary.workforce.management.model.MaritalStatus;
 import lombok.Data;
 
@@ -42,7 +43,7 @@ public class EmployeeDTO {
 
     private boolean hasDriversLicense;
 
-    private Integer jobPositionId;
+    private JobPositionDTO jobPosition;
 
     private LocalDate startingDate;
 

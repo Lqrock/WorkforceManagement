@@ -40,35 +40,6 @@ public class VehicleService implements VehicleServiceInterface {
         throwExceptionIfVehicleNotFound(existingVehicleOpt, vehicleDTO.getId());
         Vehicle existingVehicle = existingVehicleOpt.get();
 
-        existingVehicle.setModel(vehicleDTO.getModel());
-        existingVehicle.setBrand(vehicleDTO.getBrand());
-        existingVehicle.setPlateNumber(vehicleDTO.getPlateNumber());
-        existingVehicle.setVin(vehicleDTO.getVin());
-        existingVehicle.setMileage(vehicleDTO.getMileage());
-        existingVehicle.setTireType(vehicleDTO.getTireType());
-        existingVehicle.setInsuranceType(vehicleDTO.getInsuranceType());
-        existingVehicle.setDkvNumber(vehicleDTO.getDkvNumber());
-        existingVehicle.setGpsNumber(vehicleDTO.getGpsNumber());
-        existingVehicle.setOwnersName(vehicleDTO.getOwnersName());
-        existingVehicle.setTufExpirationDate(vehicleDTO.getTufExpirationDate());
-        existingVehicle.setInsuranceExpirationDate(vehicleDTO.getInsuranceExpirationDate());
-        existingVehicle.setOilChangeIndicator(vehicleDTO.getOilChangeIndicator());
-        existingVehicle.setFuelInjectorChangeIndicator(vehicleDTO.getFuelInjectorChangeIndicator());
-        existingVehicle.setTimingBeltChangeIndicator(vehicleDTO.getTimingBeltChangeIndicator());
-        existingVehicle.setAdBlueChangeIndicator(vehicleDTO.getAdBlueChangeIndicator());
-        existingVehicle.setFuelInjectorFilterChangeRequired(vehicleDTO.isFuelInjectorFilterChangeRequired());
-        existingVehicle.setAntiFrostChangeRequired(vehicleDTO.isAntiFrostChangeRequired());
-        existingVehicle.setAirFilterChangeRequired(vehicleDTO.isAirFilterChangeRequired());
-        existingVehicle.setInsideAirFilterChangeRequired(vehicleDTO.isInsideAirFilterChangeRequired());
-        existingVehicle.setBrakeFluidChangeRequired(vehicleDTO.isBrakeFluidChangeRequired());
-        existingVehicle.setProject(vehicleDTO.getProject());
-        existingVehicle.setEmployee(vehicleDTO.getEmployee());
-
-        List<Employee> driversNames = vehicleDTO.getDriversNameDTO().stream()
-                .map(a -> modelMapper.map(a, Employee.class)).toList();
-
-        driversNames.forEach(driver -> driver.setVehicle(existingVehicle));
-        existingVehicle.setDriversName(driversNames);
         vehicleRepository.save(existingVehicle);
         logger.info("Vehicle updated");
         return modelMapper.map(existingVehicle, VehicleDTO.class);

@@ -14,55 +14,55 @@ public class VehicleDTO {
 
     private int id;
 
-    private String model;
+    private String model; //
 
     private String brand;
 
-    private String plateNumber;
+    private String plateNumber; //
 
-    private Long vin;
+    private Long vin; //
 
-    private int mileage;
+    private int mileage; //
 
-    private TireType tireType;
+    private TireType tireType; //
 
-    private String insuranceType;
+    private String insuranceType; //
 
-    private DkvNumber dkvNumber;
+    private DkvNumber dkvNumber; //
 
-    private String gpsNumber;
+    private String gpsNumber; //
 
-    private VehicleOwner ownersName;
+    private VehicleOwner ownersName; //
 
-    private LocalDate tufExpirationDate;
+    private LocalDate tufExpirationDate; //
 
-    private LocalDate insuranceExpirationDate;
+    private LocalDate insuranceExpirationDate; //
 
     private int oilChangeIndicator;
 
-    private int fuelInjectorChangeIndicator;
+    private int fuelInjectorChangeIndicator; //
 
-    private int timingBeltChangeIndicator;
+    private int timingBeltChangeIndicator; //
 
-    private int adBlueChangeIndicator;
+    private int adBlueChangeIndicator; //
 
-    private List<EmployeeDTO> driversNameDTO; // it was List<Employee>
+    private List<EmployeeDTO> driversNameList;
 
 //    private List images; // TODO LEARN THIS
 
-    private boolean fuelInjectorFilterChangeRequired;
+    private boolean fuelInjectorFilterChangeRequired; //
 
-    private boolean antiFrostChangeRequired;
+    private boolean antiFrostChangeRequired; //
 
-    private boolean airFilterChangeRequired;
+    private boolean airFilterChangeRequired; //
 
-    private boolean insideAirFilterChangeRequired;
+    private boolean insideAirFilterChangeRequired; //
 
-    private boolean brakeFluidChangeRequired;
+    private boolean brakeFluidChangeRequired; //
 
-    private int project;
+    private ProjectDTO projectId; //
 
-    private Employee employee;
+    private EmployeeDTO employee;
 
 
 }
