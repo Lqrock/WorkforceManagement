@@ -10,5 +10,5 @@ public class LanguageDTO {
 
     private LanguageEnum spokenLanguage;
 
-    private int employee;
+    private EmployeeDTO employee;
 }

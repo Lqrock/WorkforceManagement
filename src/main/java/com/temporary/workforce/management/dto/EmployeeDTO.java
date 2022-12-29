@@ -1,14 +1,16 @@
 package com.temporary.workforce.management.dto;
 
 import com.temporary.workforce.management.model.Gender;
-import com.temporary.workforce.management.model.JobPosition;
 import com.temporary.workforce.management.model.MaritalStatus;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 public class EmployeeDTO {
 
     private int id;
@@ -43,15 +45,11 @@ public class EmployeeDTO {
 
     private boolean hasDriversLicense;
 
-    private JobPositionDTO jobPosition;
-
     private LocalDate startingDate;
 
     private LocalDate finishingDate;
 
     private List<ProjectDTO> projects; //
-
-    private AccommodationDTO accommodation; //
 
     private List<VehicleDTO> vehicles;
 
@@ -62,6 +60,12 @@ public class EmployeeDTO {
     private String contractType;
 
     private VehicleDTO vehicle;
+
+    private JobPositionDTO jobPosition;
+
+    private AccommodationDTO accommodation; //
+
+    private List<TimeSheetDTO> timeSheetList;
 
     private List<LanguageDTO> spokenLanguages; //
 }

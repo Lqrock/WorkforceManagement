@@ -74,10 +74,6 @@ public class Accommodation {
     @OneToMany(mappedBy = "accommodation", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Utility> utilities;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
-
 //    @Column(name = "contract_file")
 //    private File contractFile; TODO
 

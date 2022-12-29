@@ -1,8 +1,10 @@
 package com.temporary.workforce.management.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class EmailDTO {
 
     private int id;

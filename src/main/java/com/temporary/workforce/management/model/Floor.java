@@ -15,7 +15,7 @@ public class Floor {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "accommodation_id")
     private Accommodation accommodation;
 

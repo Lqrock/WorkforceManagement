@@ -50,8 +50,6 @@ public class AccommodationDTO {
 
     private float deposit;
 
-    private EmployeeDTO employee;
-
 //    private File contractFile; TODO learn
 
 }

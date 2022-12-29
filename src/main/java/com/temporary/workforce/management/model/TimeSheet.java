@@ -34,7 +34,7 @@ public class TimeSheet {
     @JoinColumn(name = "job_position_id")
     private JobPosition jobPosition;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
 }

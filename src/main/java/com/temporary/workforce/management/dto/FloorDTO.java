@@ -1,5 +1,6 @@
 package com.temporary.workforce.management.dto;
 
+import com.temporary.workforce.management.model.Accommodation;
 import lombok.Data;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public class FloorDTO {
 
     private int id;
 
-    private int accommodationId;
+    private AccommodationDTO accommodation;
 
     private List<RoomDTO> rooms;
 

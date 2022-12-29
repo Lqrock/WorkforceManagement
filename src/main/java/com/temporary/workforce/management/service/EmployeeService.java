@@ -31,30 +31,28 @@ public class EmployeeService implements EmployeeServiceInterface {
     public void createEmployee(EmployeeDTO employeeDTO) {
         logger.info("Starting employee creation");
         Employee employee = modelMapper.map(employeeDTO, Employee.class);
-//        if (employeeDTO.getJobPositionId() != null) {
-//            Optional<JobPosition> jobPosition = jobPositionRepository.findById(employeeDTO.getJobPositionId());
-//            jobPosition.ifPresent(employee::setJobPosition);
-//        }
         if (!employeeDTO.getSpokenLanguages().isEmpty()) {
             employee.getSpokenLanguages().forEach(language -> language.setEmployee(employee));
         }
-        if (!employeeDTO.getProjects().isEmpty()) {
-            employee.getProjects().forEach(project -> project.setEmployee(employee));
-        }
-        if (employee.getAccommodation() != null) {
-            employee.getAccommodation().setEmployee(employee);
-        }
         if (!employee.getProjects().isEmpty()) {
+            employee.getProjects().forEach(project -> project.setEmployee(employee));
             employee.getProjects().forEach(project -> project.getPhoneNumbers().forEach(phoneNumber -> phoneNumber.setProject(project)));
             employee.getProjects().forEach(project -> project.getEmails().forEach(email -> email.setProject(project)));
         }
-        if (employee.getVehicle() != null){
+        if (employee.getVehicle() != null) {
             employee.getVehicle().setEmployee(employee);
-            if (employee.getVehicle().getProjectId() != null){
+            if (employee.getVehicle().getProjectId() != null) {
                 employee.getVehicle().getProjectId().setEmployee(employee);
             }
         }
-
+        if (!employee.getTimeSheetList().isEmpty()) {
+            employee.getTimeSheetList().forEach(timeSheet -> timeSheet.setEmployee(employee));
+        }
+        if (employee.getAccommodation() != null) {
+            employee.getAccommodation().getFloors().forEach(floor -> floor.setAccommodation(employee.getAccommodation()));
+            employee.getAccommodation().getUtilities().forEach(utility -> utility.setAccommodation(employee.getAccommodation()));
+            employee.getAccommodation().getFloors().forEach(floor -> floor.getRooms().forEach(room -> room.setFloor(floor)));
+        }
 
 
         employeeRepository.save(employee);
@@ -63,50 +61,39 @@ public class EmployeeService implements EmployeeServiceInterface {
     @Override
     public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO) throws BusinessException {
 
-        logger.info("Updating employee " + employeeDTO.getId());
+        logger.info("Updating employee {}", employeeDTO.getId());
         Optional<Employee> existingEmployeeOpt = employeeRepository.findById(employeeDTO.getId());
         throwExceptionIfEmployeeNotFound(existingEmployeeOpt, employeeDTO.getId());
-        Employee existingEmployee = existingEmployeeOpt.get();
+        Employee existingEmployee = modelMapper.map(employeeDTO, Employee.class);
 
-        existingEmployee.setFirstName(employeeDTO.getFirstName());
-        existingEmployee.setLastName(employeeDTO.getLastName());
-        existingEmployee.setIdentityNumber(employeeDTO.getIdentityNumber());
-        existingEmployee.setGender(employeeDTO.getGender());
-        existingEmployee.setMaritalStatus(employeeDTO.getMaritalStatus());
-        existingEmployee.setNationality(employeeDTO.getNationality());
-        existingEmployee.setCitizenshipCountry(employeeDTO.getCitizenshipCountry());
-        existingEmployee.setDateOfBirth(employeeDTO.getDateOfBirth());
-        existingEmployee.setPlaceOfBirth(employeeDTO.getPlaceOfBirth());
-        existingEmployee.setAddress(employeeDTO.getAddress());
-        existingEmployee.setPhoneNumber(employeeDTO.getPhoneNumber());
-        existingEmployee.setEmail(employeeDTO.getEmail());
-        existingEmployee.setBankName(employeeDTO.getBankName());
-        existingEmployee.setBankAccountNumber(employeeDTO.getBankAccountNumber());
-        existingEmployee.setHasDriversLicense(employeeDTO.isHasDriversLicense());
+        if (!existingEmployee.getSpokenLanguages().isEmpty()) {
+            existingEmployee.getSpokenLanguages().forEach(language -> language.setEmployee(existingEmployee));
+        }
+        if (!existingEmployee.getTimeSheetList().isEmpty()) {
+            existingEmployee.getTimeSheetList().forEach(timeSheet -> timeSheet.setEmployee(existingEmployee));
+        }
+        if (existingEmployee.getVehicle() != null) {
+            existingEmployee.getVehicle().setEmployee(existingEmployee);
+        }
+        if (existingEmployee.getAccommodation() != null) {
+            if (!existingEmployee.getAccommodation().getFloors().isEmpty()) {
+                existingEmployee.getAccommodation().getFloors().forEach(floor -> floor.setAccommodation(existingEmployee.getAccommodation()));
+                existingEmployee.getAccommodation().getFloors().forEach(floor -> floor.getRooms().forEach(room -> room.setFloor(floor)));
+            }
+            if (!existingEmployee.getAccommodation().getUtilities().isEmpty()) {
+                existingEmployee.getAccommodation().getUtilities().forEach(utility -> utility.setAccommodation(existingEmployee.getAccommodation()));
+            }
+        }
+        if (!existingEmployee.getProjects().isEmpty()) {
+            existingEmployee.getProjects().forEach(project -> project.setEmployee(existingEmployee));
+            existingEmployee.getProjects().forEach(project -> project.getPhoneNumbers().forEach(phoneNumber -> phoneNumber.setProject(project)));
+            existingEmployee.getProjects().forEach(project -> project.getEmails().forEach(email -> email.setProject(project)));
+        }
 
-        existingEmployee.setStartingDate(employeeDTO.getStartingDate());
-        existingEmployee.setFinishingDate(employeeDTO.getFinishingDate());
-        existingEmployee.setAccommodation(modelMapper.map(employeeDTO.getAccommodation(), Accommodation.class));
-//        existingEmployee.setContractFile(employeeDTO.getContractFile());
-        existingEmployee.setSalaryPerHour(employeeDTO.getSalaryPerHour());
-        existingEmployee.setContractType(employeeDTO.getContractType());
-        existingEmployee.setVehicle(modelMapper.map(employeeDTO.getVehicle(), Vehicle.class));
-
-        List<Language> languages = employeeDTO.getSpokenLanguages().stream().map(a -> modelMapper.map(a, Language.class)).toList();
-        languages.forEach(language -> language.setEmployee(existingEmployee));
-        existingEmployee.setSpokenLanguages(languages);
-
-        List<Project> projects = employeeDTO.getProjects().stream().map(a -> modelMapper.map(a, Project.class)).toList();
-        projects.forEach(project -> project.setEmployee(existingEmployee)); // this could be int instead of employee
-        existingEmployee.setProjects(projects);
-
-        List<Vehicle> vehicles = employeeDTO.getVehicles().stream().map(a -> modelMapper.map(a, Vehicle.class)).toList();
-        vehicles.forEach(vehicle -> vehicle.setEmployee(existingEmployee));
-        existingEmployee.setVehicles(vehicles);
 
         employeeRepository.save(existingEmployee);
-        logger.info("Employee updated");
         return modelMapper.map(existingEmployee, EmployeeDTO.class);
+
     }
 
     @Override
