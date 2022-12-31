@@ -2,7 +2,6 @@ package com.temporary.workforce.management.dto;
 
 import com.temporary.workforce.management.model.Gender;
 import com.temporary.workforce.management.model.MaritalStatus;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

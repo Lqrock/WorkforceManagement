@@ -18,8 +18,4 @@ public class TimeSheetDTO {
     private int pauseTime;
 
     private String projectName;
-
-    private JobPositionDTO jobPosition;
-
-    private EmployeeDTO employee;
 }

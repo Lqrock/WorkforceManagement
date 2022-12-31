@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/accommodation")
@@ -37,5 +40,11 @@ public class AccommodationController {
     @GetMapping("/get/{accommodationId}")
     public ResponseEntity<AccommodationDTO> getAccommodation(@PathVariable int accommodationId) throws BusinessException {
         return new ResponseEntity<>(accommodationService.getAccommodationDTO(accommodationId), HttpStatus.OK);
+    }
+
+    @GetMapping("/get-all")
+    public ResponseEntity<List<AccommodationDTO>> getAllAccommodations(Model model) {
+        List<AccommodationDTO> accommodations = accommodationService.getAllAccommodations();
+        return new ResponseEntity<>(accommodations, HttpStatus.OK);
     }
 }

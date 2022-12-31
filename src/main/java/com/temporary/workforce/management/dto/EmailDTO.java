@@ -10,6 +10,4 @@ public class EmailDTO {
     private int id;
 
     private String emailAddress;
-
-    private ProjectDTO project;
 }

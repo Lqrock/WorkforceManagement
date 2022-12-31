@@ -8,6 +8,4 @@ public class UtilityDTO {
     private int id;
 
     private String name;
-
-    private AccommodationDTO accommodation;
 }

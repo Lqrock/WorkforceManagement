@@ -2,6 +2,8 @@ package com.temporary.workforce.management.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class RoomDTO {
 
@@ -9,7 +11,5 @@ public class RoomDTO {
 
     private int beds;
 
-    private FloorDTO floor;
-
-//    private List<String> furniture;
+    private List<FurnitureDTO> furniture;
 }

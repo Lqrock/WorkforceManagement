@@ -1,7 +1,6 @@
 package com.temporary.workforce.management.model;
 
 import lombok.Data;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

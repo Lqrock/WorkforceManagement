@@ -3,6 +3,7 @@ package com.temporary.workforce.management.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,7 +22,7 @@ public class Room {
     @JoinColumn(name = "floor_id")
     private Floor floor;
 
-//    @OneToMany(fetch = FetchType.LAZY)
-//    private List<Furniture> furniture;
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Furniture> furniture;
 
 }

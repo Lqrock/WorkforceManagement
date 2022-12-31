@@ -9,6 +9,4 @@ public class LanguageDTO {
     private int id;
 
     private LanguageEnum spokenLanguage;
-
-    private EmployeeDTO employee;
 }

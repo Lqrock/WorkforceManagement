@@ -13,6 +13,7 @@ public class Email {
     @Column(name = "id")
     private int id;
 
+    @javax.validation.constraints.Email(regexp = ".+@.+\\..+")
     @Column(name = "email_address")
     private String emailAddress;
 

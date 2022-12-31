@@ -29,9 +29,9 @@ public class ProjectController {
     }
 
     @DeleteMapping("/delete/{projectId}")
-    public ResponseEntity<ProjectDTO> deleteProject(@PathVariable int projectId) throws BusinessException {
+    public ResponseEntity deleteProject(@PathVariable int projectId) throws BusinessException {
         projectService.deleteProject(projectId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/get/{projectId}")

@@ -34,6 +34,9 @@ public class LanguageService implements LanguageServiceInterface{
         Optional<Language> existingLanguageOpt = languageRepository.findById(languageDTO.getId());
         throwExceptionIfLanguageNotFound(existingLanguageOpt, languageDTO.getId());
         Language existingLanguage = modelMapper.map(languageDTO, Language.class);
+        if (existingLanguageOpt.get().getEmployee() != null) {
+            existingLanguage.setEmployee(existingLanguageOpt.get().getEmployee());
+        }
         languageRepository.save(existingLanguage);
         return modelMapper.map(existingLanguage, LanguageDTO.class);
     }

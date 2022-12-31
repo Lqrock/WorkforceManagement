@@ -50,6 +50,8 @@ public class AccommodationDTO {
 
     private float deposit;
 
+    private List<FurnitureDTO> furniture;
+
 //    private File contractFile; TODO learn
 
 }

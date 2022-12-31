@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService implements EmployeeServiceInterface {
@@ -34,11 +35,11 @@ public class EmployeeService implements EmployeeServiceInterface {
         if (!employeeDTO.getSpokenLanguages().isEmpty()) {
             employee.getSpokenLanguages().forEach(language -> language.setEmployee(employee));
         }
-        if (!employee.getProjects().isEmpty()) {
-            employee.getProjects().forEach(project -> project.setEmployee(employee));
-            employee.getProjects().forEach(project -> project.getPhoneNumbers().forEach(phoneNumber -> phoneNumber.setProject(project)));
-            employee.getProjects().forEach(project -> project.getEmails().forEach(email -> email.setProject(project)));
-        }
+//        if (!employee.getProjects().isEmpty()) {
+//            employee.getProjects().forEach(project -> project.setEmployee(employee));
+//            employee.getProjects().forEach(project -> project.getPhoneNumbers().forEach(phoneNumber -> phoneNumber.setProject(project)));
+//            employee.getProjects().forEach(project -> project.getEmails().forEach(email -> email.setProject(project)));
+//        }
         if (employee.getVehicle() != null) {
             employee.getVehicle().setEmployee(employee);
             if (employee.getVehicle().getProjectId() != null) {
@@ -86,7 +87,7 @@ public class EmployeeService implements EmployeeServiceInterface {
         }
         if (!existingEmployee.getProjects().isEmpty()) {
             existingEmployee.getProjects().forEach(project -> project.setEmployee(existingEmployee));
-            existingEmployee.getProjects().forEach(project -> project.getPhoneNumbers().forEach(phoneNumber -> phoneNumber.setProject(project)));
+//            existingEmployee.getProjects().forEach(project -> project.getPhoneNumbers().forEach(phoneNumber -> phoneNumber.setProject(project)));
             existingEmployee.getProjects().forEach(project -> project.getEmails().forEach(email -> email.setProject(project)));
         }
 

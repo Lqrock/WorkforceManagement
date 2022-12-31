@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -28,11 +27,6 @@ public class ProjectService implements ProjectServiceInterface {
     public void createProject(ProjectDTO projectDTO) {
         logger.info("Creating project {}", projectDTO.getId());
         Project project = modelMapper.map(projectDTO, Project.class);
-        if(!project.getPhoneNumbers().isEmpty()){
-            List<PhoneNumber> phoneNumbers = project.getPhoneNumbers();
-            phoneNumbers.forEach(phoneNumber -> phoneNumber.setProject(project));
-            project.setPhoneNumbers(phoneNumbers);
-        }
         if(!project.getEmails().isEmpty()){
             List<Email> emails = project.getEmails();
             emails.forEach(email -> email.setProject(project));
@@ -46,30 +40,20 @@ public class ProjectService implements ProjectServiceInterface {
         logger.info("Updating project");
         Optional<Project> existingProjectOpt = projectRepository.findById(projectDTO.getId());
         throwExceptionIfProjectNotFound(existingProjectOpt, projectDTO.getId());
-        Project existingProject = existingProjectOpt.get();
-
-        existingProject.setName(projectDTO.getName());
-        existingProject.setCode(projectDTO.getCode());
-        existingProject.setAddress(projectDTO.getAddress());
-        existingProject.setStartingDate(projectDTO.getStartingDate());
-        existingProject.setFinishingDate(projectDTO.getFinishingDate());
-        existingProject.setMaximumEmployeesNumber(projectDTO.getMaximumEmployeesNumber());
-        existingProject.setEmployee(modelMapper.map(projectDTO.getEmployee(), Employee.class));
-
-        List<PhoneNumber> phoneNumbers = projectDTO.getPhoneNumbers().stream().map(a -> modelMapper.map(a, PhoneNumber.class)).toList();
-        phoneNumbers.forEach(phoneNumber -> phoneNumber.setProject(existingProject));
-        existingProject.setPhoneNumbers(phoneNumbers);
-
-        List<Email> emails = projectDTO.getEmails().stream().map(a -> modelMapper.map(a, Email.class)).toList();
-        emails.forEach(email -> email.setProject(existingProject));
-        existingProject.setEmails(emails);
-
-        List<JobPosition> jobPositions = projectDTO.getJobPositions().stream().map(a -> modelMapper.map(a, JobPosition.class)).toList();
-//        jobPositions.forEach(jobPosition -> jobPosition.setProjectId(existingProject));
-        existingProject.setJobPositions(jobPositions);
-
+        Project existingProject = modelMapper.map(projectDTO, Project.class);
+        if (existingProjectOpt.isPresent() && existingProjectOpt.get().getEmployee() != null){
+            existingProject.setEmployee(existingProjectOpt.get().getEmployee());
+        }
+        if (existingProjectOpt.isPresent() && !existingProjectOpt.get().getJobPositions().isEmpty()) {
+            existingProject.setJobPositions(existingProjectOpt.get().getJobPositions());
+        }
+        if (!existingProject.getEmails().isEmpty()) {
+            existingProject.getEmails().forEach(email -> email.setProject(existingProject));
+        }
+        if (!existingProject.getPhoneNumbers().isEmpty()) {
+            existingProject.getPhoneNumbers().forEach(phoneNumber -> phoneNumber.setProject(existingProject));
+        }
         projectRepository.save(existingProject);
-        logger.info("Project updated");
         return modelMapper.map(existingProject, ProjectDTO.class);
     }
 
@@ -85,9 +69,9 @@ public class ProjectService implements ProjectServiceInterface {
     @Override
     public ProjectDTO getProjectDTO(int projectId) throws BusinessException {
         logger.info("Retrieving projectDTO");
-        Optional<Project> project = projectRepository.findById(projectId);
-        throwExceptionIfProjectNotFound(project, projectId);
-        return modelMapper.map(project, ProjectDTO.class);
+        Optional<Project> projectOpt = projectRepository.findById(projectId);
+        throwExceptionIfProjectNotFound(projectOpt, projectId);
+        return modelMapper.map(projectOpt, ProjectDTO.class);
     }
 
     @Override

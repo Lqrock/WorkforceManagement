@@ -1,17 +1,13 @@
 package com.temporary.workforce.management.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "project")
 public class Project {
@@ -39,7 +35,6 @@ public class Project {
     @Column(name = "finishing_date")
     private LocalDate finishingDate;
 
-    @NotEmpty
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PhoneNumber> phoneNumbers;
 
@@ -54,9 +49,7 @@ public class Project {
     @JoinTable(name = "project_job_position", joinColumns = {@JoinColumn(name = "project_id")}, inverseJoinColumns = {@JoinColumn(name = "job_position_id")})
     private List<JobPosition> jobPositions;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
-
-
 }

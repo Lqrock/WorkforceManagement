@@ -35,21 +35,15 @@ public class TimeSheetService implements TimeSheetServiceInterface {
         logger.info("Updating time sheet");
         Optional<TimeSheet> existingTimeSheetOpt = timeSheetRepository.findById(timeSheetDTO.getId());
         throwExceptionIfTimeSheetNotFound(existingTimeSheetOpt, timeSheetDTO.getId());
-        TimeSheet existingTimeSheet = existingTimeSheetOpt.get();
-        existingTimeSheet = modelMapper.map(timeSheetDTO, TimeSheet.class);
+        TimeSheet existingTimeSheet = modelMapper.map(timeSheetDTO, TimeSheet.class);
+        if (existingTimeSheetOpt.isPresent() && existingTimeSheetOpt.get().getEmployee() != null) {
+            existingTimeSheet.setEmployee(existingTimeSheetOpt.get().getEmployee());
+        }
+        if (existingTimeSheetOpt.isPresent() && existingTimeSheetOpt.get().getJobPosition() != null) {
+            existingTimeSheet.setJobPosition(existingTimeSheetOpt.get().getJobPosition());
+        }
         timeSheetRepository.save(existingTimeSheet);
-        logger.info("TimeSheet updated");
         return modelMapper.map(existingTimeSheet, TimeSheetDTO.class);
-
-//        existingTimeSheet.setJobType(timeSheetDTO.getJobType());
-//        existingTimeSheet.setStartingTime(timeSheetDTO.getStartingTime());
-//        existingTimeSheet.setFinishingTime(timeSheetDTO.getFinishingTime());
-//        existingTimeSheet.setPauseTime(timeSheetDTO.getPauseTime());
-//        existingTimeSheet.setProjectsName(timeSheetDTO.getProjectsName());
-//        if(timeSheetDTO.getJobPositionDTO() != null){
-//        existingTimeSheet.setJobPosition(modelMapper.map(timeSheetDTO.getJobPositionDTO(), JobPosition.class));
-//        }
-
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.temporary.workforce.management.service;
 
 import com.temporary.workforce.management.dto.VehicleDTO;
 import com.temporary.workforce.management.exception.BusinessException;
-import com.temporary.workforce.management.model.Employee;
 import com.temporary.workforce.management.model.Vehicle;
 import com.temporary.workforce.management.repository.VehicleRepository;
 import org.modelmapper.ModelMapper;
@@ -11,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,11 +33,16 @@ public class VehicleService implements VehicleServiceInterface {
     @Override
     public VehicleDTO updateVehicle(VehicleDTO vehicleDTO) throws BusinessException {
 
-        logger.info("Updating vehicle " + vehicleDTO.getId());
+        logger.info("Updating vehicle {}", vehicleDTO.getId());
         Optional<Vehicle> existingVehicleOpt = vehicleRepository.findById(vehicleDTO.getId());
         throwExceptionIfVehicleNotFound(existingVehicleOpt, vehicleDTO.getId());
-        Vehicle existingVehicle = existingVehicleOpt.get();
-
+        Vehicle existingVehicle = modelMapper.map(vehicleDTO, Vehicle.class);
+        if (existingVehicleOpt.isPresent() && existingVehicleOpt.get().getEmployee() != null) {
+            existingVehicle.setEmployee(existingVehicleOpt.get().getEmployee());
+        }
+        if (existingVehicleOpt.isPresent() && existingVehicleOpt.get().getProjectId() != null) {
+            existingVehicle.setProjectId(existingVehicleOpt.get().getProjectId());
+        }
         vehicleRepository.save(existingVehicle);
         logger.info("Vehicle updated");
         return modelMapper.map(existingVehicle, VehicleDTO.class);

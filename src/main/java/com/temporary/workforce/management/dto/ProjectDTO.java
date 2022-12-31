@@ -1,6 +1,5 @@
 package com.temporary.workforce.management.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -28,6 +27,4 @@ public class ProjectDTO {
     private int maximumEmployeesNumber;
 
     private List<JobPositionDTO> jobPositions;
-
-    private EmployeeDTO employee;
 }

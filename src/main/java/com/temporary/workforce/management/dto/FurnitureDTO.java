@@ -3,9 +3,9 @@ package com.temporary.workforce.management.dto;
 import lombok.Data;
 
 @Data
-public class JobPositionDTO {
+public class FurnitureDTO {
 
     private int id;
 
-    private String title;
+    private String name;
 }
