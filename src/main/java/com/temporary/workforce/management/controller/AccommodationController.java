@@ -43,7 +43,7 @@ public class AccommodationController {
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity<List<AccommodationDTO>> getAllAccommodations(Model model) {
+    public ResponseEntity<List<AccommodationDTO>> getAllAccommodations() {
         List<AccommodationDTO> accommodations = accommodationService.getAllAccommodations();
         return new ResponseEntity<>(accommodations, HttpStatus.OK);
     }
