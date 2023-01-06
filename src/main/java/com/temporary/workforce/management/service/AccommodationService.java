@@ -29,7 +29,7 @@ public class AccommodationService implements AccommodationServiceInterface {
     public void createAccommodation(AccommodationDTO accommodationDTO) {
         logger.info("Starting accommodation creation");
         Accommodation accommodation = modelMapper.map(accommodationDTO, Accommodation.class);
-        if (!accommodation.getFloors().isEmpty()) {
+        if ( accommodation.getFloors() != null && !accommodation.getFloors().isEmpty()) {
             accommodation.getFloors().forEach(floor -> {
                 floor.setAccommodation(accommodation);
                 if (!floor.getRooms().isEmpty()) {
@@ -43,7 +43,7 @@ public class AccommodationService implements AccommodationServiceInterface {
                 }
             });
         }
-        if (!accommodation.getUtilities().isEmpty()) {
+        if (accommodation.getUtilities() != null && !accommodation.getUtilities().isEmpty()) {
             accommodation.getUtilities().forEach(utility -> utility.setAccommodation(accommodation));
         }
         if (accommodation.getFurniture() != null && !accommodation.getFurniture().isEmpty()) {

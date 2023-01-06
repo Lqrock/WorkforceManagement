@@ -19,11 +19,11 @@ public class AccommodationController {
     @Autowired
     AccommodationService accommodationService;
 
-    @PostMapping("/create")
-    public ResponseEntity<AccommodationDTO> createAccommodation(@RequestBody AccommodationDTO accommodationDTO) {
-        accommodationService.createAccommodation(accommodationDTO);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+//    @PostMapping("/create")
+//    public ResponseEntity<AccommodationDTO> createAccommodation(@RequestBody AccommodationDTO accommodationDTO) {
+//        accommodationService.createAccommodation(accommodationDTO);
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 
     @PutMapping("/update")
     public ResponseEntity<AccommodationDTO> updateAccommodation(@RequestBody AccommodationDTO accommodationDTO) throws BusinessException {
@@ -43,8 +43,25 @@ public class AccommodationController {
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity<List<AccommodationDTO>> getAllAccommodations() {
-        List<AccommodationDTO> accommodations = accommodationService.getAllAccommodations();
-        return new ResponseEntity<>(accommodations, HttpStatus.OK);
+    public String welcome(Model model) throws BusinessException {
+        List<AccommodationDTO> accommodationDTOList = accommodationService.getAllAccommodations();
+        model.addAttribute("accommodations" ,accommodationDTOList);
+        return "accommodationTable";
     }
+
+    @RequestMapping("showform")
+    public String showForm(Model model) {
+        AccommodationDTO accommodationDTO = new AccommodationDTO();
+        model.addAttribute("accommodationDTO", accommodationDTO);
+        return "accommodationForm";
+    }
+
+    @RequestMapping("/create")
+    public String create(@ModelAttribute("accommodationDTO") AccommodationDTO accommodationDTO, Model model){
+        accommodationService.createAccommodation(accommodationDTO);
+        List<AccommodationDTO> accommodationDTOList = accommodationService.getAllAccommodations();
+        model.addAttribute("accommodations" ,accommodationDTOList);
+        return "accommodationTable";
+    }
+
 }

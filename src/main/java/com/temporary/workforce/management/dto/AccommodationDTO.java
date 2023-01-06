@@ -12,29 +12,29 @@ import java.util.List;
 @Getter
 public class AccommodationDTO {
 
-    private int id;
+    private int id; //
 
-    private int houseNumber;
+    private int houseNumber; //
 
     private int rentalPeriod;
 
     private int noticePeriod;
 
-    private String ownersName;
+    private String ownersName; //
 
-    private String ownersPhoneNumber;
+    private String ownersPhoneNumber; //
 
-    private String email;
+    private String email; //
 
-    private OwnershipType ownershipType;
+    private OwnershipType ownershipType; //
 
-    private Long ownersBankAccount;
+    private Long ownersBankAccount; //
 
-    private String province;
+    private String province; //
 
-    private String city;
+    private String city; //
 
-    private String address;
+    private String address; //
 
     private Long postalCode;
 

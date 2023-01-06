@@ -1,7 +1,9 @@
 package com.temporary.workforce.management.service;
 
+import com.temporary.workforce.management.dto.AccommodationDTO;
 import com.temporary.workforce.management.dto.VehicleDTO;
 import com.temporary.workforce.management.exception.BusinessException;
+import com.temporary.workforce.management.model.Accommodation;
 import com.temporary.workforce.management.model.Vehicle;
 import com.temporary.workforce.management.repository.VehicleRepository;
 import org.modelmapper.ModelMapper;
@@ -10,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -71,6 +75,14 @@ public class VehicleService implements VehicleServiceInterface {
         Optional<Vehicle> vehicle = vehicleRepository.findById(vehicleId);
         throwExceptionIfVehicleNotFound(vehicle, vehicleId);
         return modelMapper.map(vehicle, VehicleDTO.class);
+    }
+
+    @Override
+    public List<VehicleDTO> getAllVehicles() {
+        List<Vehicle> vehicles = vehicleRepository.findAll();
+        List<VehicleDTO> vehicleDTOList = new ArrayList<>();
+        vehicles.forEach(vehicle -> vehicleDTOList.add(modelMapper.map(vehicle, VehicleDTO.class)));
+        return vehicleDTOList;
     }
 
     void throwExceptionIfVehicleNotFound(Optional<Vehicle> vehicle, int vehicleId) throws BusinessException {
