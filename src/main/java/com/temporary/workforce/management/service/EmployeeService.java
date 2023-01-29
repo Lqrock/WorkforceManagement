@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -120,6 +121,16 @@ public class EmployeeService implements EmployeeServiceInterface {
         Optional<Employee> employee = employeeRepository.findById(employeeId);
         throwExceptionIfEmployeeNotFound(employee, employeeId);
         return employee;
+    }
+
+    @Override
+    public List<EmployeeDTO> getAllAccommodations() {
+        List<Employee> employees = employeeRepository.findAll();
+        List<EmployeeDTO> employeeDTOList = new ArrayList<>();
+        if (!employees.isEmpty()) {
+            employees.forEach(employee -> employeeDTOList.add(modelMapper.map(employee, EmployeeDTO.class)));
+        }
+        return employeeDTOList;
     }
 
     public void throwExceptionIfEmployeeNotFound(Optional<Employee> employee, int employeeId) throws BusinessException {

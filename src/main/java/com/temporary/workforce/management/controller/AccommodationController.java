@@ -19,11 +19,11 @@ public class AccommodationController {
     @Autowired
     AccommodationService accommodationService;
 
-//    @PostMapping("/create")
-//    public ResponseEntity<AccommodationDTO> createAccommodation(@RequestBody AccommodationDTO accommodationDTO) {
-//        accommodationService.createAccommodation(accommodationDTO);
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-//    }
+    @PostMapping("/create")
+    public ResponseEntity<AccommodationDTO> createAccommodation(@RequestBody AccommodationDTO accommodationDTO) {
+        accommodationService.createAccommodation(accommodationDTO);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 
     @PutMapping("/update")
     public ResponseEntity<AccommodationDTO> updateAccommodation(@RequestBody AccommodationDTO accommodationDTO) throws BusinessException {
@@ -43,25 +43,24 @@ public class AccommodationController {
     }
 
     @GetMapping("/get-all")
-    public String welcome(Model model) throws BusinessException {
+    public String showAllAccommodations(Model model) {
         List<AccommodationDTO> accommodationDTOList = accommodationService.getAllAccommodations();
-        model.addAttribute("accommodations" ,accommodationDTOList);
-        return "accommodationTable";
+        model.addAttribute("accommodations", accommodationDTOList);
+        return "show-all-accommodations";
     }
 
-    @RequestMapping("showform")
-    public String showForm(Model model) {
+    @GetMapping("/register")
+    public String showAccommodationForm(Model model) {
         AccommodationDTO accommodationDTO = new AccommodationDTO();
-        model.addAttribute("accommodationDTO", accommodationDTO);
-        return "accommodationForm";
+        model.addAttribute("accommodation", accommodationDTO);
+        return "create-accommodation";
     }
 
-    @RequestMapping("/create")
-    public String create(@ModelAttribute("accommodationDTO") AccommodationDTO accommodationDTO, Model model){
+    @PostMapping("/register")
+    public String registerAccommodation(Model model, @ModelAttribute("accommodation") AccommodationDTO accommodationDTO) {
         accommodationService.createAccommodation(accommodationDTO);
         List<AccommodationDTO> accommodationDTOList = accommodationService.getAllAccommodations();
-        model.addAttribute("accommodations" ,accommodationDTOList);
-        return "accommodationTable";
+        model.addAttribute("accommodations", accommodationDTOList);
+        return "show-all-accommodations";
     }
-
 }

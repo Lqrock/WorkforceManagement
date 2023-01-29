@@ -85,6 +85,16 @@ public class VehicleService implements VehicleServiceInterface {
         return vehicleDTOList;
     }
 
+    @Override
+    public List<VehicleDTO> getAllAccommodations() {
+        List<Vehicle> vehicles = vehicleRepository.findAll();
+        List<VehicleDTO> vehicleDTOList = new ArrayList<>();
+        if (!vehicles.isEmpty()) {
+            vehicles.forEach(vehicle -> vehicleDTOList.add(modelMapper.map(vehicle, VehicleDTO.class)));
+        }
+        return vehicleDTOList;
+    }
+
     void throwExceptionIfVehicleNotFound(Optional<Vehicle> vehicle, int vehicleId) throws BusinessException {
         if (vehicle.isEmpty()) {
             throw new BusinessException("Vehicle with ID " + vehicleId + " not found");

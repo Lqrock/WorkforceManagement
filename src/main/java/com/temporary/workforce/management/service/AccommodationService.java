@@ -3,7 +3,6 @@ package com.temporary.workforce.management.service;
 import com.temporary.workforce.management.dto.AccommodationDTO;
 import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.model.Accommodation;
-import com.temporary.workforce.management.model.Floor;
 import com.temporary.workforce.management.model.Room;
 import com.temporary.workforce.management.repository.AccommodationRepository;
 import org.modelmapper.ModelMapper;
@@ -27,6 +26,8 @@ public class AccommodationService implements AccommodationServiceInterface {
 
     @Override
     public void createAccommodation(AccommodationDTO accommodationDTO) {
+
+
         logger.info("Starting accommodation creation");
         Accommodation accommodation = modelMapper.map(accommodationDTO, Accommodation.class);
         if ( accommodation.getFloors() != null && !accommodation.getFloors().isEmpty()) {
@@ -34,7 +35,7 @@ public class AccommodationService implements AccommodationServiceInterface {
                 floor.setAccommodation(accommodation);
                 if (!floor.getRooms().isEmpty()) {
                     floor.getRooms().forEach(room -> room.setFloor(floor));
-                    for(Room room:floor.getRooms()){
+                    for (Room room:floor.getRooms()){
                         if (room.getFurniture() != null && !room.getFurniture().isEmpty()) {
                             room.getFurniture().forEach(furniture -> furniture.setRoom(room));
                             room.getFurniture().forEach(furniture -> furniture.setAccommodation(accommodation));

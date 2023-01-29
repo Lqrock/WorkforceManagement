@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+</head>
+<body>
+<table id="dtHorizontalExample" class="table table-striped table-bordered table-md" cellspacing="3" width="100%">
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Model</th>
+        <th scope="col">Owner's Name</th>
+        <th scope="col">Plate Number</th>
+        <th scope="col">VIN</th>
+        <th scope="col">Mileage</th>
+        <th scope="col">Tire Type</th>
+        <th scope="col">Insurance Type</th>
+        <th scope="col">DKV Number</th>
+        <th scope="col">GPS Number</th>
+        <th scope="col">tuf Expiration Date</th>
+        <th scope="col">Insurance Expiration Date</th>
+        <th scope="col">Oil Change Indicator</th>
+        <th scope="col">Fuel Injector Change Indicator</th>
+        <th scope="col">Timing Belt Change Indicator</th>
+        <th scope="col">AdBlue Change Indicator</th>
+        <th scope="col">Fuel Injector Filter Change Required</th>
+        <th scope="col">Anti Frost Change Required</th>
+        <th scope="col">Air Filter Change Required</th>
+        <th scope="col">Inside Air Filter Change Required</th>
+        <th scope="col">Brake Fluid Change Required</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vehicle: ${vehicles}">
+        <td th:text="${vehicle.id}"></td>
+        <td th:text="${vehicle.brand}"></td>
+        <td th:text="${vehicle.model}"></td>
+        <td th:text="${vehicle.ownersName}"></td>
+        <td th:text="${vehicle.plateNumber}"></td>
+        <td th:text="${vehicle.vin}"></td>
+        <td th:text="${vehicle.mileage}"></td>
+        <td th:text="${vehicle.tireType}"></td>
+        <td th:text="${vehicle.insuranceType}"></td>
+        <td th:text="${vehicle.dkvNumber}"></td>
+        <td th:text="${vehicle.gpsNumber}"></td>
+        <td th:text="${vehicle.tufExpirationDate}"></td>
+        <td th:text="${vehicle.insuranceExpirationDate}"></td>
+        <td th:text="${vehicle.oilChangeIndicator}"></td>
+        <td th:text="${vehicle.fuelInjectorChangeIndicator}"></td>
+        <td th:text="${vehicle.timingBeltChangeIndicator}"></td>
+        <td th:text="${vehicle.adBlueChangeIndicator}"></td>
+        <td th:text="${vehicle.fuelInjectorFilterChangeRequired}"></td>
+        <td th:text="${vehicle.antiFrostChangeRequired}"></td>
+        <td th:text="${vehicle.airFilterChangeRequired}"></td>
+        <td th:text="${vehicle.insideAirFilterChangeRequired}"></td>
+        <td th:text="${vehicle.brakeFluidChangeRequired}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

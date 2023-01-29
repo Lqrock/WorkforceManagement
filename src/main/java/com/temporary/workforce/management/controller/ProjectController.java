@@ -1,5 +1,6 @@
 package com.temporary.workforce.management.controller;
 
+import com.temporary.workforce.management.dto.AccommodationDTO;
 import com.temporary.workforce.management.dto.ProjectDTO;
 import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.service.ProjectService;
@@ -7,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/project")
@@ -38,4 +42,12 @@ public class ProjectController {
     public ResponseEntity<ProjectDTO> getProject(@PathVariable int projectId) throws BusinessException {
         return new ResponseEntity<>(projectService.getProjectDTO(projectId), HttpStatus.OK);
     }
+
+    @GetMapping("/get-all")
+    public String showAllProjects(Model model) {
+        List<ProjectDTO> projectDTOList = projectService.getAllAccommodations();
+        model.addAttribute("projects", projectDTOList);
+        return "show-all-projects";
+    }
+
 }

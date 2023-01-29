@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -69,6 +71,16 @@ public class TimeSheetService implements TimeSheetServiceInterface {
         Optional<TimeSheet> timeSheet = timeSheetRepository.findById(timeSheetId);
         throwExceptionIfTimeSheetNotFound(timeSheet, timeSheetId);
         return timeSheet;
+    }
+
+    @Override
+    public List<TimeSheetDTO> getAllTimeSheets() {
+        List<TimeSheet> timeSheets = timeSheetRepository.findAll();
+        List<TimeSheetDTO> timeSheetDTOList = new ArrayList<>();
+        if (!timeSheets.isEmpty()) {
+            timeSheets.forEach(timeSheet -> timeSheetDTOList.add(modelMapper.map(timeSheet, TimeSheetDTO.class)));
+        }
+        return timeSheetDTOList;
     }
 
     void throwExceptionIfTimeSheetNotFound(Optional<TimeSheet> timeSheet, int timeSheetId) throws BusinessException {

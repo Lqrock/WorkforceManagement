@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,6 +82,16 @@ public class ProjectService implements ProjectServiceInterface {
         Optional<Project> project = projectRepository.findById(projectId);
         throwExceptionIfProjectNotFound(project, projectId);
         return project;
+    }
+
+    @Override
+    public List<ProjectDTO> getAllAccommodations() {
+        List<Project> projects = projectRepository.findAll();
+        List<ProjectDTO> projectDTOList = new ArrayList<>();
+        if (projects != null && !projects.isEmpty()) {
+            projects.forEach(project -> projectDTOList.add(modelMapper.map(project, ProjectDTO.class)));
+        }
+        return projectDTOList;
     }
 
     void throwExceptionIfProjectNotFound(Optional<Project> project, int projectId) throws BusinessException {

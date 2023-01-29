@@ -1,5 +1,6 @@
 package com.temporary.workforce.management.controller;
 
+import com.temporary.workforce.management.dto.AccommodationDTO;
 import com.temporary.workforce.management.dto.EmployeeDTO;
 import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.service.EmployeeService;
@@ -7,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/employee")
@@ -37,5 +41,12 @@ public class EmployeeController {
     @GetMapping("/get/{employeeId}")
     public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable int employeeId) throws BusinessException {
         return new ResponseEntity<>(employeeService.getEmployeeDTO(employeeId), HttpStatus.OK);
+    }
+
+    @GetMapping("/get-all")
+    public String showAllEmployees(Model model) {
+        List<EmployeeDTO> employeeDTOList = employeeService.getAllAccommodations();
+        model.addAttribute("employees", employeeDTOList);
+        return "show-all-employees";
     }
 }

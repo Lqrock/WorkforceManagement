@@ -22,4 +22,6 @@ public interface VehicleServiceInterface {
     VehicleDTO getVehicleDTO(int vehicleId) throws BusinessException;
 
     List<VehicleDTO> getAllVehicles();
+
+    List<VehicleDTO> getAllAccommodations();
 }

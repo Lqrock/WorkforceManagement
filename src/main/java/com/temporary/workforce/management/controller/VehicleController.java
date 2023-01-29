@@ -44,9 +44,9 @@ public class VehicleController {
     }
 
     @GetMapping("/get-all")
-    public String getAllVehicles(Model model) throws BusinessException {
-        List<VehicleDTO> vehicleDTOList = vehicleService.getAllVehicles();
+    public String showAllVehicles(Model model) {
+        List<VehicleDTO> vehicleDTOList = vehicleService.getAllAccommodations();
         model.addAttribute("vehicles", vehicleDTOList);
-        return "vehicleTable";
+        return "show-all-vehicles";
     }
 }

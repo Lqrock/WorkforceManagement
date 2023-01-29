@@ -5,6 +5,7 @@ import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.model.TimeSheet;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,4 +21,5 @@ public interface TimeSheetServiceInterface {
 
     Optional<TimeSheet> getTimeSheet(int timeSheetId) throws BusinessException;
 
+    List<TimeSheetDTO> getAllTimeSheets();
 }

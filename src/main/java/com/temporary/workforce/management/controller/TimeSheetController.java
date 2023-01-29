@@ -1,5 +1,6 @@
 package com.temporary.workforce.management.controller;
 
+import com.temporary.workforce.management.dto.EmployeeDTO;
 import com.temporary.workforce.management.dto.TimeSheetDTO;
 import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.service.TimeSheetService;
@@ -7,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/timesheet")
@@ -36,5 +40,12 @@ public class TimeSheetController {
     @GetMapping("/get/{timeSheetId}")
     public ResponseEntity<TimeSheetDTO> getTimeSheet(@PathVariable int timeSheetId) throws BusinessException {
         return new ResponseEntity<>(timeSheetService.getTimeSheetDTO(timeSheetId), HttpStatus.OK);
+    }
+
+    @GetMapping("/get-all")
+    public String showAllTimeSheets(Model model) {
+        List<TimeSheetDTO> timeSheetDTOList = timeSheetService.getAllTimeSheets();
+        model.addAttribute("timeSheets", timeSheetDTOList);
+        return "show-all-timesheets";
     }
 }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<form action="#" th:action="@{/accommodation/register}" method="post" th:object="${accommodation}">
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="ownersName">Owners Name</label>
+        <input type="text" class="form-control" id="ownersName" placeholder="Enter Name" th:field="*{ownersName}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="ownershipType">Ownership Type</label>
+        <input type="text" class="form-control" id="ownershipType" placeholder="LEGAL or NATURAL" th:field="*{ownershipType}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" placeholder="Enter City" th:field="*{city}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" placeholder="Enter Address" th:field="*{address}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="province">Province</label>
+        <input type="text" class="form-control" id="province" placeholder="Enter province" th:field="*{province}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="rentalPeriod">Rental Period</label>
+        <input type="text" class="form-control" id="rentalPeriod" placeholder="Rental Period" th:field="*{rentalPeriod}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="noticePeriod">Notice Period</label>
+        <input type="text" class="form-control" id="noticePeriod" placeholder="Notice Period" th:field="*{noticePeriod}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="hasInternet">Has Internet?</label>
+        <input type="text" class="form-control" id="hasInternet" placeholder="Has Internet?" th:field="*{hasInternet}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="hasParking">Has Parking?</label>
+        <input type="text" class="form-control" id="hasParking" placeholder="Has Parking?" th:field="*{hasParking}">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="deposit">Deposit Amount</label>
+        <input type="text" class="form-control" id="deposit" placeholder="Deposit amount" th:field="*{deposit}">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

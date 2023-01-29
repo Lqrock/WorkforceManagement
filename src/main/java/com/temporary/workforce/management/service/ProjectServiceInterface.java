@@ -5,6 +5,7 @@ import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.model.Project;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,4 +21,5 @@ public interface ProjectServiceInterface {
 
     Optional<Project> getProject(int projectId) throws BusinessException;
 
+    List<ProjectDTO> getAllAccommodations();
 }

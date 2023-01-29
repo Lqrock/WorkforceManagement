@@ -6,54 +6,53 @@ import com.temporary.workforce.management.model.VehicleOwner;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 public class VehicleDTO {
 
     private int id;
 
-    private String model; //
-
     private String brand;
 
-    private String plateNumber; //
+    private String model;
 
-    private Long vin; //
+    private VehicleOwner ownersName;
 
-    private int mileage; //
+    private String plateNumber;
 
-    private TireType tireType; //
+    private Long vin;
 
-    private String insuranceType; //
+    private int mileage;
 
-    private DkvNumber dkvNumber; //
+    private TireType tireType;
 
-    private String gpsNumber; //
+    private String insuranceType;
 
-    private VehicleOwner ownersName; //
+    private DkvNumber dkvNumber;
 
-    private LocalDate tufExpirationDate; //
+    private String gpsNumber;
 
-    private LocalDate insuranceExpirationDate; //
+    private LocalDate tufExpirationDate;
+
+    private LocalDate insuranceExpirationDate;
 
     private int oilChangeIndicator;
 
-    private int fuelInjectorChangeIndicator; //
+    private int fuelInjectorChangeIndicator;
 
-    private int timingBeltChangeIndicator; //
+    private int timingBeltChangeIndicator;
 
-    private int adBlueChangeIndicator; //
+    private int adBlueChangeIndicator;
 
 //    private List images; // TODO LEARN THIS
 
-    private boolean fuelInjectorFilterChangeRequired; //
+    private boolean fuelInjectorFilterChangeRequired;
 
-    private boolean antiFrostChangeRequired; //
+    private boolean antiFrostChangeRequired;
 
-    private boolean airFilterChangeRequired; //
+    private boolean airFilterChangeRequired;
 
-    private boolean insideAirFilterChangeRequired; //
+    private boolean insideAirFilterChangeRequired;
 
-    private boolean brakeFluidChangeRequired; //
+    private boolean brakeFluidChangeRequired;
 }

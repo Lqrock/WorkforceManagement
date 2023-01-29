@@ -14,6 +14,26 @@
             owners name: <form:input path="ownersName" />
             <br><br>
             email:  <form:input path="email" />
+            <br><br>
+            ownership type:  <form:input path="ownershipType" />
+            <br><br>
+            city:  <form:input path="city" />
+            <br><br>
+            address:  <form:input path="address" />
+            <br><br>
+            province:  <form:input path="province" />
+            <br><br>
+            rental Period:  <form:input path="rentalPeriod" />
+            <br><br>
+            notice Period  <form:input path="noticePeriod" />
+            <br><br>
+            Internet status:  <form:input path="hasInternet" />
+            <br><br>
+            Parking status:  <form:input path="hasParking" />
+            <br><br>
+            deposit:  <form:input path="deposit" />
+            <br><br>
+
             <input type="submit" value="create" />
         </form:form>
 
