@@ -38,15 +38,27 @@ public class VehicleController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping("/get/{vehicleId}")
-    public ResponseEntity getVehicle(@PathVariable int vehicleId) throws BusinessException {
-        return new ResponseEntity(vehicleService.getVehicleDTO(vehicleId), HttpStatus.OK);
-    }
+//    @GetMapping("/get/{vehicleId}")
+//    public ResponseEntity getVehicle(@PathVariable int vehicleId) throws BusinessException {
+//        return new ResponseEntity(vehicleService.getVehicleDTO(vehicleId), HttpStatus.OK);
+//    }
 
     @GetMapping("/get-all")
     public String showAllVehicles(Model model) {
         List<VehicleDTO> vehicleDTOList = vehicleService.getAllAccommodations();
         model.addAttribute("vehicles", vehicleDTOList);
         return "show-all-vehicles";
+    }
+
+    @GetMapping("/details")
+    public String details() {
+        return "vehicle-details";
+    }
+
+    @GetMapping("/get/{vehicleId}")
+    public String getVehicle(@PathVariable int vehicleId, Model model) throws BusinessException {
+        VehicleDTO vehicleDTO = vehicleService.getVehicleDTO(vehicleId);
+        model.addAttribute("vehicle", vehicleDTO);
+        return "vehicle-details";
     }
 }

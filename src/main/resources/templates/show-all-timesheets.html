@@ -1,36 +1,124 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Time Sheet List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link th:href="@{/css/style.css}" rel="stylesheet"/>
     <script type="text/javascript" th:src="@{/js/script.js}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Employee List</title>
+    <link rel="icon" type="image/x-icon" href="resources/java.ico"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet"/>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<table id="dtHorizontalExample" class="table table-striped table-bordered table-md" cellspacing="3" width="100%">
-    <thead>
-    <tr>
-        <th scope="col">id</th>
-        <th scope="col">Project Name</th>
-        <th scope="col">Job Type</th>
-        <th scope="col">Starting Time</th>
-        <th scope="col">Finishing Time</th>
-        <th scope="col">Pause Time</th>
+<body class="bg-sgn">
 
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="timesheet: ${timeSheets}">
-        <td th:text="${timesheet.id}"></td>
-        <td th:text="${timesheet.projectName}"></td>
-        <td th:text="${timesheet.jobType}"></td>
-        <td th:text="${timesheet.startingTime}"></td>
-        <td th:text="${timesheet.finishingTime}"></td>
-        <td th:text="${timesheet.pauseTime}"></td>
-    </tr>
-    </tbody>
-</table>
+<!-- navigation bar -->
+<div id="top-page">
+    <nav class="navbar navbar-expand-lg bg-black fixed-top" id="nav-main">
+        <div class="container px-5 px-lg-5">
+            <i class="navbar-brand fa-brands fa-java fa-spin "></i>
+            <a href="../siavash/index.html#top-page" class="navbar-brand cool-navbrand">WFM</a>
+            <i class="navbar-brand fa-brands fa-java fa-spin "></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#rps-navbar">
+                <span class="fa fa-list" style="color:green"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="rps-navbar">
+                <ul dir="rtl" class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link cool-link-mid" href="../siavash/index.html#top-page"><h5
+                            class="px-3"><i class="fa fa-home" aria-hidden="true"></i> خانه </h5></a></li>
+                    <li class="nav-item"><a class="nav-link cool-link-mid" href="../siavash/sign-up.html"><h5
+                            class="px-3"><i class="fa fa-user-plus" aria-hidden="true"></i> ثبت نام</h5></a></li>
+                    <li class="nav-item"><a class="nav-link cool-link-mid" href="../siavash/index.html#ShowCases"><h5
+                            class="px-3"><i class="fa fa-bar-chart" aria-hidden="true"></i> مزیت ها</h5></a></li>
+                    <li class="nav-item"><a class="nav-link cool-link-mid" href="#contactUs"><h5 class="px-3"><i
+                            class="fa fa-envelope" aria-hidden="true"></i> ارتباط با ما</h5></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container pt-5 mt-5 mt-lg-5 align-items-center justify-content-center" id="registrationForm">
+    <div class="d-flex justify-content-center">
+        <div class="text-center px-5 py-5 my-5"
+             style="background:linear-gradient(0deg, rgb(82, 67, 90), rgb(71, 80, 104))">
+            <table id="dtHorizontalExample" class="table text-white table-bordered table-md" cellspacing="3" width="100%">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Project Name</th>
+                    <th scope="col">Job Type</th>
+                    <th scope="col">Starting Time</th>
+                    <th scope="col">Finishing Time</th>
+                    <th scope="col">Pause Time</th>
+
+                </tr>
+                </thead>
+                <tbody style="cursor:pointer;">
+                <tr onclick="getTimesheetID(this)" th:each="timesheet: ${timeSheets}">
+                    <td th:text="${timesheet.id}"></td>
+                    <td th:text="${timesheet.projectName}"></td>
+                    <td th:text="${timesheet.jobType}"></td>
+                    <td th:text="${timesheet.startingTime}"></td>
+                    <td th:text="${timesheet.finishingTime}"></td>
+                    <td th:text="${timesheet.pauseTime}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <input class="text-center" style="width:70px;" type="text" id="timesheetId" value="">
+            <br>
+            <a type="button" href="#" class="btn btn-primary mt-4" id="showTimesheet" onclick="getTimesheet()">show details</a>
+        </div>
+    </div>
+</div>
+
+
+<section class="contact-section bg-black">
+    <div class="container">
+        <div class="row">
+            <div class="col mt-5 mb-5">
+                <div class="card py-3 h-60">
+                    <div class="card-body text-center">
+                        <a href="https://telegram.me/Lqrock" style="color:black;">
+                            <i class="fa-brands fa-telegram" style="font-size:xx-large;" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://telegram.me/Lqrock" style="color:black; font-size: 20px;"><p>Telegram</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mt-5 mb-5">
+                <div class="card py-3 h-60">
+                    <div class="card-body text-center">
+                        <a href="mailto:Siavash.Azarnia@Gmail.com" style="color:black;">
+                            <i class="fa fa-envelope" style="font-size:xx-large;" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:Siavash.Azarnia@Gmail.com" style="color:black; font-size: 20px;"><p>Email
+                            Address</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mt-5 mb-5">
+                <div class="card py-3 h-60">
+                    <div class="card-body text-center">
+                        <a href="https://www.linkedin.com/in/siavash-azarnia-73b6b0232/" style="color:black;">
+                            <i class="fa-brands fa-linkedin" style="font-size:xx-large;" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/siavash-azarnia-73b6b0232/"
+                           style="color:black; font-size: 20px;"><p>LinkedIn</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer bg-black small text-center text-white pb-5" id="contactUs">
+    <div class="container px-4 px-lg-5">Copyright &copy; Lqrock</div>
+</footer>
+
+
 </body>
 </html>

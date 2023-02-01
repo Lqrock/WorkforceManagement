@@ -1,70 +1,138 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registration Form</title>
+    <link rel="icon" type="image/x-icon" href="resources/java.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"/>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<form action="#" th:action="@{/accommodation/register}" method="post" th:object="${accommodation}">
-    <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<body class="bg-sgn">
+
+<!-- navigation bar -->
+<div id="top-page">
+    <nav class="navbar navbar-expand-lg bg-black fixed-top" id="nav-main">
+        <div class="container px-5 px-lg-5">
+            <i class="navbar-brand fa-brands fa-java fa-spin "></i>
+            <a href="../siavash/index.html#top-page" class="navbar-brand cool-navbrand">WFM</a>
+            <i class="navbar-brand fa-brands fa-java fa-spin "></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#rps-navbar">
+                <span class="fa fa-list" style="color:green"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="rps-navbar">
+                <ul dir="rtl" class="navbar-nav ms-auto" >
+                    <li class="nav-item"><a class="nav-link cool-link-mid" href="../siavash/index.html#top-page"><h5 class="px-3"><i class="fa fa-home" aria-hidden="true"></i> خانه </h5></a> </li>
+                    <li class="nav-item"><a class="nav-link cool-link-mid" href="../siavash/sign-up.html"><h5 class="px-3"><i class="fa fa-user-plus" aria-hidden="true"></i> ثبت نام</h5></a> </li>
+                    <li class="nav-item"><a class="nav-link cool-link-mid" href="../siavash/index.html#ShowCases"><h5 class="px-3"><i class="fa fa-bar-chart" aria-hidden="true"></i> مزیت ها</h5></a> </li>
+                    <li class="nav-item"><a class="nav-link cool-link-mid" href="#contactUs"><h5 class="px-3"><i class="fa fa-envelope" aria-hidden="true"></i> ارتباط با ما</h5></a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
+<div class="container pt-5 mt-5 mt-lg-5 align-items-center justify-content-center" id="registrationForm">
+    <div class="d-flex justify-content-center" >
+        <div class="text-center px-5 py-5 my-5" style="background:linear-gradient(0deg, rgb(82, 67, 90), rgb(71, 80, 104))">
+            <h2 style="color:white">new accommodation</h2>
+            <form action="#" th:action="@{/accommodation/register}" method="post" th:object="${accommodation}">
+                <div class="mb-3 mt-3">
+                    <label for="email"><h6 style="color:white">Email</h6></label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" th:field="*{email}">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="ownersName"><h6 style="color:white">Owner's name</h6></label>
+                    <input type="text" class="form-control" id="ownersName" placeholder="Enter Owner's Name" name="ownersName" th:field="*{ownersName}">
+                </div>
+                <div class="mb-3">
+                    <label for="ownershipType"><h6 style="color:white">Ownership Type</h6></label>
+                    <input type="text" class="form-control" id="ownershipType" placeholder="LEGAL or NATURAL" name="ownershipType" th:field="*{ownershipType}">
+                </div>
+                <div class="mb-3">
+                    <label for="City"><h6 style="color:white">City</h6></label>
+                    <input type="text" class="form-control" id="City" placeholder="Enter City" name="City" th:field="*{city}">
+                </div>
+                <div class="mb-3">
+                    <label for="Address"><h6 style="color:white">Address</h6></label>
+                    <input type="text" class="form-control" id="Address" placeholder="Enter Address" name="Address" th:field="*{address}">
+                </div>
+                <div class="mb-3">
+                    <label for="Province"><h6 style="color:white">Province</h6></label>
+                    <input type="text" class="form-control" id="Province" placeholder="Enter Province" name="Province" th:field="*{province}">
+                </div>
+                <div class="mb-3">
+                    <label for="RentalPeriod"><h6 style="color:white">Rental Period</h6></label>
+                    <input type="text" class="form-control" id="RentalPeriod" placeholder="Enter Rental Period" name="RentalPeriod" th:field="*{rentalPeriod}">
+                </div>
+                <div class="mb-3">
+                    <label for="NoticePeriod"><h6 style="color:white">Notice Period</h6></label>
+                    <input type="text" class="form-control" id="NoticePeriod" placeholder="Enter Notice Period" name="NoticePeriod" th:field="*{noticePeriod}">
+                </div>
+                <div class="mb-3">
+                    <label for="DepositAmount"><h6 style="color:white">Deposit Amount</h6></label>
+                    <input type="text" class="form-control" id="DepositAmount" placeholder="Enter Notice Period" name="DepositAmount" th:field="*{deposit}">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label mt-2">
+                        <input class="form-check-input mb-3 " id="HasInternet" type="checkbox" name="HasInternet" th:field="*{hasInternet}"><h6 style="color:white">Has Internet</h6>
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input mb-3 " id="HasParking" type="checkbox" name="HasParking" th:field="*{hasParking}"><h6 style="color:white">Has Parking</h6>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-grey" ><h6 style="letter-spacing: 0;">submit</h6></button>
+            </form>
+        </div>
     </div>
-    <br>
-    <div class="form-group">
-        <label for="ownersName">Owners Name</label>
-        <input type="text" class="form-control" id="ownersName" placeholder="Enter Name" th:field="*{ownersName}">
+</div>
+
+
+<section class="contact-section bg-black">
+    <div class="container">
+        <div class="row">
+            <div class="col mt-5 mb-5">
+                <div class="card py-3 h-60">
+                    <div class="card-body text-center">
+                        <a href="https://telegram.me/Lqrock" style="color:black;">
+                            <i class="fa-brands fa-telegram" style="font-size:xx-large;" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://telegram.me/Lqrock" style="color:black; font-size: 20px;"><p>Telegram</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mt-5 mb-5">
+                <div class="card py-3 h-60">
+                    <div class="card-body text-center">
+                        <a href="mailto:Siavash.Azarnia@Gmail.com" style="color:black;">
+                            <i class="fa fa-envelope" style="font-size:xx-large;" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:Siavash.Azarnia@Gmail.com" style="color:black; font-size: 20px;"><p>Email Address</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mt-5 mb-5">
+                <div class="card py-3 h-60">
+                    <div class="card-body text-center">
+                        <a href="https://www.linkedin.com/in/siavash-azarnia-73b6b0232/" style="color:black;">
+                            <i class="fa-brands fa-linkedin" style="font-size:xx-large;" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/siavash-azarnia-73b6b0232/" style="color:black; font-size: 20px;"><p>LinkedIn</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <br>
-    <div class="form-group">
-        <label for="ownershipType">Ownership Type</label>
-        <input type="text" class="form-control" id="ownershipType" placeholder="LEGAL or NATURAL" th:field="*{ownershipType}">
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" class="form-control" id="city" placeholder="Enter City" th:field="*{city}">
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" class="form-control" id="address" placeholder="Enter Address" th:field="*{address}">
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="province">Province</label>
-        <input type="text" class="form-control" id="province" placeholder="Enter province" th:field="*{province}">
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="rentalPeriod">Rental Period</label>
-        <input type="text" class="form-control" id="rentalPeriod" placeholder="Rental Period" th:field="*{rentalPeriod}">
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="noticePeriod">Notice Period</label>
-        <input type="text" class="form-control" id="noticePeriod" placeholder="Notice Period" th:field="*{noticePeriod}">
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="hasInternet">Has Internet?</label>
-        <input type="text" class="form-control" id="hasInternet" placeholder="Has Internet?" th:field="*{hasInternet}">
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="hasParking">Has Parking?</label>
-        <input type="text" class="form-control" id="hasParking" placeholder="Has Parking?" th:field="*{hasParking}">
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="deposit">Deposit Amount</label>
-        <input type="text" class="form-control" id="deposit" placeholder="Deposit amount" th:field="*{deposit}">
-    </div>
-    <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</section>
+<footer class="footer bg-black small text-center text-white pb-5" id="contactUs"><div class="container px-4 px-lg-5">Copyright &copy; Lqrock</div></footer>
+
+
 </body>
 </html>
