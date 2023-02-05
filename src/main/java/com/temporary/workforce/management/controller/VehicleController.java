@@ -61,4 +61,21 @@ public class VehicleController {
         model.addAttribute("vehicle", vehicleDTO);
         return "vehicle-details";
     }
+
+    @GetMapping("/register")
+    public String showVehicleForm(Model model) {
+        VehicleDTO vehicleDTO = new VehicleDTO();
+        model.addAttribute("vehicle", vehicleDTO);
+        return "create-vehicle";
+    }
+
+    @PostMapping("/register")
+    public String registerVehicle(Model model, @ModelAttribute("vehicle") VehicleDTO vehicleDTO) {
+        vehicleService.createVehicle(vehicleDTO);
+        List<VehicleDTO> vehicleDTOList = vehicleService.getAllVehicles();
+        model.addAttribute("vehicles", vehicleDTOList);
+        return "show-all-vehicles";
+    }
+
+
 }
