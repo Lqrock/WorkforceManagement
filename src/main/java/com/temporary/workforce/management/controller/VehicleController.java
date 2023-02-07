@@ -32,11 +32,11 @@ public class VehicleController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{vehicleId}")
-    public ResponseEntity deleteVehicle(@PathVariable int vehicleId) throws BusinessException {
-        vehicleService.deleteVehicle(vehicleId);
-        return new ResponseEntity(HttpStatus.OK);
-    }
+//    @DeleteMapping("/delete/{vehicleId}")
+//    public ResponseEntity deleteVehicle(@PathVariable int vehicleId) throws BusinessException {
+//        vehicleService.deleteVehicle(vehicleId);
+//        return new ResponseEntity(HttpStatus.OK);
+//    }
 
 //    @GetMapping("/get/{vehicleId}")
 //    public ResponseEntity getVehicle(@PathVariable int vehicleId) throws BusinessException {
@@ -77,5 +77,9 @@ public class VehicleController {
         return "show-all-vehicles";
     }
 
-
+    @GetMapping("/delete/{vehicleId}")
+    public String deleteVehicle(@PathVariable int vehicleId) throws BusinessException {
+        vehicleService.deleteVehicle(vehicleId);
+        return "redirect:/vehicle/get-all";
+    }
 }

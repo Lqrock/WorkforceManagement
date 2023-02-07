@@ -1,7 +1,9 @@
 package com.temporary.workforce.management.controller;
 
 import com.temporary.workforce.management.dto.AccommodationDTO;
+import com.temporary.workforce.management.dto.VehicleDTO;
 import com.temporary.workforce.management.exception.BusinessException;
+import com.temporary.workforce.management.model.Accommodation;
 import com.temporary.workforce.management.service.AccommodationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/accommodation")
@@ -31,11 +34,11 @@ public class AccommodationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{accommodationId}")
-    public ResponseEntity<AccommodationDTO> deleteAccommodation(@PathVariable int accommodationId) throws BusinessException {
-        accommodationService.deleteAccommodation(accommodationId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+//    @DeleteMapping("/delete/{accommodationId}")
+//    public ResponseEntity<AccommodationDTO> deleteAccommodation(@PathVariable int accommodationId) throws BusinessException {
+//        accommodationService.deleteAccommodation(accommodationId);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    }
 
     @GetMapping("/get/{accommodationId}")
     public ResponseEntity<AccommodationDTO> getAccommodation(@PathVariable int accommodationId) throws BusinessException {
@@ -62,5 +65,11 @@ public class AccommodationController {
         List<AccommodationDTO> accommodationDTOList = accommodationService.getAllAccommodations();
         model.addAttribute("accommodations", accommodationDTOList);
         return "show-all-accommodations";
+    }
+
+    @GetMapping("/delete/{accommodationId}")
+    public String deleteVehicle(@PathVariable int accommodationId) throws BusinessException {
+        accommodationService.deleteAccommodation(accommodationId);
+        return "redirect:/accommodation/get-all";
     }
 }

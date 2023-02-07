@@ -31,11 +31,11 @@ public class TimeSheetController {
         return new ResponseEntity<>(timeSheetService.updateTimeSheet(timeSheetDTO), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{timeSheetId}")
-    public ResponseEntity<TimeSheetDTO> deleteTimeSheet(@PathVariable int timeSheetId) throws BusinessException {
-        timeSheetService.deleteTimeSheet(timeSheetId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+//    @DeleteMapping("/delete/{timeSheetId}")
+//    public ResponseEntity<TimeSheetDTO> deleteTimeSheet(@PathVariable int timeSheetId) throws BusinessException {
+//        timeSheetService.deleteTimeSheet(timeSheetId);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    }
 
     @GetMapping("/get/{timeSheetId}")
     public ResponseEntity<TimeSheetDTO> getTimeSheet(@PathVariable int timeSheetId) throws BusinessException {
@@ -47,5 +47,11 @@ public class TimeSheetController {
         List<TimeSheetDTO> timeSheetDTOList = timeSheetService.getAllTimeSheets();
         model.addAttribute("timeSheets", timeSheetDTOList);
         return "show-all-timesheets";
+    }
+
+    @GetMapping("/delete/{timeSheetId}")
+    public String deleteTimesheet(@PathVariable int timeSheetId) throws BusinessException {
+        timeSheetService.deleteTimeSheet(timeSheetId);
+        return "redirect:/timesheet/get-all";
     }
 }

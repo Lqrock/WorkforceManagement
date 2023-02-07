@@ -32,11 +32,11 @@ public class ProjectController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{projectId}")
-    public ResponseEntity deleteProject(@PathVariable int projectId) throws BusinessException {
-        projectService.deleteProject(projectId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+//    @DeleteMapping("/delete/{projectId}")
+//    public ResponseEntity deleteProject(@PathVariable int projectId) throws BusinessException {
+//        projectService.deleteProject(projectId);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    }
 
     @GetMapping("/get/{projectId}")
     public ResponseEntity<ProjectDTO> getProject(@PathVariable int projectId) throws BusinessException {
@@ -49,5 +49,12 @@ public class ProjectController {
         model.addAttribute("projects", projectDTOList);
         return "show-all-projects";
     }
+
+    @GetMapping("/delete/{projectId}")
+    public String deleteProject(@PathVariable int projectId) throws BusinessException {
+        projectService.deleteProject(projectId);
+        return "redirect:/project/get-all";
+    }
+
 
 }

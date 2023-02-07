@@ -27,14 +27,90 @@
             </button>
             <div class="collapse navbar-collapse" id="rps-navbar">
                 <ul dir="rtl" class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link cool-link-mid" href="../siavash/index.html#top-page"><h5
-                            class="px-3"><i class="fa fa-home" aria-hidden="true"></i> خانه </h5></a></li>
-                    <li class="nav-item"><a class="nav-link cool-link-mid" href="../siavash/sign-up.html"><h5
-                            class="px-3"><i class="fa fa-user-plus" aria-hidden="true"></i> ثبت نام</h5></a></li>
-                    <li class="nav-item"><a class="nav-link cool-link-mid" href="../siavash/index.html#ShowCases"><h5
-                            class="px-3"><i class="fa fa-bar-chart" aria-hidden="true"></i> مزیت ها</h5></a></li>
-                    <li class="nav-item"><a class="nav-link cool-link-mid" href="#contactUs"><h5 class="px-3"><i
-                            class="fa fa-envelope" aria-hidden="true"></i> ارتباط با ما</h5></a></li>
+
+
+                    <div class="dropdown">
+                        <button class="dropbtn nav-item cool-link-mid">
+                            <h5 class="px-3"><i class="fa fa-home" aria-hidden="true"></i> Accommodation</h5>
+                        </button>
+                        <div class="dropdown-content">
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/accommodation/register">
+                                <h5 class="px-3"> Create <i
+                                        class="fa fa-folder-plus" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/accommodation/get-all">
+                                <h5 class="px-3"> Show All <i
+                                        class="fa fa-list" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropbtn nav-item cool-link-mid">
+                            <h5 class="px-3"><i class="fa fa-car" aria-hidden="true"></i> Vehicle</h5>
+                        </button>
+                        <div class="dropdown-content">
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/vehicle/register">
+                                <h5 class="px-3"> Create <i
+                                        class="fa fa-folder-plus" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/vehicle/get-all">
+                                <h5 class="px-3"> Show All <i
+                                        class="fa fa-list" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropbtn nav-item cool-link-mid">
+                            <h5 class="px-3"><i class="fa fa-book" aria-hidden="true"></i> Project</h5>
+                        </button>
+                        <div class="dropdown-content">
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/project/register">
+                                <h5 class="px-3"> Create <i
+                                        class="fa fa-folder-plus" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/project/get-all">
+                                <h5 class="px-3"> Show All <i
+                                        class="fa fa-list" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="dropdown">
+                        <button class="dropbtn nav-item cool-link-mid">
+                            <h5 class="px-3"><i class="fa fa-user-nurse" aria-hidden="true"></i> Employee</h5>
+                        </button>
+                        <div class="dropdown-content">
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/employee/register">
+                                <h5 class="px-3"> Create <i
+                                        class="fa fa-folder-plus" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/employee/get-all">
+                                <h5 class="px-3"> Show All <i
+                                        class="fa fa-list" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    <div class="dropdown">
+                        <button class="dropbtn nav-item cool-link-mid">
+                            <h5 class="px-3"> Timesheet</h5>
+                        </button>
+                        <div class="dropdown-content">
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/timesheet/register">
+                                <h5 class="px-3"> Create <i
+                                        class="fa fa-folder-plus" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/timesheet/get-all">
+                                <h5 class="px-3"> Show All <i
+                                        class="fa fa-list" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                        </div>
+                    </div>
                 </ul>
             </div>
         </div>
@@ -59,9 +135,9 @@
                     <th scope="col">Tire Type</th>
                     <th scope="col">Insurance Type</th>
                     <th scope="col">DKV Number</th>
-                    <th scope="col">tuf Expiration Date</th>
-                    <th scope="col">Insurance Expiration Date</th>
-
+                    <th scope="col">tuf Expiration</th>
+                    <th scope="col">Insurance Expiration</th>
+                    <th scope="col" colspan="2">Actions</th>
                 </tr>
                 </thead>
                 <tbody style="cursor:pointer;">
@@ -77,13 +153,15 @@
                     <td th:text="${vehicle.dkvNumber}"></td>
                     <td th:text="${vehicle.tufExpirationDate}"></td>
                     <td th:text="${vehicle.insuranceExpirationDate}"></td>
+                    <td>
+                        <a th:href="@{/vehicle/delete/{vehicleId}(vehicleId=${vehicle.id})}" class="nav-link cool-link-mid fw-bold text-danger" style="text-decoration:none;">Delete</a>
+                   </td>
+                    <td>
+                        <a th:href="@{/vehicle/get/{vehicleId}(vehicleId=${vehicle.id})}" class="nav-link cool-link-mid fw-bold text-success" style="text-decoration:none;">Details</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
-            <br>
-            <input class="text-center" style="width:70px;" type="text" id="vehicleId" value="">
-            <br>
-            <a type="button" href="#" class="btn btn-primary mt-4" id="showVehicle" onclick="getVehicle()">show details</a>
         </div>
     </div>
 </div>

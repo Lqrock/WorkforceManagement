@@ -32,11 +32,11 @@ public class EmployeeController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{employeeId}")
-    public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable int employeeId) throws BusinessException {
-        employeeService.deleteEmployee(employeeId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+//    @DeleteMapping("/delete/{employeeId}")
+//    public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable int employeeId) throws BusinessException {
+//        employeeService.deleteEmployee(employeeId);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    }
 
     @GetMapping("/get/{employeeId}")
     public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable int employeeId) throws BusinessException {
@@ -48,5 +48,11 @@ public class EmployeeController {
         List<EmployeeDTO> employeeDTOList = employeeService.getAllAccommodations();
         model.addAttribute("employees", employeeDTOList);
         return "show-all-employees";
+    }
+
+    @GetMapping("/delete/{employeeId}")
+    public String deleteEmployee(@PathVariable int employeeId) throws BusinessException {
+        employeeService.deleteEmployee(employeeId);
+        return "redirect:/employee/get-all";
     }
 }
