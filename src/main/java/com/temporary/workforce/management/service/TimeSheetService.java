@@ -10,6 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,8 +29,10 @@ public class TimeSheetService implements TimeSheetServiceInterface {
     ModelMapper modelMapper = new ModelMapper();
 
     @Override
-    public void createTimeSheet(TimeSheetDTO timeSheetDTO) {
+    public void createTimeSheet(TimeSheetDTO timeSheetDTO) throws ParseException {
         logger.info("Creating time sheet");
+        timeSheetDTO.setStartingTime(timeSheetDTO.getStartingTime().concat(":00"));
+        timeSheetDTO.setFinishingTime(timeSheetDTO.getFinishingTime().concat(":00"));
         TimeSheet timeSheet = modelMapper.map(timeSheetDTO, TimeSheet.class);
         timeSheetRepository.save(timeSheet);
         logger.info("Time sheet created");

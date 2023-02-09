@@ -7,8 +7,9 @@
     <script type="text/javascript" th:src="@{/js/script.js}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Registration Form</title>
-    <link rel="icon" type="image/x-icon" href="resources/java.ico" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"/>
+    <link rel="icon" type="image/x-icon" href="resources/java.ico"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet"/>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-sgn">
@@ -93,7 +94,6 @@
                     </div>
 
 
-
                     <div class="dropdown">
                         <button class="dropbtn nav-item cool-link-mid">
                             <h5 class="px-3"> Timesheet</h5>
@@ -116,59 +116,78 @@
 </div>
 
 
-
 <div class="container pt-5 mt-5 mt-lg-5 align-items-center justify-content-center" id="registrationForm">
-    <div class="d-flex justify-content-center" >
-        <div class="text-center px-5 py-5 my-5" style="background:linear-gradient(0deg, rgb(82, 67, 90), rgb(71, 80, 104))">
+    <div class="d-flex justify-content-center">
+        <div class="text-center px-5 py-5 my-5"
+             style="background:linear-gradient(0deg, rgb(82, 67, 90), rgb(71, 80, 104))">
             <h2 style="color:white">new accommodation</h2>
             <form action="#" th:action="@{/accommodation/register}" method="post" th:object="${accommodation}">
                 <div class="mb-3 mt-3">
                     <label for="email"><h6 style="color:white">Email</h6></label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" th:field="*{email}">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"
+                           th:field="*{email}">
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="ownersName"><h6 style="color:white">Owner's name</h6></label>
-                    <input type="text" class="form-control" id="ownersName" placeholder="Enter Owner's Name" name="ownersName" th:field="*{ownersName}">
+                    <input type="text" class="form-control" id="ownersName" placeholder="Enter Owner's Name"
+                           name="ownersName" th:field="*{ownersName}">
                 </div>
                 <div class="mb-3">
-                    <label for="ownershipType"><h6 style="color:white">Ownership Type</h6></label>
-                    <input type="text" class="form-control" id="ownershipType" placeholder="LEGAL or NATURAL" name="ownershipType" th:field="*{ownershipType}">
+                    <label for="ownershipType"><h6 style="color:white"></h6></label>
+                    <select class="form-control custom-select" id="ownershipType" th:field="*{ownershipType}">
+                        <option value="Tire Type" selected>Select Ownership Type</option>
+                        <option value="LEGAL">LEGAL</option>
+                        <option value="NATURAL">NATURAL</option>
+                    </select>
+
                 </div>
                 <div class="mb-3">
                     <label for="City"><h6 style="color:white">City</h6></label>
-                    <input type="text" class="form-control" id="City" placeholder="Enter City" name="City" th:field="*{city}">
+                    <input type="text" class="form-control" id="City" placeholder="Enter City" name="City"
+                           th:field="*{city}">
                 </div>
                 <div class="mb-3">
                     <label for="Address"><h6 style="color:white">Address</h6></label>
-                    <input type="text" class="form-control" id="Address" placeholder="Enter Address" name="Address" th:field="*{address}">
+                    <input type="text" class="form-control" id="Address" placeholder="Enter Address" name="Address"
+                           th:field="*{address}">
                 </div>
                 <div class="mb-3">
                     <label for="Province"><h6 style="color:white">Province</h6></label>
-                    <input type="text" class="form-control" id="Province" placeholder="Enter Province" name="Province" th:field="*{province}">
+                    <input type="text" class="form-control" id="Province" placeholder="Enter Province" name="Province"
+                           th:field="*{province}">
                 </div>
-                <div class="mb-3">
-                    <label for="RentalPeriod"><h6 style="color:white">Rental Period</h6></label>
-                    <input type="text" class="form-control" id="RentalPeriod" placeholder="Enter Rental Period" name="RentalPeriod" th:field="*{rentalPeriod}">
+                <label for="RentalPeriod"><h6 style="color:white">Rental Period</h6></label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">months</span>
+                    <input type="number" class="form-control" id="RentalPeriod" placeholder="Enter Rental Period"
+                           name="RentalPeriod" th:field="*{rentalPeriod}">
                 </div>
-                <div class="mb-3">
-                    <label for="NoticePeriod"><h6 style="color:white">Notice Period</h6></label>
-                    <input type="text" class="form-control" id="NoticePeriod" placeholder="Enter Notice Period" name="NoticePeriod" th:field="*{noticePeriod}">
+                <label for="NoticePeriod"><h6 style="color:white">Notice Period</h6></label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">months</span>
+                    <input type="number" class="form-control" id="NoticePeriod" placeholder="Enter Notice Period"
+                           name="NoticePeriod" th:field="*{noticePeriod}">
                 </div>
-                <div class="mb-3">
-                    <label for="DepositAmount"><h6 style="color:white">Deposit Amount</h6></label>
-                    <input type="text" class="form-control" id="DepositAmount" placeholder="Enter Notice Period" name="DepositAmount" th:field="*{deposit}">
+                <label for="DepositAmount"><h6 style="color:white">Deposit Amount</h6></label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                    <input type="number" class="form-control" id="DepositAmount" placeholder="Enter Notice Period"
+                           name="DepositAmount" th:field="*{deposit}">
                 </div>
                 <div class="form-check">
                     <label class="form-check-label mt-2">
-                        <input class="form-check-input mb-3 " id="HasInternet" type="checkbox" name="HasInternet" th:field="*{hasInternet}"><h6 style="color:white">Has Internet</h6>
+                        <input class="form-check-input mb-3 " id="HasInternet" type="checkbox" name="HasInternet"
+                               th:field="*{hasInternet}"><h6 style="color:white">Has Internet</h6>
                     </label>
                 </div>
                 <div class="form-check mb-3">
                     <label class="form-check-label">
-                        <input class="form-check-input mb-3 " id="HasParking" type="checkbox" name="HasParking" th:field="*{hasParking}"><h6 style="color:white">Has Parking</h6>
+                        <input class="form-check-input mb-3 " id="HasParking" type="checkbox" name="HasParking"
+                               th:field="*{hasParking}"><h6 style="color:white">Has Parking</h6>
                     </label>
                 </div>
-                <button type="submit" class="btn btn-grey" ><h6 style="letter-spacing: 0;">submit</h6></button>
+                <button type="submit" class="btn btn-grey"><h6 style="letter-spacing: 0;">submit</h6></button>
             </form>
         </div>
     </div>
@@ -194,7 +213,8 @@
                         <a href="mailto:Siavash.Azarnia@Gmail.com" style="color:black;">
                             <i class="fa fa-envelope" style="font-size:xx-large;" aria-hidden="true"></i>
                         </a>
-                        <a href="mailto:Siavash.Azarnia@Gmail.com" style="color:black; font-size: 20px;"><p>Email Address</p></a>
+                        <a href="mailto:Siavash.Azarnia@Gmail.com" style="color:black; font-size: 20px;"><p>Email
+                            Address</p></a>
                     </div>
                 </div>
             </div>
@@ -204,14 +224,17 @@
                         <a href="https://www.linkedin.com/in/siavash-azarnia-73b6b0232/" style="color:black;">
                             <i class="fa-brands fa-linkedin" style="font-size:xx-large;" aria-hidden="true"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/siavash-azarnia-73b6b0232/" style="color:black; font-size: 20px;"><p>LinkedIn</p></a>
+                        <a href="https://www.linkedin.com/in/siavash-azarnia-73b6b0232/"
+                           style="color:black; font-size: 20px;"><p>LinkedIn</p></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<footer class="footer bg-black small text-center text-white pb-5" id="contactUs"><div class="container px-4 px-lg-5">Copyright &copy; Lqrock</div></footer>
+<footer class="footer bg-black small text-center text-white pb-5" id="contactUs">
+    <div class="container px-4 px-lg-5">Copyright &copy; Lqrock</div>
+</footer>
 
 
 </body>

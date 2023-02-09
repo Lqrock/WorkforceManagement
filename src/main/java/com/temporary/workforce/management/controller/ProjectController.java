@@ -2,6 +2,7 @@ package com.temporary.workforce.management.controller;
 
 import com.temporary.workforce.management.dto.AccommodationDTO;
 import com.temporary.workforce.management.dto.ProjectDTO;
+import com.temporary.workforce.management.dto.VehicleDTO;
 import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class ProjectController {
 
     @GetMapping("/get-all")
     public String showAllProjects(Model model) {
-        List<ProjectDTO> projectDTOList = projectService.getAllAccommodations();
+        List<ProjectDTO> projectDTOList = projectService.getAllProjects();
         model.addAttribute("projects", projectDTOList);
         return "show-all-projects";
     }
@@ -56,5 +57,17 @@ public class ProjectController {
         return "redirect:/project/get-all";
     }
 
+    @GetMapping("/register")
+    public String showProjectForm(Model model) {
+        ProjectDTO projectDTO = new ProjectDTO();
+        model.addAttribute("project", projectDTO);
+        return "create-project";
+    }
+
+    @PostMapping("/register")
+    public String registerProject(Model model, @ModelAttribute("project") ProjectDTO projectDTO) {
+        projectService.createProject(projectDTO);
+        return "redirect:/project/get-all";
+    }
 
 }

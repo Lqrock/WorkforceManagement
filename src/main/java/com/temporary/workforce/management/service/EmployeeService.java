@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +35,7 @@ public class EmployeeService implements EmployeeServiceInterface {
     public void createEmployee(EmployeeDTO employeeDTO) {
         logger.info("Starting employee creation");
         Employee employee = modelMapper.map(employeeDTO, Employee.class);
-        if (!employeeDTO.getSpokenLanguages().isEmpty()) {
+        if (employeeDTO.getSpokenLanguages() != null) {
             employee.getSpokenLanguages().forEach(language -> language.setEmployee(employee));
         }
 //        if (!employee.getProjects().isEmpty()) {
@@ -47,7 +49,7 @@ public class EmployeeService implements EmployeeServiceInterface {
                 employee.getVehicle().getProjectId().setEmployee(employee);
             }
         }
-        if (!employee.getTimeSheetList().isEmpty()) {
+        if (employee.getTimeSheetList() != null) {
             employee.getTimeSheetList().forEach(timeSheet -> timeSheet.setEmployee(employee));
         }
         if (employee.getAccommodation() != null) {
@@ -56,6 +58,10 @@ public class EmployeeService implements EmployeeServiceInterface {
             employee.getAccommodation().getFloors().forEach(floor -> floor.getRooms().forEach(room -> room.setFloor(floor)));
         }
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        employee.setDateOfBirth(LocalDate.parse(employeeDTO.getDateOfBirth(), formatter));
+        employee.setStartingDate(LocalDate.parse(employeeDTO.getStartingDate(), formatter));
+        employee.setFinishingDate(LocalDate.parse(employeeDTO.getFinishingDate(), formatter));
 
         employeeRepository.save(employee);
     }

@@ -28,7 +28,7 @@ public class EmployeeDTO {
 
     private String citizenshipCountry;
 
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
 
     private String placeOfBirth;
 
@@ -42,13 +42,13 @@ public class EmployeeDTO {
 
     private Long bankAccountNumber;
 
-    private boolean hasDriversLicense;
+    private boolean hasDriversLicense; //
 
-    private LocalDate startingDate;
+    private String startingDate; //
 
-    private LocalDate finishingDate;
+    private String finishingDate; //
 
-    private List<ProjectDTO> projects; //
+    private List<ProjectDTO> projects;
 
     private List<VehicleDTO> vehicles;
 

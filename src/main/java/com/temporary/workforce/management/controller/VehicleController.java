@@ -72,9 +72,7 @@ public class VehicleController {
     @PostMapping("/register")
     public String registerVehicle(Model model, @ModelAttribute("vehicle") VehicleDTO vehicleDTO) {
         vehicleService.createVehicle(vehicleDTO);
-        List<VehicleDTO> vehicleDTOList = vehicleService.getAllVehicles();
-        model.addAttribute("vehicles", vehicleDTOList);
-        return "show-all-vehicles";
+        return "redirect:/vehicle/get-all";
     }
 
     @GetMapping("/delete/{vehicleId}")

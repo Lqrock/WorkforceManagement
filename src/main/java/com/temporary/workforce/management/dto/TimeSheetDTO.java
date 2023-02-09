@@ -11,9 +11,9 @@ public class TimeSheetDTO {
 
     private String jobType;
 
-    private Time startingTime;
+    private String startingTime;
 
-    private Time finishingTime;
+    private String finishingTime;
 
     private int pauseTime;
 

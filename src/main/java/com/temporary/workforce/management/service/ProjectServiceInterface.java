@@ -21,5 +21,6 @@ public interface ProjectServiceInterface {
 
     Optional<Project> getProject(int projectId) throws BusinessException;
 
-    List<ProjectDTO> getAllAccommodations();
+    List<ProjectDTO> getAllProjects();
+
 }

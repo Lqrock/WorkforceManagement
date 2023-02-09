@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +32,9 @@ public class VehicleService implements VehicleServiceInterface {
     public void createVehicle(VehicleDTO vehicleDTO) {
         logger.info("Creating vehicle");
         Vehicle vehicle = modelMapper.map(vehicleDTO, Vehicle.class);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        vehicle.setInsuranceExpirationDate(LocalDate.parse(vehicleDTO.getInsuranceExpirationDate(), formatter));
+        vehicle.setTufExpirationDate(LocalDate.parse(vehicleDTO.getTufExpirationDate(), formatter));
         vehicleRepository.save(vehicle);
         logger.info("Vehicle created");
     }

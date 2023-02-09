@@ -135,8 +135,13 @@
                 </div>
                 <div class="mb-3">
                     <label for="ownersName"><h6 style="color:white">Owner's name</h6></label>
-                    <input type="text" class="form-control" id="ownersName" placeholder="GIL, DISACO or ZARASU"
-                           name="ownersName" th:field="*{ownersName}">
+                    <select class="form-control custom-select" id="ownersName"  th:field="*{ownersName}">
+                        <option value="Owner's name" selected>Select Owner's name</option>
+                        <option value="GIL">GIL</option>
+                        <option value="DISACO">DISACO</option>
+                        <option value="ZARASU">ZARASU</option>
+                    </select>
+
                 </div>
                 <div class="mb-3">
                     <label for="plateNumber"><h6 style="color:white">Plate Number</h6></label>
@@ -148,15 +153,19 @@
                     <input type="number" class="form-control" id="vin" placeholder="Enter VIN Number"
                            name="vin" th:field="*{vin}">
                 </div>
-                <div class="mb-3">
-                    <label for="mileage"><h6 style="color:white">Mileage</h6></label>
-                    <input type="text" class="form-control" id="mileage" placeholder="Enter mileage" name="mileage"
+                <label for="mileage"><h6 style="color:white">Mileage</h6></label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">KM</span>
+                    <input type="number" class="form-control" id="mileage" placeholder="Enter mileage" name="mileage"
                            th:field="*{mileage}">
                 </div>
                 <div class="mb-3">
                     <label for="tireType"><h6 style="color:white">Tire Type</h6></label>
-                    <input type="text" class="form-control" id="tireType" placeholder="SNOW_TIRES or FOUR_SEASON_TIRES"
-                           name="tireType" th:field="*{tireType}">
+                    <select class="form-control custom-select" id="tireType"  th:field="*{tireType}">
+                        <option value="Tire Type" selected>Select Tire Type</option>
+                        <option value="SNOW_TIRES">SNOW_TIRES</option>
+                        <option value="FOUR_SEASON_TIRES">FOUR_SEASON_TIRES</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="insuranceType"><h6 style="color:white">Insurance Type</h6></label>
@@ -165,8 +174,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="dkvNumber"><h6 style="color:white">DKV Number</h6></label>
-                    <input type="text" class="form-control" id="dkvNumber" placeholder="A512351003DD or ONE"
-                           name="dkvNumber" th:field="*{dkvNumber}">
+                    <select class="form-control custom-select" id="dkvNumber"  th:field="*{dkvNumber}">
+                        <option value="Tire Type" selected>Select DKV Number</option>
+                        <option value="A512351003DD">A512351003DD</option>
+                        <option value="ONE">ONE</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="gpsNumber"><h6 style="color:white">GPS Number</h6></label>
@@ -230,12 +242,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="tufExpirationDate"><h6 style="color:white">TUF Expiration Date</h6></label>
-                    <input type="text" class="form-control" id="tufExpirationDate" placeholder="yyyy-mm-dd"
+                    <input type="date" class="form-control" id="tufExpirationDate" placeholder="yyyy-mm-dd"
                            name="tufExpirationDate" th:field="*{tufExpirationDate}">
                 </div>
                 <div class="mb-3">
                     <label for="insuranceExpirationDate"><h6 style="color:white">Insurance Expiration Date</h6></label>
-                    <input type="text" class="form-control" id="insuranceExpirationDate" placeholder="yyyy-mm-dd"
+                    <input type="date" class="form-control" id="insuranceExpirationDate" placeholder="yyyy-mm-dd"
                            name="insuranceExpirationDate" th:field="*{insuranceExpirationDate}">
                 </div>
                 <button type="submit" class="btn btn-grey"><h6 style="letter-spacing: 0;">submit</h6></button>

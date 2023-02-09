@@ -16,9 +16,9 @@ public class ProjectDTO {
 
     private String address;
 
-    private LocalDate startingDate;
+    private String startingDate;
 
-    private LocalDate finishingDate;
+    private String finishingDate;
 
     private List<PhoneNumberDTO> phoneNumbers;
 

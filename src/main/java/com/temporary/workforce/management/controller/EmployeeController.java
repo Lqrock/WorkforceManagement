@@ -2,6 +2,7 @@ package com.temporary.workforce.management.controller;
 
 import com.temporary.workforce.management.dto.AccommodationDTO;
 import com.temporary.workforce.management.dto.EmployeeDTO;
+import com.temporary.workforce.management.dto.VehicleDTO;
 import com.temporary.workforce.management.exception.BusinessException;
 import com.temporary.workforce.management.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,4 +56,18 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
         return "redirect:/employee/get-all";
     }
+
+    @GetMapping("/register")
+    public String showEmployeeForm(Model model) {
+        EmployeeDTO employeeDTO = new EmployeeDTO();
+        model.addAttribute("employee", employeeDTO);
+        return "create-employee";
+    }
+
+    @PostMapping("/register")
+    public String registerVehicle(Model model, @ModelAttribute("employee") EmployeeDTO employeeDTO) {
+        employeeService.createEmployee(employeeDTO);
+        return "redirect:/employee/get-all";
+    }
+
 }

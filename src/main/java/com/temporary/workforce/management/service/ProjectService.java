@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -29,11 +31,14 @@ public class ProjectService implements ProjectServiceInterface {
     public void createProject(ProjectDTO projectDTO) {
         logger.info("Creating project {}", projectDTO.getId());
         Project project = modelMapper.map(projectDTO, Project.class);
-        if(!project.getEmails().isEmpty()){
+        if(project.getEmails() != null){
             List<Email> emails = project.getEmails();
             emails.forEach(email -> email.setProject(project));
             project.setEmails(emails);
         }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        project.setStartingDate(LocalDate.parse(projectDTO.getStartingDate(), formatter));
+        project.setFinishingDate(LocalDate.parse(projectDTO.getFinishingDate(), formatter));
         projectRepository.save(project);
     }
 
@@ -85,7 +90,7 @@ public class ProjectService implements ProjectServiceInterface {
     }
 
     @Override
-    public List<ProjectDTO> getAllAccommodations() {
+    public List<ProjectDTO> getAllProjects() {
         List<Project> projects = projectRepository.findAll();
         List<ProjectDTO> projectDTOList = new ArrayList<>();
         if (projects != null && !projects.isEmpty()) {

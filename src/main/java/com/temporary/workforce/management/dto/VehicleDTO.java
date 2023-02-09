@@ -32,9 +32,9 @@ public class VehicleDTO {
 
     private String gpsNumber;
 
-    private LocalDate tufExpirationDate;
+    private String tufExpirationDate;
 
-    private LocalDate insuranceExpirationDate;
+    private String insuranceExpirationDate;
 
     private int oilChangeIndicator;
 
