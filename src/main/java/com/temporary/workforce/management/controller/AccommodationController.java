@@ -68,7 +68,7 @@ public class AccommodationController {
     }
 
     @GetMapping("/delete/{accommodationId}")
-    public String deleteVehicle(@PathVariable int accommodationId) throws BusinessException {
+    public String deleteAccommodation(@PathVariable int accommodationId) throws BusinessException {
         accommodationService.deleteAccommodation(accommodationId);
         return "redirect:/accommodation/get-all";
     }

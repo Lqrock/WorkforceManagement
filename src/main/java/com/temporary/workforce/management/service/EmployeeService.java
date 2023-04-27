@@ -92,7 +92,7 @@ public class EmployeeService implements EmployeeServiceInterface {
                 existingEmployee.getAccommodation().getUtilities().forEach(utility -> utility.setAccommodation(existingEmployee.getAccommodation()));
             }
         }
-        if (!existingEmployee.getProjects().isEmpty()) {
+        if (existingEmployee.getProjects() != null) {
             existingEmployee.getProjects().forEach(project -> project.setEmployee(existingEmployee));
 //            existingEmployee.getProjects().forEach(project -> project.getPhoneNumbers().forEach(phoneNumber -> phoneNumber.setProject(project)));
             existingEmployee.getProjects().forEach(project -> project.getEmails().forEach(email -> email.setProject(project)));

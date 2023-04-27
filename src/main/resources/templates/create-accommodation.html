@@ -6,7 +6,7 @@
     <link th:href="@{/css/style.css}" rel="stylesheet"/>
     <script type="text/javascript" th:src="@{/js/script.js}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Registration Form</title>
+    <title>Accommodation Registration Form</title>
     <link rel="icon" type="image/x-icon" href="resources/java.ico"/>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet"/>
@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg bg-black fixed-top" id="nav-main">
         <div class="container px-5 px-lg-5">
             <i class="navbar-brand fa-brands fa-java fa-spin "></i>
-            <a href="../siavash/index.html#top-page" class="navbar-brand cool-navbrand">WFM</a>
+            <a href="http://localhost:8080/" class="navbar-brand cool-navbrand">WFM</a>
             <i class="navbar-brand fa-brands fa-java fa-spin "></i>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#rps-navbar">
                 <span class="fa fa-list" style="color:green"></span>
@@ -131,6 +131,11 @@
                     <label for="ownersName"><h6 style="color:white">Owner's name</h6></label>
                     <input type="text" class="form-control" id="ownersName" placeholder="Enter Owner's Name"
                            name="ownersName" th:field="*{ownersName}">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="ownersPhoneNumber"><h6 style="color:white">Owner's Phone Number</h6></label>
+                    <input type="text" class="form-control" id="ownersPhoneNumber" placeholder="Enter Owner's Phone Number"
+                           name="ownersPhoneNumber" th:field="*{ownersPhoneNumber}">
                 </div>
                 <div class="mb-3">
                     <label for="ownershipType"><h6 style="color:white"></h6></label>
