@@ -70,7 +70,7 @@ public class Vehicle {
     @Column(name = "timing_belt_change_indicator")
     private int timingBeltChangeIndicator;
 
-    @Column(name = "adBlue_change_indicator")
+    @Column(name = "ad_blue_change_indicator")
     private int adBlueChangeIndicator;
 
     @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
