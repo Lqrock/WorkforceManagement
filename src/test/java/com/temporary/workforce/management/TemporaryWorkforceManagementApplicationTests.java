@@ -8,6 +8,7 @@ class TemporaryWorkforceManagementApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

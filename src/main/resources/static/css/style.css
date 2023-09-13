@@ -1,0 +1,321 @@
+.dtHorizontalExampleWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+#dtHorizontalExample th, td {
+  white-space: nowrap;
+}
+
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+ bottom: .5em;
+}
+
+
+.bg-coolColor{
+  background-color: transparent;
+
+}
+.bg-blackColor{
+  background-color:black;
+  opacity: 95%;
+}
+
+.cool-link-mid{
+  color:white;
+  position:relative;
+}
+
+.px-3{
+  padding-left:5px !important;
+  padding-right: 5px !important;
+}
+
+.cool-link-mid::before{
+  content:"";
+  position:absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: white;
+  bottom: 0;
+  left:0;
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: transform 0.4s ease-in-out;
+}
+
+.cool-link-mid:hover::before{
+  transform-origin:center;
+  transform: scaleX(0.9);
+}
+
+.cool-link-mid:hover{
+  color:white;
+  font-weight: bold;
+}
+
+.cool-navbrand{
+  color:white;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: normal;
+  font-size: 44px;
+  max-width: 120px;
+  padding-right:1px;
+  padding-left:1px;
+}
+
+.cool-navbrand:hover{
+  color:white;
+}
+
+.p-sm-3{
+  padding-right: 4px !important;
+}
+
+
+
+
+#nav-main.navbar-shrink {
+  background-color: whitesmoke;
+}
+#nav-main.navbar-shrink .navbar-brand {
+  color: black;
+}
+#nav-main.navbar-shrink .cool-link-mid {
+  color: black;
+}
+
+#nav-main.navbar-shrink .cool-link-mid::before{
+  content:"";
+  position:absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: black;
+  bottom: 0;
+  left:0;
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: transform 0.4s ease-in-out;
+}
+
+#nav-main.navbar-shrink .cool-link-mid:hover::before{
+  transform-origin:center;
+  transform: scaleX(0.9);
+}
+
+#nav-main.navbar-shrink .cool-link-mid:hover {
+  color:black;
+  font-weight: bold;
+}
+
+.fa-java{
+  font-size: 45px;
+  color: white;
+}
+
+.fa-java:hover{
+  font-size: 45px;
+  color:white;
+  -webkit-animation: none;
+  -moz-animation: none;
+  -o-animation: none;
+  animation: none;
+}
+
+#nav-main.navbar-shrink .fa-java{
+  font-size: 45px;
+  color:black;
+}
+
+.about {
+  padding-top: 10rem;
+  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
+}
+.about p {
+  margin-bottom: 5rem;
+}
+
+.mainHeader {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../images/peakpx.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+
+}
+.mainHeader h1, .mainHeader .h1 {
+  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.8rem;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+          background-clip: text;
+}
+.mainHeader h2, .mainHeader .h2 {
+  max-width: 20rem;
+  font-size: 1rem;
+}
+@media (min-width: 768px) {
+  .mainHeader h1, .mainHeader .h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+}
+@media (min-width: 992px) {
+  .mainHeader {
+    height: 100vh;
+    padding: 0;
+  }
+  .mainHeader h1, .mainHeader .h1 {
+    font-size: 6.5rem;
+    line-height: 6.5rem;
+    letter-spacing: 0.8rem;
+  }
+  .mainHeader h2, .mainHeader .h2 {
+    max-width: 30rem;
+    font-size: 1.25rem;
+  }
+}
+
+
+
+
+.about-section {
+  padding-top: 10rem;
+  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
+}
+.about-section p {
+  margin-bottom: 5rem;
+}
+
+
+a:active{
+text-decoration:none;
+}
+
+.btn{
+  padding: 1.25rem 2rem;
+  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  border: 0;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #64a19d;
+  border-color: #64a19d;
+}
+.btn-learnMore:hover {
+  color: #fff;
+  background-color: #558985;
+  border-color: #50817e;
+}
+
+
+.javaShowCase {
+  padding: 8rem 0;
+}
+
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+.row-cols-2 > * {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.btn-grey{
+  position:relative;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  padding-left:55px;
+  padding-right: 55px;
+  background:linear-gradient(0deg, rgb(243, 201, 201), rgb(228, 226, 226))
+}
+
+.btn-grey:hover{
+  background:linear-gradient(0deg, rgb(193, 243, 245), rgb(255, 255, 255))
+}
+
+.teste{
+  padding: 12rem 0;
+}
+
+.form-control{
+  width:320px;
+}
+
+.bg-sgn{
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../images/peakpx.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+
+}
+
+
+
+
+
+
+
+  .dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000000;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: rgb(255, 250, 250);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown:hover .dropdown-content {display: block;}
+
+  .dropdown:hover .dropbtn {
+    background-color: tran;
+}

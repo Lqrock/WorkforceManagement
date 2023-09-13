@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vehicle Registration Form</title>
+    <link rel="icon" type="image/x-icon" href="resources/java.ico"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet"/>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-sgn">
+
+<!-- navigation bar -->
+<div id="top-page">
+    <nav class="navbar navbar-expand-lg bg-black fixed-top" id="nav-main">
+        <div class="container px-5 px-lg-5">
+            <i class="navbar-brand fa-brands fa-java fa-spin "></i>
+            <a href="http://localhost:8080/" class="navbar-brand cool-navbrand">WFM</a>
+            <i class="navbar-brand fa-brands fa-java fa-spin "></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#rps-navbar">
+                <span class="fa fa-list" style="color:green"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="rps-navbar">
+                <ul dir="rtl" class="navbar-nav ms-auto">
+
+
+                    <div class="dropdown">
+                        <button class="dropbtn nav-item cool-link-mid">
+                            <h5 class="px-3"><i class="fa fa-home" aria-hidden="true"></i> Accommodation</h5>
+                        </button>
+                        <div class="dropdown-content">
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/accommodation/register">
+                                <h5 class="px-3"> Create <i
+                                        class="fa fa-folder-plus" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/accommodation/get-all">
+                                <h5 class="px-3"> Show All <i
+                                        class="fa fa-list" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropbtn nav-item cool-link-mid">
+                            <h5 class="px-3"><i class="fa fa-car" aria-hidden="true"></i> Vehicle</h5>
+                        </button>
+                        <div class="dropdown-content">
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/vehicle/register">
+                                <h5 class="px-3"> Create <i
+                                        class="fa fa-folder-plus" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/vehicle/get-all">
+                                <h5 class="px-3"> Show All <i
+                                        class="fa fa-list" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropbtn nav-item cool-link-mid">
+                            <h5 class="px-3"><i class="fa fa-book" aria-hidden="true"></i> Project</h5>
+                        </button>
+                        <div class="dropdown-content">
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/project/register">
+                                <h5 class="px-3"> Create <i
+                                        class="fa fa-folder-plus" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/project/get-all">
+                                <h5 class="px-3"> Show All <i
+                                        class="fa fa-list" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="dropdown">
+                        <button class="dropbtn nav-item cool-link-mid">
+                            <h5 class="px-3"><i class="fa fa-user-nurse" aria-hidden="true"></i> Employee</h5>
+                        </button>
+                        <div class="dropdown-content">
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/employee/register">
+                                <h5 class="px-3"> Create <i
+                                        class="fa fa-folder-plus" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/employee/get-all">
+                                <h5 class="px-3"> Show All <i
+                                        class="fa fa-list" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    <div class="dropdown">
+                        <button class="dropbtn nav-item cool-link-mid">
+                            <h5 class="px-3"> Timesheet</h5>
+                        </button>
+                        <div class="dropdown-content">
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/timesheet/register">
+                                <h5 class="px-3"> Create <i
+                                        class="fa fa-folder-plus" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                            <a class="nav-link cool-link-mid" href="http://localhost:8080/timesheet/get-all">
+                                <h5 class="px-3"> Show All <i
+                                        class="fa fa-list" data-bs-toggle="dropdown" aria-hidden="true"></i></h5>
+                            </a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container pt-5 mt-5 mt-lg-5 align-items-center justify-content-center" id="registrationForm">
+    <div class="d-flex justify-content-center">
+        <div class="text-center px-5 py-5 my-5"
+             style="background:linear-gradient(0deg, rgb(82, 67, 90), rgb(71, 80, 104))">
+            <h2 style="color:white">new vehicle</h2>
+            <form action="#" th:action="@{/vehicle/register}" method="post" th:object="${vehicle}">
+                <div class="mb-3 mt-3">
+                    <label for="brand"><h6 style="color:white">brand</h6></label>
+                    <input type="text" class="form-control" id="brand" placeholder="Vehicle brand" name="brand"
+                           th:field="*{brand}">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="model"><h6 style="color:white">Vehicle model</h6></label>
+                    <input type="text" class="form-control" id="model" placeholder="Vehicle model" name="model"
+                           th:field="*{model}">
+                </div>
+                <div class="mb-3">
+                    <label for="ownersName"><h6 style="color:white">Owner's name</h6></label>
+                    <select class="form-control custom-select" id="ownersName"  th:field="*{ownersName}">
+                        <option value="Owner's name" selected>Select Owner's name</option>
+                        <option value="GIL">GIL</option>
+                        <option value="DISACO">DISACO</option>
+                        <option value="ZARASU">ZARASU</option>
+                    </select>
+
+                </div>
+                <div class="mb-3">
+                    <label for="plateNumber"><h6 style="color:white">Plate Number</h6></label>
+                    <input type="text" class="form-control" id="plateNumber" placeholder="Enter Plate Number"
+                           name="plateNumber" th:field="*{plateNumber}">
+                </div>
+                <div class="mb-3">
+                    <label for="vin"><h6 style="color:white">VIN Number</h6></label>
+                    <input type="number" class="form-control" id="vin" placeholder="Enter VIN Number"
+                           name="vin" th:field="*{vin}">
+                </div>
+                <label for="mileage"><h6 style="color:white">Mileage</h6></label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">KM</span>
+                    <input type="number" class="form-control" id="mileage" placeholder="Enter mileage" name="mileage"
+                           th:field="*{mileage}">
+                </div>
+                <div class="mb-3">
+                    <label for="tireType"><h6 style="color:white">Tire Type</h6></label>
+                    <select class="form-control custom-select" id="tireType"  th:field="*{tireType}">
+                        <option value="Tire Type" selected>Select Tire Type</option>
+                        <option value="SNOW_TIRES">SNOW_TIRES</option>
+                        <option value="FOUR_SEASON_TIRES">FOUR_SEASON_TIRES</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="insuranceType"><h6 style="color:white">Insurance Type</h6></label>
+                    <input type="text" class="form-control" id="insuranceType" placeholder="Enter Insurance Type"
+                           name="insuranceType" th:field="*{insuranceType}">
+                </div>
+                <div class="mb-3">
+                    <label for="dkvNumber"><h6 style="color:white">DKV Number</h6></label>
+                    <select class="form-control custom-select" id="dkvNumber"  th:field="*{dkvNumber}">
+                        <option value="Tire Type" selected>Select DKV Number</option>
+                        <option value="A512351003DD">A512351003DD</option>
+                        <option value="ONE">ONE</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="gpsNumber"><h6 style="color:white">GPS Number</h6></label>
+                    <input type="text" class="form-control" id="gpsNumber" placeholder="Enter GPS Number"
+                           name="gpsNumber" th:field="*{gpsNumber}">
+                </div>
+                <div class="mb-3">
+                    <label for="oilChangeIndicator"><h6 style="color:white">Oil Change Indicator</h6></label>
+                    <input type="number" class="text-center form-control" id="oilChangeIndicator" placeholder="KM left"
+                           name="oilChangeIndicator" th:field="*{oilChangeIndicator}" style="width:120px; margin-left:105px;">
+                </div>
+                <div class="mb-3">
+                    <label for="fuelInjectorChangeIndicator"><h6 style="color:white">Fuel Injector Change Indicator</h6></label>
+                    <input type="number" class="text-center form-control" id="fuelInjectorChangeIndicator" placeholder="KM left"
+                           name="fuelInjectorChangeIndicator" th:field="*{fuelInjectorChangeIndicator}" style="width:120px; margin-left:105px;">
+                </div>
+                <div class="mb-3">
+                    <label for="timingBeltChangeIndicator"><h6 style="color:white">Timing Belt Change Indicator</h6></label>
+                    <input type="number" class="text-center form-control" id="timingBeltChangeIndicator" placeholder="KM left"
+                           name="timingBeltChangeIndicator" th:field="*{timingBeltChangeIndicator}" style="width:120px; margin-left:105px;">
+                </div>
+                <div class="mb-3">
+                    <label for="adBlueChangeIndicator"><h6 style="color:white">Ad Blue Change Indicator</h6></label>
+                    <input type="number" class="text-center form-control" id="adBlueChangeIndicator" placeholder="KM left"
+                           name="adBlueChangeIndicator" th:field="*{adBlueChangeIndicator}" style="width:120px; margin-left:105px;">
+                </div>
+                <div class="form-check mb-3">
+                    <label class="form-check-label mt-2">
+                        <input class="form-check-input mb-3 " id="fuelInjectorFilterChangeRequired" type="checkbox"
+                               name="fuelInjectorFilterChangeRequired" th:field="*{fuelInjectorFilterChangeRequired}">
+                        <h6 style="color:white">Fuel Injector Filter Change Required</h6>
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input mb-3 " id="antiFrostChangeRequired" type="checkbox"
+                               name="antiFrostChangeRequired" th:field="*{antiFrostChangeRequired}"><h6
+                            style="color:white">Anti Frost Change Required</h6>
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input mb-3 " id="airFilterChangeRequired" type="checkbox"
+                               name="airFilterChangeRequired" th:field="*{airFilterChangeRequired}"><h6
+                            style="color:white">Air Filter Change Required</h6>
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input mb-3 " id="insideAirFilterChangeRequired" type="checkbox"
+                               name="insideAirFilterChangeRequired" th:field="*{insideAirFilterChangeRequired}"><h6
+                            style="color:white">Inside Air Filter Change Required</h6>
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input mb-3 " id="brakeFluidChangeRequired" type="checkbox"
+                               name="brakeFluidChangeRequired" th:field="*{brakeFluidChangeRequired}"><h6
+                            style="color:white">Brake Fluid Change Required</h6>
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label for="tufExpirationDate"><h6 style="color:white">TUF Expiration Date</h6></label>
+                    <input type="date" class="form-control" id="tufExpirationDate" placeholder="yyyy-mm-dd"
+                           name="tufExpirationDate" th:field="*{tufExpirationDate}">
+                </div>
+                <div class="mb-3">
+                    <label for="insuranceExpirationDate"><h6 style="color:white">Insurance Expiration Date</h6></label>
+                    <input type="date" class="form-control" id="insuranceExpirationDate" placeholder="yyyy-mm-dd"
+                           name="insuranceExpirationDate" th:field="*{insuranceExpirationDate}">
+                </div>
+                <button type="submit" class="btn btn-grey"><h6 style="letter-spacing: 0;">submit</h6></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<section class="contact-section bg-black">
+    <div class="container">
+        <div class="row">
+            <div class="col mt-5 mb-5">
+                <div class="card py-3 h-60">
+                    <div class="card-body text-center">
+                        <a href="https://telegram.me/Lqrock" style="color:black;">
+                            <i class="fa-brands fa-telegram" style="font-size:xx-large;" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://telegram.me/Lqrock" style="color:black; font-size: 20px;"><p>Telegram</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mt-5 mb-5">
+                <div class="card py-3 h-60">
+                    <div class="card-body text-center">
+                        <a href="mailto:Siavash.Azarnia@Gmail.com" style="color:black;">
+                            <i class="fa fa-envelope" style="font-size:xx-large;" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:Siavash.Azarnia@Gmail.com" style="color:black; font-size: 20px;"><p>Email
+                            Address</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mt-5 mb-5">
+                <div class="card py-3 h-60">
+                    <div class="card-body text-center">
+                        <a href="https://www.linkedin.com/in/siavash-azarnia-73b6b0232/" style="color:black;">
+                            <i class="fa-brands fa-linkedin" style="font-size:xx-large;" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/siavash-azarnia-73b6b0232/"
+                           style="color:black; font-size: 20px;"><p>LinkedIn</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer bg-black small text-center text-white pb-5" id="contactUs">
+    <div class="container px-4 px-lg-5">Copyright &copy; Lqrock</div>
+</footer>
+
+
+</body>
+</html>
